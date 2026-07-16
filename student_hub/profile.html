@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Profile</title>
+</head>
+
+<body>
+    <header>
+        <h1>StudentHub Portal</h1>
+        <div class="user-profile">
+            <span>Welcome, Student!</span>
+            <a href="login.html">Logout</a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="courses.html">My Courses</a></li>
+            <li><a href="timetable.html">Timetable</a></li>
+            <li><a href="grades.html">Grades & Transcripts</a></li>
+            <li><a href="events.html">Events & Clubs</a></li>
+            <li><a href="library.html">Library</a></li>
+            <li><a href="announcements.html">Announcements</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Profile & Settings</h2>
+        <p>Manage your account details and portal preferences.</p>
+
+        <section>
+            <h3>Personal Information</h3>
+            <p><strong>Name:</strong> Rudra Vaghasiya</p>
+            <p><strong>Student ID:</strong> 25CE129</p>
+            <p><strong>Email:</strong> 25ce129@studenthub.edu</p>
+            <p><strong>Major:</strong> Computer engneering</p>
+        </section>
+
+        <section>
+            <h3>Settings</h3>
+            <form action="#">
+                <fieldset>
+                    <legend>Notifications</legend>
+                    <input type="checkbox" id="email-notif" name="email-notif" checked>
+                    <label for="email-notif">Receive Email Notifications for Announcements</label><br>
+                    <input type="checkbox" id="sms-notif" name="sms-notif">
+                    <label for="sms-notif">Receive SMS alerts for grade postings</label>
+                </fieldset>
+
+                <br>
+
+                <fieldset>
+                    <legend>Security</legend>
+                    <button type="button">Change Password</button>
+                    <button type="button">Manage Devices</button>
+                </fieldset>
+
+                <br><button type="submit">Save Changes</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 StudentHub</p>
+    </footer>
+</body>
+
+</html>

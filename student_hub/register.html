@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Register</title>
+</head>
+
+<body>
+    <header>
+        <h1>StudentHub Portal</h1>
+        <p>Join the centralized platform for all your academic and campus needs.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Student Registration</h2>
+            <form action="login.html" method="GET">
+                <table cellpadding="8" cellspacing="0" border="0">
+                    <tr>
+                        <td><label for="fullname">Full Name</label></td>
+                        <td>:</td>
+                        <td><input type="text" id="fullname" name="fullname" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Student Email</label></td>
+                        <td>:</td>
+                        <td><input type="email" id="email" name="email" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="studentid">Student ID Number</label></td>
+                        <td>:</td>
+                        <td><input type="text" id="studentid" name="studentid" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="major">Major / Program</label></td>
+                        <td>:</td>
+                        <td>
+                            <select id="major" name="major" required>
+                                <option value="">-- Select Major --</option>
+                                <option value="cs">Computer Science</option>
+                                <option value="math">Mathematics</option>
+                                <option value="physics">Physics</option>
+                                <option value="biology">Biology</option>
+                                <option value="arts">Arts & Humanities</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Enrollment Status</label></td>
+                        <td>:</td>
+                        <td>
+                            <input type="radio" id="fulltime" name="enrollment" value="fulltime" required>
+                            <label for="fulltime">Full-time</label>
+                            &nbsp;&nbsp;
+                            <input type="radio" id="parttime" name="enrollment" value="parttime" required>
+                            <label for="parttime">Part-time</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="address">Home Address</label></td>
+                        <td>:</td>
+                        <td>
+                            <textarea id="address" name="address" rows="3" cols="30"
+                                placeholder="Enter your full address" required></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Create Password</label></td>
+                        <td>:</td>
+                        <td><input type="password" id="password" name="password" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="confirm-password">Confirm Password</label></td>
+                        <td>:</td>
+                        <td><input type="password" id="confirm-password" name="confirm-password" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: center; padding-top: 10px;">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">I agree to the Student Terms and Conditions</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: center; padding-top: 15px;">
+                            <button type="submit">Create Account</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <p>Already have an account? <a href="login.html">Log in here</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 StudentHub</p>
+    </footer>
+</body>
+
+</html>
