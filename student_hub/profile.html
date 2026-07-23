@@ -4,71 +4,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Profile</title>
+    <title>StudentHub - Profile &amp; Settings</title>
 </head>
 
 <body>
-    <header>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
-        <div class="user-profile">
+        <div class="user-info">
             <span>Welcome, Student!</span>
-            <a href="login.html">Logout</a>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
         </div>
     </header>
 
-    <nav>
+    <nav aria-label="Main Navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="courses.html">My Courses</a></li>
             <li><a href="timetable.html">Timetable</a></li>
-            <li><a href="grades.html">Grades & Transcripts</a></li>
-            <li><a href="events.html">Events & Clubs</a></li>
+            <li><a href="grades.html">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html">Events &amp; Clubs</a></li>
             <li><a href="library.html">Library</a></li>
             <li><a href="announcements.html">Announcements</a></li>
-            <li><a href="profile.html">Profile</a></li>
+            <li><a href="profile.html" aria-current="page">Profile</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
-    <main>
-        <h2>Profile & Settings</h2>
-        <p>Manage your account details and portal preferences.</p>
+    <main id="main-content" role="main">
 
-        <section>
-            <h3>Personal Information</h3>
-            <p><strong>Name:</strong> Rudra Vaghasiya</p>
-            <p><strong>Student ID:</strong> 25CE129</p>
-            <p><strong>Email:</strong> 25ce129@studenthub.edu</p>
-            <p><strong>Major:</strong> Computer engneering</p>
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Profile &amp; Settings</li>
+            </ol>
+        </nav>
+
+        <h2>Profile &amp; Settings</h2>
+
+        <section aria-labelledby="info-heading">
+            <h3 id="info-heading">Personal Information</h3>
+            <dl>
+                <dt>Full Name</dt>
+                <dd>Rudra Patel</dd>
+                <dt>Student ID</dt>
+                <dd>25CE129</dd>
+                <dt>Email</dt>
+                <dd>25ce129@college.edu</dd>
+                <dt>Phone</dt>
+                <dd>+91 9876543210</dd>
+                <dt>Major</dt>
+                <dd>Computer Engineering</dd>
+                <dt>Enrollment</dt>
+                <dd>Full-time</dd>
+            </dl>
         </section>
 
-        <section>
-            <h3>Settings</h3>
-            <form action="#">
-                <fieldset>
-                    <legend>Notifications</legend>
-                    <input type="checkbox" id="email-notif" name="email-notif" checked>
-                    <label for="email-notif">Receive Email Notifications for Announcements</label><br>
-                    <input type="checkbox" id="sms-notif" name="sms-notif">
-                    <label for="sms-notif">Receive SMS alerts for grade postings</label>
-                </fieldset>
-
-                <br>
-
-                <fieldset>
-                    <legend>Security</legend>
-                    <button type="button">Change Password</button>
-                    <button type="button">Manage Devices</button>
-                </fieldset>
-
-                <br><button type="submit">Save Changes</button>
+        <section aria-labelledby="update-heading">
+            <h3 id="update-heading">Update Profile</h3>
+            <form action="#" method="GET" aria-label="Update Profile Form">
+                <div>
+                    <label for="update-phone">Phone Number:</label>
+                    <input type="tel" id="update-phone" name="phone" autocomplete="tel" placeholder="+91 XXXXXXXXXX">
+                </div>
+                <div>
+                    <label for="update-address">Home Address:</label>
+                    <textarea id="update-address" name="address" rows="3" cols="30"
+                        placeholder="Enter updated address"></textarea>
+                </div>
+                <div>
+                    <button type="submit">Update Profile</button>
+                </div>
             </form>
         </section>
+
+        <section aria-labelledby="password-heading">
+            <h3 id="password-heading">Change Password</h3>
+            <form action="#" method="GET" aria-label="Change Password Form">
+                <div>
+                    <label for="current-password">Current Password:</label>
+                    <input type="password" id="current-password" name="current-password" autocomplete="current-password"
+                        required aria-required="true">
+                </div>
+                <div>
+                    <label for="new-password">New Password:</label>
+                    <input type="password" id="new-password" name="new-password" autocomplete="new-password" required
+                        aria-required="true">
+                </div>
+                <div>
+                    <label for="confirm-new-password">Confirm New Password:</label>
+                    <input type="password" id="confirm-new-password" name="confirm-new-password"
+                        autocomplete="new-password" required aria-required="true">
+                </div>
+                <div>
+                    <button type="submit">Change Password</button>
+                </div>
+            </form>
+        </section>
+
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
+
 </body>
 
 </html>

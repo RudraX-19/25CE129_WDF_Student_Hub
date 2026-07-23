@@ -8,56 +8,96 @@
 </head>
 
 <body>
-    <header>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
-        <div class="user-profile">
+        <div class="user-info">
             <span>Welcome, Student!</span>
-            <a href="login.html">Logout</a>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
         </div>
     </header>
 
-    <nav>
+    <nav aria-label="Main Navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="dashboard.html" aria-current="page">Dashboard</a></li>
             <li><a href="courses.html">My Courses</a></li>
             <li><a href="timetable.html">Timetable</a></li>
-            <li><a href="grades.html">Grades & Transcripts</a></li>
-            <li><a href="events.html">Events & Clubs</a></li>
+            <li><a href="grades.html">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html">Events &amp; Clubs</a></li>
             <li><a href="library.html">Library</a></li>
             <li><a href="announcements.html">Announcements</a></li>
             <li><a href="profile.html">Profile</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
-    <main>
+    <main id="main-content" role="main">
+
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Dashboard</li>
+            </ol>
+        </nav>
+
         <h2>Overview Dashboard</h2>
-        <section>
-            <h3>Academic Standing</h3>
-            <p>Current GPA: 3.8 / 4.0</p>
-            <p>Major: Computer Science</p>
+
+        <section aria-labelledby="academic-heading">
+            <h3 id="academic-heading">Academic Standing</h3>
+            <dl>
+                <dt>Current GPA</dt>
+                <dd>3.8 / 4.0</dd>
+                <dt>Major</dt>
+                <dd>Computer Engineering</dd>
+                <dt>Semester</dt>
+                <dd>Semester 4 (2025&ndash;26)</dd>
+            </dl>
         </section>
 
-        <section>
-            <h3>Upcoming Deadlines</h3>
+        <section aria-labelledby="deadlines-heading">
+            <h3 id="deadlines-heading">Upcoming Deadlines</h3>
             <ul>
-                <li>Web Development Project - Due in 2 days</li>
-                <li>Physics Lab Report - Due in 5 days</li>
+                <li>Web Development Project &mdash; Due in <strong>2 days</strong></li>
+                <li>Physics Lab Report &mdash; Due in <strong>5 days</strong></li>
+                <li>Mathematics Assignment &mdash; Due in <strong>1 week</strong></li>
             </ul>
         </section>
 
-        <section>
-            <h3>Today's Schedule</h3>
+        <section aria-labelledby="schedule-heading">
+            <h3 id="schedule-heading">Today's Schedule</h3>
             <ul>
-                <li>09:00 AM - 10:30 AM: Web Development (Room 205)</li>
-                <li>11:00 AM - 12:30 PM: Data Structures (Room 101)</li>
+                <li><time datetime="09:00">09:00 AM</time> &ndash; <time datetime="10:30">10:30 AM</time>: Web
+                    Development (Room 205)</li>
+                <li><time datetime="11:00">11:00 AM</time> &ndash; <time datetime="12:30">12:30 PM</time>: Data
+                    Structures (Room 101)</li>
+                <li><time datetime="14:00">02:00 PM</time> &ndash; <time datetime="15:30">03:30 PM</time>: Mathematics
+                    (Room 301)</li>
             </ul>
         </section>
+
+        <aside aria-labelledby="announcements-aside-heading">
+            <h3 id="announcements-aside-heading">Latest Announcement</h3>
+            <p>Examinations begin on <time datetime="2026-08-01">1st August 2026</time>. Timetable is available in the
+                <a href="timetable.html">Timetable</a> section.</p>
+        </aside>
+
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
+
 </body>
 
 </html>

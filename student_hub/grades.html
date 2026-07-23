@@ -4,74 +4,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Grades & Transcripts</title>
+    <title>StudentHub - Grades &amp; Transcripts</title>
 </head>
 
 <body>
-    <header>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
-        <div class="user-profile">
+        <div class="user-info">
             <span>Welcome, Student!</span>
-            <a href="login.html">Logout</a>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
         </div>
     </header>
 
-    <nav>
+    <nav aria-label="Main Navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="courses.html">My Courses</a></li>
             <li><a href="timetable.html">Timetable</a></li>
-            <li><a href="grades.html">Grades & Transcripts</a></li>
-            <li><a href="events.html">Events & Clubs</a></li>
+            <li><a href="grades.html" aria-current="page">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html">Events &amp; Clubs</a></li>
             <li><a href="library.html">Library</a></li>
             <li><a href="announcements.html">Announcements</a></li>
             <li><a href="profile.html">Profile</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
-    <main>
-        <h2>Grades & Transcripts</h2>
-        <p>Review your academic performance for the current and past semesters.</p>
+    <main id="main-content" role="main">
 
-        <section>
-            <h3>Current Semester Grades</h3>
-            <table border="1" cellpadding="10" cellspacing="0">
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Grades &amp; Transcripts</li>
+            </ol>
+        </nav>
+
+        <section aria-labelledby="grades-heading">
+            <h2 id="grades-heading">Grades &amp; Transcripts</h2>
+
+            <p>Overall GPA: <strong>3.8 / 4.0</strong></p>
+
+            <table>
+                <caption>Semester 4 Grade Report (2025&ndash;26)</caption>
                 <thead>
                     <tr>
-                        <th>Course Code</th>
-                        <th>Course Name</th>
-                        <th>Credits</th>
-                        <th>Grade</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Midterm</th>
+                        <th scope="col">Final</th>
+                        <th scope="col">Practicals</th>
+                        <th scope="col">Grade</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>WDF 203</td>
-                        <td>Advanced Web Development</td>
-                        <td>4</td>
+                        <th scope="row">Web Development Fundamentals</th>
+                        <td>85</td>
+                        <td>90</td>
+                        <td>95</td>
                         <td>A</td>
                     </tr>
                     <tr>
-                        <td>CS 204</td>
-                        <td>Data Structures & Algorithms</td>
-                        <td>4</td>
+                        <th scope="row">Data Structures &amp; Algorithms</th>
+                        <td>78</td>
+                        <td>82</td>
+                        <td>80</td>
                         <td>B+</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Engineering Physics</th>
+                        <td>92</td>
+                        <td>88</td>
+                        <td>85</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Applied Mathematics</th>
+                        <td>75</td>
+                        <td>79</td>
+                        <td>78</td>
+                        <td>B</td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
-        <section>
-            <h3>Overall GPA</h3>
-            <p><strong>Cumulative GPA:</strong> 3.8 / 4.0</p>
-            <button>Download Official Transcript</button>
-        </section>
+        <aside aria-labelledby="grading-heading">
+            <h3 id="grading-heading">Grading Scale</h3>
+            <dl>
+                <dt>A (Excellent)</dt>
+                <dd>90 &ndash; 100</dd>
+                <dt>B+ (Very Good)</dt>
+                <dd>80 &ndash; 89</dd>
+                <dt>B (Good)</dt>
+                <dd>70 &ndash; 79</dd>
+                <dt>C (Average)</dt>
+                <dd>60 &ndash; 69</dd>
+                <dt>F (Fail)</dt>
+                <dd>Below 60</dd>
+            </dl>
+        </aside>
+
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
+
 </body>
 
 </html>

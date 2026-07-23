@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Feedback</title>
+</head>
+
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+        <h1>StudentHub Portal</h1>
+        <div class="user-info">
+            <span>Welcome, Student!</span>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
+        </div>
+    </header>
+
+    <nav aria-label="Main Navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="courses.html">My Courses</a></li>
+            <li><a href="timetable.html">Timetable</a></li>
+            <li><a href="grades.html">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html">Events &amp; Clubs</a></li>
+            <li><a href="library.html">Library</a></li>
+            <li><a href="announcements.html">Announcements</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content" role="main">
+
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Feedback</li>
+            </ol>
+        </nav>
+
+        <section aria-labelledby="feedback-heading">
+            <h2 id="feedback-heading">Share Your Feedback</h2>
+            <p>We value your opinion. Please share your experience with the StudentHub portal.</p>
+
+            <form action="#" method="GET" aria-label="Feedback Form">
+                <div>
+                    <label for="fb-name">Your Name:</label>
+                    <input type="text" id="fb-name" name="name" autocomplete="name" required aria-required="true">
+                </div>
+                <div>
+                    <label for="fb-email">Your Email:</label>
+                    <input type="email" id="fb-email" name="email" autocomplete="email" required aria-required="true">
+                </div>
+                <div>
+                    <label for="fb-category">Feedback Category:</label>
+                    <select id="fb-category" name="category" required aria-required="true">
+                        <option value="">-- Select Category --</option>
+                        <option value="portal">Portal Usability</option>
+                        <option value="courses">Course Content</option>
+                        <option value="events">Events &amp; Clubs</option>
+                        <option value="library">Library Resources</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>Overall Rating</legend>
+                        <input type="radio" id="rate-excellent" name="rating" value="5">
+                        <label for="rate-excellent">Excellent</label>
+                        &nbsp;
+                        <input type="radio" id="rate-good" name="rating" value="4">
+                        <label for="rate-good">Good</label>
+                        &nbsp;
+                        <input type="radio" id="rate-average" name="rating" value="3">
+                        <label for="rate-average">Average</label>
+                        &nbsp;
+                        <input type="radio" id="rate-poor" name="rating" value="2">
+                        <label for="rate-poor">Poor</label>
+                    </fieldset>
+                </div>
+                <div>
+                    <label for="fb-comments">Comments / Suggestions:</label>
+                    <textarea id="fb-comments" name="comments" rows="5" cols="40"
+                        placeholder="Write your feedback here..."></textarea>
+                </div>
+                <div>
+                    <button type="submit">Submit Feedback</button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html" aria-current="page">Feedback</a></li>
+            </ul>
+        </nav>
+        <p>&copy; 2026 StudentHub</p>
+    </footer>
+
+</body>
+
+</html>

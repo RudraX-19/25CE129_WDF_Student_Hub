@@ -8,31 +8,56 @@
 </head>
 
 <body>
-    <header>
+
+    <!-- Skip to main content (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
-        <p>Welcome to the centralized platform for all your academic and campus needs.</p>
+        <p>Welcome back! Please log in to access your account.</p>
     </header>
 
-    <main>
-        <section>
-            <h2>Login</h2>
-            <form action="index.html" method="GET">
-                <label for="username">Username:</label><br>
-                <input type="text" id="username" name="username" required><br><br>
+    <main id="main-content" role="main">
+        <section aria-labelledby="login-heading">
+            <h2 id="login-heading">Student Login</h2>
 
-                <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" required><br><br>
+            <form action="index.html" method="GET" aria-label="Login Form">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username"
+                           autocomplete="username" required
+                           aria-required="true" aria-describedby="username-hint">
+                    <span id="username-hint">Enter your student ID or registered email.</span>
+                </div>
 
-                <button type="submit">Log In</button>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password"
+                           autocomplete="current-password" required
+                           aria-required="true">
+                </div>
+
+                <div>
+                    <button type="submit">Log In</button>
+                </div>
             </form>
-            <p><em>(For this demo, clicking Log In will take you directly to the dashboard)</em></p>
+
             <p>Don't have an account? <a href="register.html">Register here</a></p>
+            <p><a href="faq.html">Need help logging in?</a></p>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
-</body>
 
+</body>
 </html>

@@ -4,65 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Events & Clubs</title>
+    <title>StudentHub - Events &amp; Clubs</title>
 </head>
 
 <body>
-    <header>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
-        <div class="user-profile">
+        <div class="user-info">
             <span>Welcome, Student!</span>
-            <a href="login.html">Logout</a>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
         </div>
     </header>
 
-    <nav>
+    <nav aria-label="Main Navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="courses.html">My Courses</a></li>
             <li><a href="timetable.html">Timetable</a></li>
-            <li><a href="grades.html">Grades & Transcripts</a></li>
-            <li><a href="events.html">Events & Clubs</a></li>
+            <li><a href="grades.html">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html" aria-current="page">Events &amp; Clubs</a></li>
             <li><a href="library.html">Library</a></li>
             <li><a href="announcements.html">Announcements</a></li>
             <li><a href="profile.html">Profile</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
-    <main>
-        <h2>Events & Clubs</h2>
-        <p>Discover extracurricular activities, join clubs, and register for campus events.</p>
+    <main id="main-content" role="main">
 
-        <section>
-            <h3>Featured Clubs</h3>
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Events &amp; Clubs</li>
+            </ol>
+        </nav>
+
+        <h2>Events &amp; Clubs</h2>
+
+        <section aria-labelledby="upcoming-events-heading">
+            <h3 id="upcoming-events-heading">Upcoming Events</h3>
+
+            <article aria-labelledby="hackathon-heading">
+                <h4 id="hackathon-heading">Annual Hackathon 2026</h4>
+                <p><strong>Date:</strong> <time datetime="2026-08-10">10 August 2026</time></p>
+                <p><strong>Venue:</strong> College Auditorium</p>
+                <p>A 24-hour coding competition open to all students. Form teams of 2&ndash;4 and build innovative
+                    solutions!</p>
+                <a href="feedback.html" aria-label="Register for Annual Hackathon 2026">Register Now</a>
+            </article>
+
+            <article aria-labelledby="workshop-heading">
+                <h4 id="workshop-heading">Web Dev Workshop</h4>
+                <p><strong>Date:</strong> <time datetime="2026-07-28">28 July 2026</time></p>
+                <p><strong>Venue:</strong> Computer Lab 3</p>
+                <p>Hands-on workshop covering CSS Flexbox, Grid, and responsive design basics.</p>
+                <a href="feedback.html" aria-label="Register for Web Dev Workshop">Register Now</a>
+            </article>
+        </section>
+
+        <section aria-labelledby="clubs-heading">
+            <h3 id="clubs-heading">Student Clubs</h3>
             <ul>
-                <li><strong>Coding Club:</strong> Meets every Wednesday at 5 PM. <button>Join</button></li>
-                <li><strong>Debate Society:</strong> Perfect your public speaking skills. <button>Join</button></li>
-                <li><strong>Robotics Team:</strong> Building the future of automation. <button>Join</button></li>
+                <li><strong>Coding Club</strong> &mdash; Meets every Tuesday, Room 102</li>
+                <li><strong>Robotics Club</strong> &mdash; Meets every Thursday, Lab 4</li>
+                <li><strong>Literary Club</strong> &mdash; Meets every Friday, Library Hall</li>
+                <li><strong>Sports Committee</strong> &mdash; Meets every Monday, Gymnasium</li>
             </ul>
         </section>
 
-        <section>
-            <h3>Upcoming Events</h3>
-            <ul>
-                <li>
-                    <strong>Annual Hackathon 2026</strong><br>
-                    Date: Oct 15-17 <br>
-                    <button>Register Now</button>
-                </li>
-                <li>
-                    <strong>Guest Lecture: AI Innovations</strong><br>
-                    Date: Nov 2 <br>
-                    <button>RSVP</button>
-                </li>
-            </ul>
-        </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
+
 </body>
 
 </html>

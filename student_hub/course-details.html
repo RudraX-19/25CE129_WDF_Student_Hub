@@ -8,56 +8,100 @@
 </head>
 
 <body>
-    <header>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
-        <div class="user-profile">
+        <div class="user-info">
             <span>Welcome, Student!</span>
-            <a href="login.html">Logout</a>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
         </div>
     </header>
 
-    <nav>
+    <nav aria-label="Main Navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="courses.html">My Courses</a></li>
             <li><a href="timetable.html">Timetable</a></li>
-            <li><a href="grades.html">Grades & Transcripts</a></li>
-            <li><a href="events.html">Events & Clubs</a></li>
+            <li><a href="grades.html">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html">Events &amp; Clubs</a></li>
             <li><a href="library.html">Library</a></li>
             <li><a href="announcements.html">Announcements</a></li>
             <li><a href="profile.html">Profile</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
-    <main>
-        <h2>Course Details: Advanced Web Development</h2>
-        <p><a href="courses.html">&larr; Back to My Courses</a></p>
+    <main id="main-content" role="main">
 
-        <section>
-            <h3>Syllabus Overview</h3>
-            <p>This course covers modern web full-stack architecture, semantic HTML, CSS styling, and single page
-                application paradigms using JavaScript.</p>
-        </section>
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">My Courses</a></li>
+                <li aria-current="page">Web Development Fundamentals</li>
+            </ol>
+        </nav>
 
-        <section>
-            <h3>Course Materials</h3>
-            <ul>
-                <li><a href="#">Lecture 1: Introduction to Web Architectures (PDF)</a></li>
-                <li><a href="#">Lecture 2: Advanced Semantic HTML (PDF)</a></li>
-                <li><a href="#">Assignment 1 Requirements</a></li>
-            </ul>
-        </section>
+        <article aria-labelledby="course-heading">
+            <h2 id="course-heading">Web Development Fundamentals</h2>
+            <p><strong>Course Code:</strong> CE401 &nbsp;|&nbsp; <strong>Credits:</strong> 4 &nbsp;|&nbsp;
+                <strong>Instructor:</strong> Prof. Sharma</p>
 
-        <section>
-            <h3>Discussions / Announcements</h3>
-            <p><strong>Prof. Smith:</strong> "Remember that Assignment 1 is due next Tuesday. Start early!"</p>
-        </section>
+            <section aria-labelledby="overview-heading">
+                <h3 id="overview-heading">Course Overview</h3>
+                <p>
+                    This course introduces students to fundamental web development concepts including
+                    HTML5, CSS3, and basic JavaScript. Students will build static and dynamic
+                    web pages and learn best practices for accessible, semantic web design.
+                </p>
+            </section>
+
+            <section aria-labelledby="syllabus-heading">
+                <h3 id="syllabus-heading">Syllabus / Topics Covered</h3>
+                <ol>
+                    <li>Introduction to the Web and HTML5</li>
+                    <li>Semantic Markup and Accessibility</li>
+                    <li>CSS3 — Selectors, Box Model, Flexbox</li>
+                    <li>Responsive Design and Media Queries</li>
+                    <li>JavaScript Basics and DOM Manipulation</li>
+                    <li>Forms, Validation, and Events</li>
+                    <li>Introduction to Backend Concepts</li>
+                </ol>
+            </section>
+
+            <section aria-labelledby="materials-heading">
+                <h3 id="materials-heading">Course Materials</h3>
+                <ul>
+                    <li><a href="library.html" aria-label="Open HTML5 and CSS3 textbook in Library">HTML5 &amp; CSS3
+                            Textbook</a></li>
+                    <li><a href="library.html" aria-label="Open JavaScript Guide in Library">JavaScript Guide</a></li>
+                    <li><a href="announcements.html">Lab Schedule Announcements</a></li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="schedule-heading">
+                <h3 id="schedule-heading">Class Schedule</h3>
+                <p>Monday, Wednesday, Friday: <time datetime="09:00">09:00 AM</time> &ndash; <time
+                        datetime="10:30">10:30 AM</time> | Room 205</p>
+            </section>
+        </article>
+
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
+
 </body>
 
 </html>

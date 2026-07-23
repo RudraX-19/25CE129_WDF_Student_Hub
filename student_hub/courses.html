@@ -8,54 +8,114 @@
 </head>
 
 <body>
-    <header>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
-        <div class="user-profile">
+        <div class="user-info">
             <span>Welcome, Student!</span>
-            <a href="login.html">Logout</a>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
         </div>
     </header>
 
-    <nav>
+    <nav aria-label="Main Navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="courses.html">My Courses</a></li>
+            <li><a href="courses.html" aria-current="page">My Courses</a></li>
             <li><a href="timetable.html">Timetable</a></li>
-            <li><a href="grades.html">Grades & Transcripts</a></li>
-            <li><a href="events.html">Events & Clubs</a></li>
+            <li><a href="grades.html">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html">Events &amp; Clubs</a></li>
             <li><a href="library.html">Library</a></li>
             <li><a href="announcements.html">Announcements</a></li>
             <li><a href="profile.html">Profile</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
-    <main>
-        <h2>My Courses</h2>
-        <p>Here is a list of your currently enrolled courses for this semester.</p>
+    <main id="main-content" role="main">
 
-        <section>
-            <h3>Semester 3 Enrolments</h3>
-            <ul>
-                <li>
-                    <strong>Advanced Web Development (WDF 203)</strong>
-                    <br>Instructor: Dr. Smith - <a href="course-details.html">View Details</a>
-                </li>
-                <li>
-                    <strong>Data Structures & Algorithms (CS 204)</strong>
-                    <br>Instructor: Prof. Lee - <a href="course-details.html">View Details</a>
-                </li>
-                <li>
-                    <strong>Database Management Systems (DB 201)</strong>
-                    <br>Instructor: Dr. Allen - <a href="course-details.html">View Details</a>
-                </li>
-            </ul>
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">My Courses</li>
+            </ol>
+        </nav>
+
+        <section aria-labelledby="courses-heading">
+            <h2 id="courses-heading">My Enrolled Courses</h2>
+            <p>You are currently enrolled in <strong>4 courses</strong> this semester.</p>
+
+            <table>
+                <caption>Current Semester Courses — Semester 4 (2025–26)</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Course Code</th>
+                        <th scope="col">Course Name</th>
+                        <th scope="col">Credits</th>
+                        <th scope="col">Instructor</th>
+                        <th scope="col">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CE401</td>
+                        <td>Web Development Fundamentals</td>
+                        <td>4</td>
+                        <td>Prof. Sharma</td>
+                        <td><a href="course-details.html"
+                                aria-label="View details for Web Development Fundamentals">View Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>CE402</td>
+                        <td>Data Structures &amp; Algorithms</td>
+                        <td>4</td>
+                        <td>Prof. Mehta</td>
+                        <td><a href="course-details.html"
+                                aria-label="View details for Data Structures and Algorithms">View Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>PH201</td>
+                        <td>Engineering Physics</td>
+                        <td>3</td>
+                        <td>Prof. Gupta</td>
+                        <td><a href="course-details.html" aria-label="View details for Engineering Physics">View
+                                Details</a></td>
+                    </tr>
+                    <tr>
+                        <td>MTH301</td>
+                        <td>Applied Mathematics</td>
+                        <td>3</td>
+                        <td>Prof. Joshi</td>
+                        <td><a href="course-details.html" aria-label="View details for Applied Mathematics">View
+                                Details</a></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row" colspan="2">Total Credits</th>
+                        <td>14</td>
+                        <td colspan="2"></td>
+                    </tr>
+                </tfoot>
+            </table>
         </section>
+
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
+
 </body>
 
 </html>

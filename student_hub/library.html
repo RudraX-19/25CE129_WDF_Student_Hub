@@ -4,57 +4,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Library</title>
+    <title>StudentHub - Library &amp; Resources</title>
 </head>
 
 <body>
-    <header>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
-        <div class="user-profile">
+        <div class="user-info">
             <span>Welcome, Student!</span>
-            <a href="login.html">Logout</a>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
         </div>
     </header>
 
-    <nav>
+    <nav aria-label="Main Navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="courses.html">My Courses</a></li>
             <li><a href="timetable.html">Timetable</a></li>
-            <li><a href="grades.html">Grades & Transcripts</a></li>
-            <li><a href="events.html">Events & Clubs</a></li>
-            <li><a href="library.html">Library</a></li>
+            <li><a href="grades.html">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html">Events &amp; Clubs</a></li>
+            <li><a href="library.html" aria-current="page">Library</a></li>
             <li><a href="announcements.html">Announcements</a></li>
             <li><a href="profile.html">Profile</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
-    <main>
-        <h2>Library Resources</h2>
-        <p>Search for digital books, research journals, and reserve study rooms.</p>
+    <main id="main-content" role="main">
 
-        <section>
-            <h3>Search Catalog</h3>
-            <form action="#">
-                <input type="text" placeholder="Title, Author, or ISBN..." size="40">
-                <button type="submit">Search</button>
-            </form>
-        </section>
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Library &amp; Resources</li>
+            </ol>
+        </nav>
 
-        <section>
-            <h3>Quick Links</h3>
+        <h2>Library &amp; Resources</h2>
+
+        <section aria-labelledby="ebooks-heading">
+            <h3 id="ebooks-heading">E-Books &amp; Textbooks</h3>
             <ul>
-                <li><a href="#">Access Online Journals</a></li>
-                <li><a href="#">Reserve a Study Room</a></li>
-                <li><a href="#">My Borrowed Items</a></li>
+                <li>
+                    <article aria-labelledby="book1-title">
+                        <h4 id="book1-title">HTML5 &amp; CSS3: The Complete Guide</h4>
+                        <p>Author: Jon Duckett &nbsp;|&nbsp; Category: Web Development</p>
+                    </article>
+                </li>
+                <li>
+                    <article aria-labelledby="book2-title">
+                        <h4 id="book2-title">Introduction to Algorithms (CLRS)</h4>
+                        <p>Author: Cormen et al. &nbsp;|&nbsp; Category: Computer Science</p>
+                    </article>
+                </li>
+                <li>
+                    <article aria-labelledby="book3-title">
+                        <h4 id="book3-title">Engineering Mathematics</h4>
+                        <p>Author: H.K. Dass &nbsp;|&nbsp; Category: Mathematics</p>
+                    </article>
+                </li>
             </ul>
         </section>
+
+        <section aria-labelledby="weblinks-heading">
+            <h3 id="weblinks-heading">Useful Online Resources</h3>
+            <ul>
+                <li><a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer"
+                        aria-label="MDN Web Docs (opens in new tab)">MDN Web Docs</a></li>
+                <li><a href="https://www.w3schools.com" target="_blank" rel="noopener noreferrer"
+                        aria-label="W3Schools (opens in new tab)">W3Schools</a></li>
+                <li><a href="https://www.geeksforgeeks.org" target="_blank" rel="noopener noreferrer"
+                        aria-label="GeeksforGeeks (opens in new tab)">GeeksforGeeks</a></li>
+            </ul>
+        </section>
+
+        <aside aria-labelledby="library-hours-heading">
+            <h3 id="library-hours-heading">Library Hours</h3>
+            <dl>
+                <dt>Monday &ndash; Friday</dt>
+                <dd><time datetime="08:00">8:00 AM</time> &ndash; <time datetime="20:00">8:00 PM</time></dd>
+                <dt>Saturday</dt>
+                <dd><time datetime="09:00">9:00 AM</time> &ndash; <time datetime="17:00">5:00 PM</time></dd>
+                <dt>Sunday</dt>
+                <dd>Closed</dd>
+            </dl>
+        </aside>
+
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
+
 </body>
 
 </html>

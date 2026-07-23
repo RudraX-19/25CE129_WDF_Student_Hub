@@ -1,47 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudentHub - Home</title>
 </head>
+
 <body>
-    <header>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
-        <div class="user-profile">
+        <div class="user-info">
             <span>Welcome, Student!</span>
-            <a href="login.html">Logout</a>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
         </div>
     </header>
 
-    <nav>
+    <nav aria-label="Main Navigation">
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" aria-current="page">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="courses.html">My Courses</a></li>
             <li><a href="timetable.html">Timetable</a></li>
-            <li><a href="grades.html">Grades & Transcripts</a></li>
-            <li><a href="events.html">Events & Clubs</a></li>
+            <li><a href="grades.html">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html">Events &amp; Clubs</a></li>
             <li><a href="library.html">Library</a></li>
             <li><a href="announcements.html">Announcements</a></li>
             <li><a href="profile.html">Profile</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
-    <main>
-        <h2>Welcome to StudentHub</h2>
-        <p>This is your central hub for all academic resources. Use the navigation menu above to access your dashboard, courses, timetable, and more.</p>
-        <section>
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="dashboard.html">Go to Dashboard</a></li>
-                <li><a href="courses.html">View My Courses</a></li>
-            </ul>
+    <main id="main-content" role="main">
+
+        <section aria-labelledby="welcome-heading">
+            <h2 id="welcome-heading">Welcome to StudentHub</h2>
+            <p>
+                This is your central hub for all academic resources. Use the navigation
+                menu above to access your dashboard, courses, timetable, and more.
+            </p>
         </section>
+
+        <section aria-labelledby="quicklinks-heading">
+            <h3 id="quicklinks-heading">Quick Links</h3>
+            <nav aria-label="Quick Links Navigation">
+                <ul>
+                    <li><a href="dashboard.html">Go to Dashboard</a></li>
+                    <li><a href="courses.html">View My Courses</a></li>
+                    <li><a href="timetable.html">Check Timetable</a></li>
+                    <li><a href="grades.html">View Grades</a></li>
+                    <li><a href="announcements.html">Read Announcements</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <aside aria-labelledby="notice-heading">
+            <h3 id="notice-heading">Notice</h3>
+            <p>
+                <strong>Demo Mode:</strong> This portal is a static HTML prototype.
+                All data shown is for demonstration purposes only.
+            </p>
+        </aside>
+
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
+
 </body>
+
 </html>

@@ -8,67 +8,112 @@
 </head>
 
 <body>
-    <header>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
-        <div class="user-profile">
+        <div class="user-info">
             <span>Welcome, Student!</span>
-            <a href="login.html">Logout</a>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
         </div>
     </header>
 
-    <nav>
+    <nav aria-label="Main Navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="courses.html">My Courses</a></li>
-            <li><a href="timetable.html">Timetable</a></li>
-            <li><a href="grades.html">Grades & Transcripts</a></li>
-            <li><a href="events.html">Events & Clubs</a></li>
+            <li><a href="timetable.html" aria-current="page">Timetable</a></li>
+            <li><a href="grades.html">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html">Events &amp; Clubs</a></li>
             <li><a href="library.html">Library</a></li>
             <li><a href="announcements.html">Announcements</a></li>
             <li><a href="profile.html">Profile</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
-    <main>
-        <h2>Weekly Timetable</h2>
-        <p>Your current class schedule for this semester.</p>
+    <main id="main-content" role="main">
 
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>09:00 - 10:30</td>
-                    <td>Web Dev (Room 205)</td>
-                    <td>Database Systems (Room 301)</td>
-                    <td>Web Dev (Room 205)</td>
-                    <td>Database Systems (Room 301)</td>
-                    <td>Data Structures (Room 101)</td>
-                </tr>
-                <tr>
-                    <td>11:00 - 12:30</td>
-                    <td>Data Structures (Room 101)</td>
-                    <td>Free Period</td>
-                    <td>Data Structures (Room 101)</td>
-                    <td>Free Period</td>
-                    <td>Web Dev Lab (Lab 2)</td>
-                </tr>
-            </tbody>
-        </table>
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Timetable</li>
+            </ol>
+        </nav>
+
+        <section aria-labelledby="timetable-heading">
+            <h2 id="timetable-heading">Weekly Timetable</h2>
+            <p>Semester 4 &mdash; Academic Year 2025&ndash;26</p>
+
+            <table>
+                <caption>Weekly Class Schedule</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Time</th>
+                        <th scope="col">Monday</th>
+                        <th scope="col">Tuesday</th>
+                        <th scope="col">Wednesday</th>
+                        <th scope="col">Thursday</th>
+                        <th scope="col">Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><time datetime="09:00">09:00</time> &ndash; <time datetime="10:30">10:30</time>
+                        </th>
+                        <td>Web Dev (R205)</td>
+                        <td>&mdash;</td>
+                        <td>Web Dev (R205)</td>
+                        <td>&mdash;</td>
+                        <td>Web Dev (R205)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><time datetime="11:00">11:00</time> &ndash; <time datetime="12:30">12:30</time>
+                        </th>
+                        <td>Data Structures (R101)</td>
+                        <td>Data Structures (R101)</td>
+                        <td>&mdash;</td>
+                        <td>Data Structures (R101)</td>
+                        <td>&mdash;</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><time datetime="14:00">14:00</time> &ndash; <time datetime="15:30">15:30</time>
+                        </th>
+                        <td>Mathematics (R301)</td>
+                        <td>&mdash;</td>
+                        <td>Mathematics (R301)</td>
+                        <td>&mdash;</td>
+                        <td>Mathematics (R301)</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><time datetime="15:30">15:30</time> &ndash; <time datetime="17:00">17:00</time>
+                        </th>
+                        <td>&mdash;</td>
+                        <td>Physics Lab (Lab 2)</td>
+                        <td>&mdash;</td>
+                        <td>Physics Lab (Lab 2)</td>
+                        <td>&mdash;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
+
 </body>
 
 </html>

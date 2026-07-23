@@ -8,78 +8,101 @@
 </head>
 
 <body>
-    <header>
+
+    <!-- Skip to main content (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
         <p>Join the centralized platform for all your academic and campus needs.</p>
     </header>
 
-    <main>
-        <section>
-            <h2>Student Registration</h2>
-            <form action="login.html" method="GET">
-                <table cellpadding="8" cellspacing="0" border="0">
+    <main id="main-content" role="main">
+        <section aria-labelledby="register-heading">
+            <h2 id="register-heading">Student Registration</h2>
+
+            <form action="login.html" method="GET" aria-label="Student Registration Form" novalidate>
+                <table cellpadding="8" cellspacing="0" border="0" role="presentation">
                     <tr>
                         <td><label for="fullname">Full Name</label></td>
-                        <td>:</td>
-                        <td><input type="text" id="fullname" name="fullname" required></td>
+                        <td aria-hidden="true">:</td>
+                        <td><input type="text" id="fullname" name="fullname" autocomplete="name" required
+                                aria-required="true" placeholder="e.g. Rudra Patel"></td>
                     </tr>
                     <tr>
                         <td><label for="email">Student Email</label></td>
-                        <td>:</td>
-                        <td><input type="email" id="email" name="email" required></td>
+                        <td aria-hidden="true">:</td>
+                        <td><input type="email" id="email" name="email" autocomplete="email" required
+                                aria-required="true" placeholder="e.g. student@college.edu"></td>
                     </tr>
                     <tr>
                         <td><label for="studentid">Student ID Number</label></td>
-                        <td>:</td>
-                        <td><input type="text" id="studentid" name="studentid" required></td>
+                        <td aria-hidden="true">:</td>
+                        <td><input type="text" id="studentid" name="studentid" required aria-required="true"
+                                placeholder="e.g. 25CE129"></td>
                     </tr>
                     <tr>
                         <td><label for="major">Major / Program</label></td>
-                        <td>:</td>
+                        <td aria-hidden="true">:</td>
                         <td>
-                            <select id="major" name="major" required>
+                            <select id="major" name="major" required aria-required="true">
                                 <option value="">-- Select Major --</option>
+                                <option value="ce">Computer Engineering</option>
                                 <option value="cs">Computer Science</option>
                                 <option value="math">Mathematics</option>
                                 <option value="physics">Physics</option>
                                 <option value="biology">Biology</option>
-                                <option value="arts">Arts & Humanities</option>
+                                <option value="arts">Arts &amp; Humanities</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td><label>Enrollment Status</label></td>
-                        <td>:</td>
-                        <td>
+                        <td aria-hidden="true">:</td>
+                        <td role="group" aria-label="Enrollment Status">
                             <input type="radio" id="fulltime" name="enrollment" value="fulltime" required>
                             <label for="fulltime">Full-time</label>
                             &nbsp;&nbsp;
-                            <input type="radio" id="parttime" name="enrollment" value="parttime" required>
+                            <input type="radio" id="parttime" name="enrollment" value="parttime">
                             <label for="parttime">Part-time</label>
                         </td>
                     </tr>
                     <tr>
+                        <td><label for="dob">Date of Birth</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td><input type="date" id="dob" name="dob" required aria-required="true"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="phone">Phone Number</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td><input type="tel" id="phone" name="phone" autocomplete="tel"
+                                placeholder="e.g. +91 9876543210"></td>
+                    </tr>
+                    <tr>
                         <td><label for="address">Home Address</label></td>
-                        <td>:</td>
+                        <td aria-hidden="true">:</td>
                         <td>
                             <textarea id="address" name="address" rows="3" cols="30"
-                                placeholder="Enter your full address" required></textarea>
+                                placeholder="Enter your full address" required aria-required="true"></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td><label for="password">Create Password</label></td>
-                        <td>:</td>
-                        <td><input type="password" id="password" name="password" required></td>
+                        <td aria-hidden="true">:</td>
+                        <td><input type="password" id="password" name="password" autocomplete="new-password" required
+                                aria-required="true"></td>
                     </tr>
                     <tr>
                         <td><label for="confirm-password">Confirm Password</label></td>
-                        <td>:</td>
-                        <td><input type="password" id="confirm-password" name="confirm-password" required></td>
+                        <td aria-hidden="true">:</td>
+                        <td><input type="password" id="confirm-password" name="confirm-password"
+                                autocomplete="new-password" required aria-required="true"></td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="text-align: center; padding-top: 10px;">
-                            <input type="checkbox" id="terms" name="terms" required>
-                            <label for="terms">I agree to the Student Terms and Conditions</label>
+                        <td colspan="3">
+                            <input type="checkbox" id="terms" name="terms" required aria-required="true">
+                            <label for="terms">I agree to the <a href="faq.html">Student Terms and
+                                    Conditions</a></label>
                         </td>
                     </tr>
                     <tr>
@@ -89,13 +112,23 @@
                     </tr>
                 </table>
             </form>
+
             <p>Already have an account? <a href="login.html">Log in here</a></p>
         </section>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
+
 </body>
 
 </html>

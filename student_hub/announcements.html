@@ -8,52 +8,92 @@
 </head>
 
 <body>
-    <header>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
         <h1>StudentHub Portal</h1>
-        <div class="user-profile">
+        <div class="user-info">
             <span>Welcome, Student!</span>
-            <a href="login.html">Logout</a>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
         </div>
     </header>
 
-    <nav>
+    <nav aria-label="Main Navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="courses.html">My Courses</a></li>
             <li><a href="timetable.html">Timetable</a></li>
-            <li><a href="grades.html">Grades & Transcripts</a></li>
-            <li><a href="events.html">Events & Clubs</a></li>
+            <li><a href="grades.html">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html">Events &amp; Clubs</a></li>
             <li><a href="library.html">Library</a></li>
-            <li><a href="announcements.html">Announcements</a></li>
+            <li><a href="announcements.html" aria-current="page">Announcements</a></li>
             <li><a href="profile.html">Profile</a></li>
+            <li><a href="about.html">About</a></li>
         </ul>
     </nav>
 
-    <main>
-        <h2>Campus Announcements</h2>
-        <p>Stay updated with the latest news from the university.</p>
+    <main id="main-content" role="main">
 
-        <section>
-            <article>
-                <h3><strong>Urgent:</strong> Campus Closed for Maintenance</h3>
-                <p><em>Posted: Oct 10, 2026 - By Administration</em></p>
-                <p>Please note that the main campus building will be closed on Friday, Oct 12th for scheduled power
-                    maintenance. Classes will be held online via Zoom.</p>
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Announcements</li>
+            </ol>
+        </nav>
+
+        <section aria-labelledby="announcements-heading">
+            <h2 id="announcements-heading">Announcements</h2>
+
+            <article aria-labelledby="ann1-heading">
+                <h3 id="ann1-heading">End-of-Semester Examination Dates</h3>
+                <p><strong>Posted:</strong> <time datetime="2026-07-20">20 July 2026</time> &nbsp;|&nbsp;
+                    <strong>By:</strong> Academic Office</p>
+                <p>
+                    End-of-semester examinations for Semester 4 are scheduled to begin on
+                    <time datetime="2026-08-01">1st August 2026</time>. Students are advised to
+                    check the timetable on the <a href="timetable.html">Timetable page</a>.
+                </p>
             </article>
-            <hr>
-            <article>
-                <h3>Library Extended Hours for Finals</h3>
-                <p><em>Posted: Oct 8, 2026 - By Library Services</em></p>
-                <p>To support you during the mid-term season, the library will remain open 24/7 starting next Monday
-                    until the end of the examination period.</p>
+
+            <article aria-labelledby="ann2-heading">
+                <h3 id="ann2-heading">Library Extended Hours During Exams</h3>
+                <p><strong>Posted:</strong> <time datetime="2026-07-18">18 July 2026</time> &nbsp;|&nbsp;
+                    <strong>By:</strong> Library Committee</p>
+                <p>
+                    The library will remain open until <time datetime="22:00">10:00 PM</time>
+                    from <time datetime="2026-07-25">25 July</time> to <time datetime="2026-08-15">15 August 2026</time>
+                    to support students during examination preparation.
+                </p>
+            </article>
+
+            <article aria-labelledby="ann3-heading">
+                <h3 id="ann3-heading">Sports Day Registration Open</h3>
+                <p><strong>Posted:</strong> <time datetime="2026-07-15">15 July 2026</time> &nbsp;|&nbsp;
+                    <strong>By:</strong> Sports Committee</p>
+                <p>
+                    Annual Sports Day registrations are now open. Students interested in
+                    participating can register at the <a href="events.html">Events &amp; Clubs</a> page
+                    or visit the Sports office before <time datetime="2026-07-30">30 July 2026</time>.
+                </p>
             </article>
         </section>
+
     </main>
 
-    <footer>
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
         <p>&copy; 2026 StudentHub</p>
     </footer>
+
 </body>
 
 </html>
