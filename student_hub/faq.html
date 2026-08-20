@@ -46,42 +46,76 @@
 
         <section aria-labelledby="faq-heading">
             <h2 id="faq-heading">Frequently Asked Questions</h2>
+            <p>Click any question to expand the answer.</p>
 
-            <article aria-labelledby="faq1">
-                <h3 id="faq1">How do I log in to StudentHub?</h3>
-                <p>Go to the <a href="login.html">Login page</a>, enter your registered Student ID or email and
-                    password, then click <strong>Log In</strong>.</p>
-            </article>
+            <!-- ── FAQ ACCORDION ── faq.js toggles .open class -->
 
-            <article aria-labelledby="faq2">
-                <h3 id="faq2">I forgot my password. What should I do?</h3>
-                <p>Contact the administration office via the <a href="contact.html">Contact page</a> and they will reset
-                    your credentials.</p>
-            </article>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-1">
+                    How do I log in to StudentHub?
+                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+                </button>
+                <div class="faq-answer" id="faq-ans-1">
+                    <p>Go to the <a href="login.html">Login page</a>, enter your registered Student ID or email and
+                        password, then click <strong>Log In</strong>.</p>
+                </div>
+            </div>
 
-            <article aria-labelledby="faq3">
-                <h3 id="faq3">How do I register as a new student?</h3>
-                <p>Visit the <a href="register.html">Registration page</a>, fill in all required details, and click
-                    <strong>Create Account</strong>. After registration, log in using your new credentials.</p>
-            </article>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-2">
+                    I forgot my password. What should I do?
+                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+                </button>
+                <div class="faq-answer" id="faq-ans-2">
+                    <p>Contact the administration office via the <a href="contact.html">Contact page</a> and they will
+                        reset your credentials.</p>
+                </div>
+            </div>
 
-            <article aria-labelledby="faq4">
-                <h3 id="faq4">Where can I view my grades?</h3>
-                <p>Your grades are available on the <a href="grades.html">Grades &amp; Transcripts page</a> accessible
-                    from the navigation menu after login.</p>
-            </article>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-3">
+                    How do I register as a new student?
+                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+                </button>
+                <div class="faq-answer" id="faq-ans-3">
+                    <p>Visit the <a href="register.html">Registration page</a>, fill in all required details, and click
+                        <strong>Create Account</strong>. After registration, log in using your new credentials.</p>
+                </div>
+            </div>
 
-            <article aria-labelledby="faq5">
-                <h3 id="faq5">How do I register for campus events?</h3>
-                <p>Browse upcoming events on the <a href="events.html">Events &amp; Clubs page</a> and click the
-                    "Register Now" link for your desired event.</p>
-            </article>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-4">
+                    Where can I view my grades?
+                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+                </button>
+                <div class="faq-answer" id="faq-ans-4">
+                    <p>Your grades are available on the <a href="grades.html">Grades &amp; Transcripts page</a>
+                        accessible from the navigation menu after login.</p>
+                </div>
+            </div>
 
-            <article aria-labelledby="faq6">
-                <h3 id="faq6">How do I provide feedback?</h3>
-                <p>Use the <a href="feedback.html">Feedback page</a> to share your suggestions or report issues with the
-                    portal.</p>
-            </article>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-5">
+                    How do I register for campus events?
+                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+                </button>
+                <div class="faq-answer" id="faq-ans-5">
+                    <p>Browse upcoming events on the <a href="events.html">Events &amp; Clubs page</a> and click the
+                        <strong>Register Now</strong> button for your desired event.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-6">
+                    How do I provide feedback about the portal?
+                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+                </button>
+                <div class="faq-answer" id="faq-ans-6">
+                    <p>Use the <a href="feedback.html">Feedback page</a> to share your suggestions or report issues with
+                        the portal.</p>
+                </div>
+            </div>
+
         </section>
 
     </main>
@@ -98,6 +132,8 @@
         <p>&copy; 2026 StudentHub</p>
     </footer>
 
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/faq.js"></script>
 </body>
 
 </html>

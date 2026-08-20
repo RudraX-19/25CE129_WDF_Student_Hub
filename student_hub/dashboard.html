@@ -44,6 +44,13 @@
             </ol>
         </nav>
 
+        <!-- ── NOTIFICATION BANNER — dismissed by main.js ── -->
+        <div class="notification-banner" role="alert" aria-live="polite">
+            <p>&#128221; Web Development Project submission is due in <strong>2 days</strong>.
+                Check <a href="timetable.html">Timetable</a> for exam schedule.</p>
+            <button class="close-banner" aria-label="Dismiss notification">&times;</button>
+        </div>
+
         <h2>Overview Dashboard</h2>
 
         <section aria-labelledby="academic-heading">
@@ -82,7 +89,8 @@
         <aside aria-labelledby="announcements-aside-heading">
             <h3 id="announcements-aside-heading">Latest Announcement</h3>
             <p>Examinations begin on <time datetime="2026-08-01">1st August 2026</time>. Timetable is available in the
-                <a href="timetable.html">Timetable</a> section.</p>
+                <a href="timetable.html">Timetable</a> section.
+            </p>
         </aside>
 
     </main>
@@ -99,6 +107,7 @@
         <p>&copy; 2026 StudentHub</p>
     </footer>
 
+    <script src="../assets/js/main.js"></script>
 </body>
 
 </html>

@@ -411,3 +411,399 @@ address {
     font-style: normal;
     line-height: 1.8;
 }
+
+/* --- 17. HAMBURGER MENU (Mobile Nav Toggle) ---
+   Button is hidden on desktop; visible on small screens.
+   JS toggles .nav-open on the <ul> to show/hide links. */
+.hamburger {
+    display: none;
+    background: none;
+    border: 2px solid #cce0ff;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 6px 14px;
+    margin: 6px 12px;
+    line-height: 1;
+    transition: background 0.2s;
+}
+
+.hamburger:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 599px) {
+    .hamburger {
+        display: block;
+        /* shown on mobile */
+    }
+
+    nav[aria-label="Main Navigation"] ul {
+        display: none;
+        /* hidden by default on mobile */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav[aria-label="Main Navigation"] ul.nav-open {
+        display: flex;
+        /* revealed by JS on click */
+    }
+}
+
+/* --- 18. THEME TOGGLE BUTTON --- */
+#theme-toggle {
+    background: none;
+    border: 2px solid #cce0ff;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 4px 11px;
+    transition: background 0.2s, transform 0.3s;
+}
+
+#theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(20deg);
+}
+
+/* --- 19. DARK MODE ---
+   Applied to <body> when .dark-mode class is toggled by JS.
+   Preference is saved to localStorage. */
+body.dark-mode {
+    background-color: #1a1a2e;
+    color: #dde2ec;
+}
+
+body.dark-mode header {
+    background-color: #0d0d22;
+}
+
+body.dark-mode nav[aria-label="Main Navigation"] {
+    background-color: #111130;
+}
+
+body.dark-mode nav[aria-label="Main Navigation"] ul li a {
+    color: #9bbeff;
+}
+
+body.dark-mode nav[aria-label="Main Navigation"] ul li a:hover,
+body.dark-mode nav[aria-label="Main Navigation"] ul li a[aria-current="page"] {
+    background-color: #1a3a8a;
+    color: #fff;
+}
+
+body.dark-mode nav[aria-label="Breadcrumb"] {
+    background-color: #1e1e3e;
+    color: #9bbeff;
+}
+
+body.dark-mode nav[aria-label="Breadcrumb"] ol li a {
+    color: #7aafff;
+}
+
+body.dark-mode section,
+body.dark-mode article {
+    background-color: #16213e;
+    border-color: #2a3060;
+    color: #dde2ec;
+}
+
+body.dark-mode aside {
+    background-color: #1a1e38;
+    border-left-color: #f0b800;
+}
+
+body.dark-mode main h2 {
+    color: #7aafff;
+    border-bottom-color: #3a5aaa;
+}
+
+body.dark-mode main h3 {
+    color: #6699ff;
+}
+
+body.dark-mode main h4 {
+    color: #ccd8ff;
+}
+
+body.dark-mode a {
+    color: #7aafff;
+}
+
+body.dark-mode dt {
+    color: #aab8cc;
+}
+
+body.dark-mode dd {
+    color: #dde2ec;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #1e2048;
+    color: #dde2ec;
+    border-color: #3a4080;
+}
+
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+    border-color: #7aafff;
+    outline-color: #2a4080;
+}
+
+body.dark-mode fieldset {
+    border-color: #3a4080;
+}
+
+body.dark-mode legend {
+    color: #aab8cc;
+}
+
+body.dark-mode table {
+    color: #dde2ec;
+}
+
+body.dark-mode thead th {
+    background-color: #1a3a8a;
+}
+
+body.dark-mode tbody tr:nth-child(even) {
+    background-color: #1e213e;
+}
+
+body.dark-mode th,
+body.dark-mode td {
+    border-color: #2a3060;
+}
+
+body.dark-mode footer {
+    background-color: #0d0d22;
+    color: #7a8aaa;
+}
+
+body.dark-mode nav[aria-label="Footer Navigation"] ul li a {
+    color: #9aaacf;
+}
+
+/* --- 20. NOTIFICATION BANNER ---
+   A dismissible info strip shown below <main> opening tag.
+   JS adds .hidden class when the close button is clicked. */
+.notification-banner {
+    background-color: #e8f0fe;
+    border-left: 4px solid #0057b7;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+
+.notification-banner p {
+    margin: 0;
+}
+
+.notification-banner a {
+    color: #0057b7;
+    font-weight: bold;
+}
+
+.notification-banner.hidden {
+    display: none;
+}
+
+.close-banner {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #555;
+    padding: 0 8px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.close-banner:hover {
+    color: #000;
+}
+
+body.dark-mode .notification-banner {
+    background-color: #1a2a4e;
+    border-left-color: #7aafff;
+    color: #cce0ff;
+}
+
+body.dark-mode .close-banner {
+    color: #9aaacf;
+}
+
+/* --- 21. FAQ ACCORDION ---
+   Each .faq-item contains a .faq-question button and .faq-answer div.
+   JS toggles .open class and hidden attribute on the answer. */
+.faq-item {
+    background-color: #fff;
+    border: 1px solid #dce3f0;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #003e8a;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.faq-question:hover {
+    background-color: #f0f5ff;
+}
+
+.faq-question:focus {
+    outline: 2px solid #0057b7;
+    outline-offset: -2px;
+}
+
+.faq-arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+.faq-item.open .faq-arrow {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 18px 14px 18px;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+}
+
+body.dark-mode .faq-item {
+    background-color: #16213e;
+    border-color: #2a3060;
+}
+
+body.dark-mode .faq-question {
+    color: #7aafff;
+}
+
+body.dark-mode .faq-question:hover {
+    background-color: #1a2a4e;
+}
+
+body.dark-mode .faq-answer {
+    color: #ccd8ff;
+}
+
+/* --- 22. MODAL POPUP ---
+   #event-modal is the full-screen overlay.
+   .modal-box is the centred dialog box.
+   JS adds .open class to show; removes it to hide. */
+.modal-overlay {
+    display: none;
+    /* hidden by default */
+    position: fixed;
+    inset: 0;
+    /* covers the whole viewport */
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 900;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.open {
+    display: flex;
+    /* shown by JS */
+}
+
+.modal-box {
+    background: #fff;
+    border-radius: 8px;
+    padding: 28px 32px;
+    max-width: 460px;
+    width: 92%;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    animation: modal-in 0.2s ease;
+}
+
+@keyframes modal-in {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #555;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+.modal-box h3 {
+    font-size: 18px;
+    color: #003e8a;
+    margin-bottom: 16px;
+}
+
+.modal-box form div {
+    margin-bottom: 14px;
+}
+
+#modal-success-msg {
+    color: #007a2f;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+body.dark-mode .modal-box {
+    background-color: #16213e;
+    color: #dde2ec;
+}
+
+body.dark-mode .modal-box h3 {
+    color: #7aafff;
+}
+
+body.dark-mode .modal-close {
+    color: #aaa;
+}
+
+body.dark-mode #modal-success-msg {
+    color: #4dff88;
+}

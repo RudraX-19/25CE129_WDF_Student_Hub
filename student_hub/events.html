@@ -55,7 +55,11 @@
                 <p><strong>Venue:</strong> College Auditorium</p>
                 <p>A 24-hour coding competition open to all students. Form teams of 2&ndash;4 and build innovative
                     solutions!</p>
-                <a href="feedback.html" aria-label="Register for Annual Hackathon 2026">Register Now</a>
+                <!-- open-modal-btn triggers the registration modal via events.js -->
+                <button class="open-modal-btn" data-event="Annual Hackathon 2026"
+                    aria-label="Register for Annual Hackathon 2026">
+                    Register Now
+                </button>
             </article>
 
             <article aria-labelledby="workshop-heading">
@@ -63,7 +67,9 @@
                 <p><strong>Date:</strong> <time datetime="2026-07-28">28 July 2026</time></p>
                 <p><strong>Venue:</strong> Computer Lab 3</p>
                 <p>Hands-on workshop covering CSS Flexbox, Grid, and responsive design basics.</p>
-                <a href="feedback.html" aria-label="Register for Web Dev Workshop">Register Now</a>
+                <button class="open-modal-btn" data-event="Web Dev Workshop" aria-label="Register for Web Dev Workshop">
+                    Register Now
+                </button>
             </article>
         </section>
 
@@ -79,6 +85,48 @@
 
     </main>
 
+    <!-- ══════════════════════════════════════════════
+         MODAL POPUP — triggered by .open-modal-btn
+         events.js manages open / close / ESC key
+    ═══════════════════════════════════════════════ -->
+    <div id="event-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="modal-heading">
+
+        <div class="modal-box">
+            <button class="modal-close" aria-label="Close registration dialog">&times;</button>
+
+            <h3 id="modal-heading">
+                Register for: <span id="modal-event-name">Event</span>
+            </h3>
+
+            <form id="event-register-form" action="#" method="GET">
+                <div>
+                    <label for="reg-name">Full Name:</label>
+                    <input type="text" id="reg-name" name="name" required aria-required="true" autocomplete="name">
+                </div>
+                <div>
+                    <label for="reg-email">Email Address:</label>
+                    <input type="email" id="reg-email" name="email" required aria-required="true" autocomplete="email">
+                </div>
+                <div>
+                    <label for="reg-year">Academic Year:</label>
+                    <select id="reg-year" name="year" required aria-required="true">
+                        <option value="">-- Select Year --</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit">Confirm Registration</button>
+                </div>
+            </form>
+
+            <p id="modal-success-msg" hidden></p>
+        </div>
+    </div>
+
     <footer role="contentinfo">
         <nav aria-label="Footer Navigation">
             <ul>
@@ -91,6 +139,8 @@
         <p>&copy; 2026 StudentHub</p>
     </footer>
 
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/events.js"></script>
 </body>
 
 </html>
