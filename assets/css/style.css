@@ -807,3 +807,29 @@ body.dark-mode .modal-close {
 body.dark-mode #modal-success-msg {
     color: #4dff88;
 }
+
+/* --- 23. FORM VALIDATION (Practical 5) --- */
+.error-msg {
+    color: #d32f2f;
+    font-size: 13px;
+    display: block;
+    margin-top: 4px;
+}
+.input-error {
+    border-color: #d32f2f !important;
+    background-color: #ffeaea !important;
+}
+.password-strength {
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+.password-strength.weak {
+    color: #d32f2f;
+}
+.password-strength.medium {
+    color: #ff9800;
+}
+.password-strength.strong {
+    color: #4caf50;
+}

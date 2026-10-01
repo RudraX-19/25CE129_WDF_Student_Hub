@@ -22,32 +22,38 @@
         <section aria-labelledby="register-heading">
             <h2 id="register-heading">Student Registration</h2>
 
-            <form action="login.html" method="GET" aria-label="Student Registration Form" novalidate>
+            <form action="login.html" method="GET" aria-label="Student Registration Form" novalidate id="registrationForm">
                 <table cellpadding="8" cellspacing="0" border="0" role="presentation">
                     <tr>
                         <td><label for="fullname">Full Name</label></td>
                         <td aria-hidden="true">:</td>
-                        <td><input type="text" id="fullname" name="fullname" autocomplete="name" required
-                                aria-required="true" placeholder="e.g. Rudra Patel"></td>
+                        <td>
+                            <input type="text" id="fullname" name="fullname" autocomplete="name" required aria-required="true" placeholder="e.g. Rudra Patel">
+                            <span class="error-msg" id="fullname-error" aria-live="polite"></span>
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="email">Student Email</label></td>
                         <td aria-hidden="true">:</td>
-                        <td><input type="email" id="email" name="email" autocomplete="email" required
-                                aria-required="true" placeholder="e.g. student@college.edu"></td>
+                        <td>
+                            <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" placeholder="e.g. student@college.edu">
+                            <span class="error-msg" id="email-error" aria-live="polite"></span>
+                        </td>
                     </tr>
                     <tr>
-                        <td><label for="studentid">Student ID Number</label></td>
-                        <td aria-hidden="true">:</td>
-                        <td><input type="text" id="studentid" name="studentid" required aria-required="true"
-                                placeholder="e.g. 25CE129"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="major">Major / Program</label></td>
+                        <td><label for="mobile">Mobile Number</label></td>
                         <td aria-hidden="true">:</td>
                         <td>
-                            <select id="major" name="major" required aria-required="true">
-                                <option value="">-- Select Major --</option>
+                            <input type="tel" id="mobile" name="mobile" autocomplete="tel" placeholder="e.g. 9876543210" required aria-required="true">
+                            <span class="error-msg" id="mobile-error" aria-live="polite"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="course">Course</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td>
+                            <select id="course" name="course" required aria-required="true">
+                                <option value="">-- Select Course --</option>
                                 <option value="ce">Computer Engineering</option>
                                 <option value="cs">Computer Science</option>
                                 <option value="math">Mathematics</option>
@@ -55,55 +61,60 @@
                                 <option value="biology">Biology</option>
                                 <option value="arts">Arts &amp; Humanities</option>
                             </select>
+                            <span class="error-msg" id="course-error" aria-live="polite"></span>
                         </td>
                     </tr>
                     <tr>
-                        <td><label>Enrollment Status</label></td>
-                        <td aria-hidden="true">:</td>
-                        <td role="group" aria-label="Enrollment Status">
-                            <input type="radio" id="fulltime" name="enrollment" value="fulltime" required>
-                            <label for="fulltime">Full-time</label>
-                            &nbsp;&nbsp;
-                            <input type="radio" id="parttime" name="enrollment" value="parttime">
-                            <label for="parttime">Part-time</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label for="dob">Date of Birth</label></td>
-                        <td aria-hidden="true">:</td>
-                        <td><input type="date" id="dob" name="dob" required aria-required="true"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="phone">Phone Number</label></td>
-                        <td aria-hidden="true">:</td>
-                        <td><input type="tel" id="phone" name="phone" autocomplete="tel"
-                                placeholder="e.g. +91 9876543210"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="address">Home Address</label></td>
+                        <td><label for="year">Year</label></td>
                         <td aria-hidden="true">:</td>
                         <td>
-                            <textarea id="address" name="address" rows="3" cols="30"
-                                placeholder="Enter your full address" required aria-required="true"></textarea>
+                            <select id="year" name="year" required aria-required="true">
+                                <option value="">-- Select Year --</option>
+                                <option value="1">1st Year</option>
+                                <option value="2">2nd Year</option>
+                                <option value="3">3rd Year</option>
+                                <option value="4">4th Year</option>
+                            </select>
+                            <span class="error-msg" id="year-error" aria-live="polite"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Gender</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td role="group" aria-label="Gender">
+                            <input type="radio" id="gender-male" name="gender" value="male" required>
+                            <label for="gender-male">Male</label>
+                            &nbsp;&nbsp;
+                            <input type="radio" id="gender-female" name="gender" value="female">
+                            <label for="gender-female">Female</label>
+                            &nbsp;&nbsp;
+                            <input type="radio" id="gender-other" name="gender" value="other">
+                            <label for="gender-other">Other</label>
+                            <br><span class="error-msg" id="gender-error" aria-live="polite"></span>
                         </td>
                     </tr>
                     <tr>
                         <td><label for="password">Create Password</label></td>
                         <td aria-hidden="true">:</td>
-                        <td><input type="password" id="password" name="password" autocomplete="new-password" required
-                                aria-required="true"></td>
+                        <td>
+                            <input type="password" id="password" name="password" autocomplete="new-password" required aria-required="true">
+                            <span class="error-msg" id="password-error" aria-live="polite"></span>
+                            <div class="password-strength" id="password-strength" aria-live="polite"></div>
+                        </td>
                     </tr>
                     <tr>
                         <td><label for="confirm-password">Confirm Password</label></td>
                         <td aria-hidden="true">:</td>
-                        <td><input type="password" id="confirm-password" name="confirm-password"
-                                autocomplete="new-password" required aria-required="true"></td>
+                        <td>
+                            <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password" required aria-required="true">
+                            <span class="error-msg" id="confirm-password-error" aria-live="polite"></span>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="3">
                             <input type="checkbox" id="terms" name="terms" required aria-required="true">
-                            <label for="terms">I agree to the <a href="faq.html">Student Terms and
-                                    Conditions</a></label>
+                            <label for="terms">I agree to the <a href="faq.html">Student Terms and Conditions</a></label>
+                            <br><span class="error-msg" id="terms-error" aria-live="polite"></span>
                         </td>
                     </tr>
                     <tr>
@@ -131,6 +142,7 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/register.js"></script>
 </body>
 
 </html>
