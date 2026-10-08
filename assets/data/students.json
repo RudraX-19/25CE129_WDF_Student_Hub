@@ -1,0 +1,178 @@
+[
+  {
+    "id": 1,
+    "name": "Rudra Vaghasiya",
+    "rollNo": "25CE129",
+    "course": "Computer Engineering",
+    "year": 3,
+    "gender": "Male",
+    "email": "rudra.vaghasiya@college.edu",
+    "gpa": 8.9,
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "name": "Ananya Shah",
+    "rollNo": "25CS045",
+    "course": "Computer Science",
+    "year": 2,
+    "gender": "Female",
+    "email": "ananya.shah@college.edu",
+    "gpa": 9.2,
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "name": "Rohan Mehta",
+    "rollNo": "25CE078",
+    "course": "Computer Engineering",
+    "year": 4,
+    "gender": "Male",
+    "email": "rohan.mehta@college.edu",
+    "gpa": 7.8,
+    "status": "Active"
+  },
+  {
+    "id": 4,
+    "name": "Priya Patel",
+    "rollNo": "25CS112",
+    "course": "Computer Science",
+    "year": 1,
+    "gender": "Female",
+    "email": "priya.patel@college.edu",
+    "gpa": 8.5,
+    "status": "Active"
+  },
+  {
+    "id": 5,
+    "name": "Aryan Desai",
+    "rollNo": "25IT023",
+    "course": "Information Technology",
+    "year": 2,
+    "gender": "Male",
+    "email": "aryan.desai@college.edu",
+    "gpa": 9.0,
+    "status": "Active"
+  },
+  {
+    "id": 6,
+    "name": "Sneha Joshi",
+    "rollNo": "25ME056",
+    "course": "Mechanical Engineering",
+    "year": 3,
+    "gender": "Female",
+    "email": "sneha.joshi@college.edu",
+    "gpa": 7.5,
+    "status": "Active"
+  },
+  {
+    "id": 7,
+    "name": "Karan Trivedi",
+    "rollNo": "25EC091",
+    "course": "Electronics & Communication",
+    "year": 4,
+    "gender": "Male",
+    "email": "karan.trivedi@college.edu",
+    "gpa": 8.1,
+    "status": "Active"
+  },
+  {
+    "id": 8,
+    "name": "Nisha Rao",
+    "rollNo": "25CS067",
+    "course": "Computer Science",
+    "year": 3,
+    "gender": "Female",
+    "email": "nisha.rao@college.edu",
+    "gpa": 9.4,
+    "status": "Active"
+  },
+  {
+    "id": 9,
+    "name": "Vivek Kumar",
+    "rollNo": "25CE140",
+    "course": "Computer Engineering",
+    "year": 1,
+    "gender": "Male",
+    "email": "vivek.kumar@college.edu",
+    "gpa": 6.9,
+    "status": "Active"
+  },
+  {
+    "id": 10,
+    "name": "Pooja Sharma",
+    "rollNo": "25IT088",
+    "course": "Information Technology",
+    "year": 4,
+    "gender": "Female",
+    "email": "pooja.sharma@college.edu",
+    "gpa": 8.7,
+    "status": "Active"
+  },
+  {
+    "id": 11,
+    "name": "Aditya Nair",
+    "rollNo": "25CE034",
+    "course": "Computer Engineering",
+    "year": 2,
+    "gender": "Male",
+    "email": "aditya.nair@college.edu",
+    "gpa": 7.3,
+    "status": "Inactive"
+  },
+  {
+    "id": 12,
+    "name": "Kavya Iyer",
+    "rollNo": "25CS099",
+    "course": "Computer Science",
+    "year": 4,
+    "gender": "Female",
+    "email": "kavya.iyer@college.edu",
+    "gpa": 9.6,
+    "status": "Active"
+  },
+  {
+    "id": 13,
+    "name": "Sameer Khan",
+    "rollNo": "25ME102",
+    "course": "Mechanical Engineering",
+    "year": 1,
+    "gender": "Male",
+    "email": "sameer.khan@college.edu",
+    "gpa": 7.1,
+    "status": "Active"
+  },
+  {
+    "id": 14,
+    "name": "Divya Reddy",
+    "rollNo": "25EC055",
+    "course": "Electronics & Communication",
+    "year": 2,
+    "gender": "Female",
+    "email": "divya.reddy@college.edu",
+    "gpa": 8.3,
+    "status": "Active"
+  },
+  {
+    "id": 15,
+    "name": "Harsh Gupta",
+    "rollNo": "25IT120",
+    "course": "Information Technology",
+    "year": 3,
+    "gender": "Male",
+    "email": "harsh.gupta@college.edu",
+    "gpa": 8.0,
+    "status": "Active"
+  },
+  {
+    "id": 16,
+    "name": "Meera Pillai",
+    "rollNo": "25CS031",
+    "course": "Computer Science",
+    "year": 2,
+    "gender": "Female",
+    "email": "meera.pillai@college.edu",
+    "gpa": 9.1,
+    "status": "Active"
+  }
+]

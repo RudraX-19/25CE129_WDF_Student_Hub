@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudentHub - FAQ</title>
+    <meta name="description" content="Frequently Asked Questions loaded dynamically from JSON using Fetch API on StudentHub portal.">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
@@ -46,74 +47,37 @@
 
         <section aria-labelledby="faq-heading">
             <h2 id="faq-heading">Frequently Asked Questions</h2>
-            <p>Click any question to expand the answer.</p>
+            <p>FAQs are loaded from <code>faqs.json</code> using Fetch API. Search or filter by category below.</p>
 
-            <!-- ── FAQ ACCORDION ── faq.js toggles .open class -->
-
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-1">
-                    How do I log in to StudentHub?
-                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-                </button>
-                <div class="faq-answer" id="faq-ans-1">
-                    <p>Go to the <a href="login.html">Login page</a>, enter your registered Student ID or email and
-                        password, then click <strong>Log In</strong>.</p>
+            <!-- ═══════════════════════════════════════
+                 PRACTICAL 6: Fetch API Controls
+            ═══════════════════════════════════════ -->
+            <div class="fetch-controls" aria-label="Search and filter FAQs">
+                <div class="controls-row">
+                    <div class="control-group">
+                        <label for="faq-search">Search FAQs</label>
+                        <input type="search" id="faq-search" name="faq-search"
+                            placeholder="Search questions and answers…"
+                            aria-label="Search FAQs">
+                    </div>
+                    <div class="control-group">
+                        <label for="faq-category">Category</label>
+                        <select id="faq-category" aria-label="Filter by category">
+                            <option value="">All Categories</option>
+                            <option value="Account">Account</option>
+                            <option value="Academic">Academic</option>
+                            <option value="Events">Events</option>
+                            <option value="Technical">Technical</option>
+                            <option value="Campus">Campus</option>
+                        </select>
+                    </div>
                 </div>
+                <p class="results-count" id="faq-count" aria-live="polite"></p>
             </div>
 
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-2">
-                    I forgot my password. What should I do?
-                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-                </button>
-                <div class="faq-answer" id="faq-ans-2">
-                    <p>Contact the administration office via the <a href="contact.html">Contact page</a> and they will
-                        reset your credentials.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-3">
-                    How do I register as a new student?
-                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-                </button>
-                <div class="faq-answer" id="faq-ans-3">
-                    <p>Visit the <a href="register.html">Registration page</a>, fill in all required details, and click
-                        <strong>Create Account</strong>. After registration, log in using your new credentials.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-4">
-                    Where can I view my grades?
-                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-                </button>
-                <div class="faq-answer" id="faq-ans-4">
-                    <p>Your grades are available on the <a href="grades.html">Grades &amp; Transcripts page</a>
-                        accessible from the navigation menu after login.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-5">
-                    How do I register for campus events?
-                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-                </button>
-                <div class="faq-answer" id="faq-ans-5">
-                    <p>Browse upcoming events on the <a href="events.html">Events &amp; Clubs page</a> and click the
-                        <strong>Register Now</strong> button for your desired event.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <button class="faq-question" aria-expanded="false" aria-controls="faq-ans-6">
-                    How do I provide feedback about the portal?
-                    <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-                </button>
-                <div class="faq-answer" id="faq-ans-6">
-                    <p>Use the <a href="feedback.html">Feedback page</a> to share your suggestions or report issues with
-                        the portal.</p>
-                </div>
+            <!-- FAQ accordion items rendered here by faq.js -->
+            <div id="faq-container" aria-live="polite">
+                <!-- JS renders FAQ items from JSON here -->
             </div>
 
         </section>
@@ -132,6 +96,7 @@
         <p>&copy; 2026 StudentHub</p>
     </footer>
 
+    <script src="../assets/js/fetch-data.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/faq.js"></script>
 </body>

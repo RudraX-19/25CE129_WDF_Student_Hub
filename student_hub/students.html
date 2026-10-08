@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Student Directory</title>
+    <meta name="description" content="Browse student profiles loaded dynamically from JSON using Fetch API on StudentHub portal.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+        <h1>StudentHub Portal</h1>
+        <div class="user-info">
+            <span>Welcome, Student!</span>
+            <a href="login.html" aria-label="Logout from StudentHub">Logout</a>
+        </div>
+    </header>
+
+    <nav aria-label="Main Navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="courses.html">My Courses</a></li>
+            <li><a href="timetable.html">Timetable</a></li>
+            <li><a href="grades.html">Grades &amp; Transcripts</a></li>
+            <li><a href="events.html">Events &amp; Clubs</a></li>
+            <li><a href="library.html">Library</a></li>
+            <li><a href="announcements.html">Announcements</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content" role="main">
+
+        <nav aria-label="Breadcrumb">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li aria-current="page">Student Directory</li>
+            </ol>
+        </nav>
+
+        <h2>Student Directory</h2>
+        <p>Browse student profiles loaded dynamically from <code>students.json</code> using the Fetch API.</p>
+
+        <!-- ═══════════════════════════════════════
+             PRACTICAL 6: Search, Filter, Sort
+        ═══════════════════════════════════════ -->
+        <section class="fetch-controls" aria-label="Search and filter students">
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="students-search">Search Students</label>
+                    <input type="search" id="students-search" name="students-search"
+                        placeholder="Search by name, roll no, email…"
+                        aria-label="Search students">
+                </div>
+                <div class="control-group">
+                    <label for="students-course">Course</label>
+                    <select id="students-course" aria-label="Filter by course">
+                        <option value="">All Courses</option>
+                        <!-- Populated dynamically from JSON -->
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="students-year">Year</label>
+                    <select id="students-year" aria-label="Filter by year">
+                        <option value="">All Years</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="students-sort">Sort By</label>
+                    <select id="students-sort" aria-label="Sort students">
+                        <option value="name-asc">Name (A–Z)</option>
+                        <option value="name-desc">Name (Z–A)</option>
+                        <option value="gpa-desc">GPA (Highest First)</option>
+                        <option value="gpa-asc">GPA (Lowest First)</option>
+                    </select>
+                </div>
+            </div>
+            <p class="results-count" id="students-count" aria-live="polite"></p>
+        </section>
+
+        <!-- Student cards rendered here by students-fetch.js -->
+        <div id="students-container" class="cards-grid" aria-live="polite" aria-label="Student profiles">
+            <!-- JS renders cards here -->
+        </div>
+
+        <!-- Pagination -->
+        <div id="students-pagination"></div>
+
+    </main>
+
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+        <p>&copy; 2026 StudentHub</p>
+    </footer>
+
+    <script src="../assets/js/fetch-data.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/students-fetch.js"></script>
+</body>
+
+</html>

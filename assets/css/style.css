@@ -833,3 +833,395 @@ body.dark-mode #modal-success-msg {
 .password-strength.strong {
     color: #4caf50;
 }
+
+/* ================================================
+   24. PRACTICAL 6 — Fetch API / JSON Rendering
+   Controls, Cards, Loading/Error, Pagination
+   ================================================ */
+
+/* --- 24a. Fetch Controls Bar --- */
+.fetch-controls {
+    background-color: #f0f5ff;
+    border: 1px solid #dce3f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+}
+
+.controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: flex-end;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1 1 180px;
+    min-width: 160px;
+}
+
+.control-group label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 0;
+}
+
+.control-group input[type="search"],
+.control-group select {
+    max-width: 100%;
+    width: 100%;
+}
+
+.results-count {
+    font-size: 13px;
+    color: #666;
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+
+/* --- 24b. Loading State --- */
+.fetch-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #0057b7;
+    font-size: 15px;
+    gap: 14px;
+}
+
+.fetch-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #cce0ff;
+    border-top-color: #0057b7;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* --- 24c. Error & Empty States --- */
+.fetch-error {
+    background-color: #ffeaea;
+    border-left: 4px solid #d32f2f;
+    padding: 16px 20px;
+    border-radius: 4px;
+    color: #b71c1c;
+    font-size: 14px;
+}
+
+.fetch-empty {
+    text-align: center;
+    color: #888;
+    font-size: 15px;
+    padding: 30px 0;
+}
+
+/* --- 24d. Cards Grid --- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.data-card {
+    background-color: #fff;
+    border: 1px solid #dce3f0;
+    border-radius: 8px;
+    padding: 18px 20px;
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 0; /* override section margin */
+}
+
+.data-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 87, 183, 0.12);
+    transform: translateY(-2px);
+}
+
+.card-title {
+    font-size: 16px;
+    color: #003e8a;
+    margin: 0;
+    font-size: 15px;
+}
+
+.card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+    color: #555;
+    margin: 0;
+}
+
+.card-desc {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.6;
+    flex: 1;
+    margin: 0;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+/* --- 24e. Category Badge (Event) --- */
+.card-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background-color: #e8f0fe;
+    color: #0057b7;
+    margin-bottom: 4px;
+    align-self: flex-start;
+}
+
+.badge-technical    { background-color: #e3f2fd; color: #0277bd; }
+.badge-workshop     { background-color: #e8f5e9; color: #2e7d32; }
+.badge-seminar      { background-color: #fff3e0; color: #e65100; }
+.badge-cultural     { background-color: #fce4ec; color: #c2185b; }
+.badge-sports       { background-color: #e8eaf6; color: #3949ab; }
+.badge-club         { background-color: #f3e5f5; color: #7b1fa2; }
+.badge-career       { background-color: #e0f2f1; color: #00695c; }
+
+/* --- 24f. Status Badge --- */
+.status-badge {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: capitalize;
+}
+
+.status-upcoming {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-completed {
+    background-color: #eeeeee;
+    color: #555;
+}
+
+.status-active {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-inactive {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+/* --- 24g. Register button on card --- */
+.btn-register {
+    font-size: 13px;
+    padding: 6px 14px;
+    background-color: #0057b7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-register:hover {
+    background-color: #003e8a;
+}
+
+.btn-disabled {
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+}
+
+/* --- 24h. Student Card --- */
+.student-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.student-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #0057b7;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.student-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* --- 24i. GPA Badge --- */
+.gpa-badge {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.gpa-excellent { background-color: #e8f5e9; color: #1b5e20; }
+.gpa-good      { background-color: #e3f2fd; color: #0d47a1; }
+.gpa-average   { background-color: #fff3e0; color: #e65100; }
+.gpa-low       { background-color: #ffeaea; color: #b71c1c; }
+
+/* --- 24j. FAQ Category Badge --- */
+.faq-category-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background-color: #e8f0fe;
+    color: #0057b7;
+    margin-top: 8px;
+}
+
+/* --- 24k. Pagination --- */
+.pagination ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 16px 0;
+    margin: 0;
+    justify-content: center;
+}
+
+.page-btn {
+    background-color: #fff;
+    border: 1px solid #ccd5e0;
+    color: #0057b7;
+    padding: 7px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.page-btn:hover:not(:disabled) {
+    background-color: #0057b7;
+    color: #fff;
+}
+
+.page-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.page-btn.page-active {
+    background-color: #0057b7;
+    color: #fff;
+    border-color: #0057b7;
+    font-weight: bold;
+}
+
+/* --- 24l. Dark Mode for Practical 6 --- */
+body.dark-mode .fetch-controls {
+    background-color: #1a2a4e;
+    border-color: #2a3060;
+}
+
+body.dark-mode .results-count {
+    color: #9aaacf;
+}
+
+body.dark-mode .data-card {
+    background-color: #16213e;
+    border-color: #2a3060;
+}
+
+body.dark-mode .card-title {
+    color: #7aafff;
+}
+
+body.dark-mode .card-meta,
+body.dark-mode .card-desc {
+    color: #aab8cc;
+}
+
+body.dark-mode .fetch-error {
+    background-color: #2a1a1a;
+    border-left-color: #ff5252;
+    color: #ff8a80;
+}
+
+body.dark-mode .fetch-loading {
+    color: #7aafff;
+}
+
+body.dark-mode .fetch-spinner {
+    border-color: #2a3060;
+    border-top-color: #7aafff;
+}
+
+body.dark-mode .page-btn {
+    background-color: #16213e;
+    border-color: #2a3060;
+    color: #7aafff;
+}
+
+body.dark-mode .page-btn:hover:not(:disabled) {
+    background-color: #1a3a8a;
+    color: #fff;
+}
+
+body.dark-mode .page-btn.page-active {
+    background-color: #1a3a8a;
+    border-color: #7aafff;
+}
+
+body.dark-mode .student-avatar {
+    background-color: #1a3a8a;
+}
+
+body.dark-mode .status-upcoming,
+body.dark-mode .gpa-excellent {
+    background-color: #1a3a1a;
+    color: #4dff88;
+}
+
+body.dark-mode .card-badge {
+    background-color: #1a2a4e;
+    color: #7aafff;
+}
+
+body.dark-mode .faq-category-badge {
+    background-color: #1a2a4e;
+    color: #7aafff;
+}

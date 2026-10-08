@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "title": "Annual Hackathon 2026",
+    "category": "Technical",
+    "date": "2026-08-10",
+    "venue": "College Auditorium",
+    "description": "A 24-hour coding competition open to all students. Form teams of 2–4 and build innovative solutions!",
+    "seats": 100,
+    "status": "upcoming"
+  },
+  {
+    "id": 2,
+    "title": "Web Dev Workshop",
+    "category": "Workshop",
+    "date": "2026-07-28",
+    "venue": "Computer Lab 3",
+    "description": "Hands-on workshop covering CSS Flexbox, Grid, and responsive design basics.",
+    "seats": 40,
+    "status": "completed"
+  },
+  {
+    "id": 3,
+    "title": "AI & ML Seminar",
+    "category": "Seminar",
+    "date": "2026-09-05",
+    "venue": "Seminar Hall A",
+    "description": "Industry experts will discuss the latest trends in Artificial Intelligence and Machine Learning.",
+    "seats": 200,
+    "status": "upcoming"
+  },
+  {
+    "id": 4,
+    "title": "Cultural Fest 2026",
+    "category": "Cultural",
+    "date": "2026-09-20",
+    "venue": "Open Air Theatre",
+    "description": "Annual cultural fest featuring dance, music, drama, and art exhibitions from all departments.",
+    "seats": 500,
+    "status": "upcoming"
+  },
+  {
+    "id": 5,
+    "title": "Sports Day",
+    "category": "Sports",
+    "date": "2026-08-25",
+    "venue": "College Ground",
+    "description": "Inter-department sports competitions including cricket, football, athletics, and chess.",
+    "seats": 300,
+    "status": "upcoming"
+  },
+  {
+    "id": 6,
+    "title": "Coding Club Meet",
+    "category": "Club",
+    "date": "2026-07-15",
+    "venue": "Room 102",
+    "description": "Weekly coding club meeting. This week's topic: Data Structures and Algorithms practice.",
+    "seats": 30,
+    "status": "completed"
+  },
+  {
+    "id": 7,
+    "title": "Robotics Workshop",
+    "category": "Workshop",
+    "date": "2026-10-12",
+    "venue": "Lab 4",
+    "description": "Hands-on robotics workshop using Arduino and Raspberry Pi. Beginners welcome!",
+    "seats": 25,
+    "status": "upcoming"
+  },
+  {
+    "id": 8,
+    "title": "Career Fair 2026",
+    "category": "Career",
+    "date": "2026-11-05",
+    "venue": "Campus Grounds",
+    "description": "Over 50 companies visiting for campus placements. Bring your resume and be interview-ready!",
+    "seats": 1000,
+    "status": "upcoming"
+  },
+  {
+    "id": 9,
+    "title": "Literary Quiz",
+    "category": "Cultural",
+    "date": "2026-07-22",
+    "venue": "Library Hall",
+    "description": "Test your knowledge in literature, history, and general knowledge in this exciting quiz competition.",
+    "seats": 60,
+    "status": "completed"
+  },
+  {
+    "id": 10,
+    "title": "Cybersecurity Talk",
+    "category": "Seminar",
+    "date": "2026-10-18",
+    "venue": "Seminar Hall B",
+    "description": "Expert talk on ethical hacking, network security, and career paths in cybersecurity.",
+    "seats": 150,
+    "status": "upcoming"
+  },
+  {
+    "id": 11,
+    "title": "Photography Contest",
+    "category": "Cultural",
+    "date": "2026-09-30",
+    "venue": "Art Gallery",
+    "description": "Submit your best photographs on the theme 'Campus Life'. Prizes for top 3 entries!",
+    "seats": 80,
+    "status": "upcoming"
+  },
+  {
+    "id": 12,
+    "title": "Data Science Bootcamp",
+    "category": "Technical",
+    "date": "2026-11-15",
+    "venue": "Computer Lab 1 & 2",
+    "description": "3-day intensive bootcamp on Python, Pandas, and data visualization. Certificate provided.",
+    "seats": 50,
+    "status": "upcoming"
+  },
+  {
+    "id": 13,
+    "title": "Entrepreneurship Summit",
+    "category": "Career",
+    "date": "2026-10-28",
+    "venue": "Conference Hall",
+    "description": "Hear from successful startup founders and learn how to pitch your ideas to investors.",
+    "seats": 180,
+    "status": "upcoming"
+  },
+  {
+    "id": 14,
+    "title": "Inter-College Debate",
+    "category": "Cultural",
+    "date": "2026-08-18",
+    "venue": "Main Auditorium",
+    "description": "Open-format debate competition with teams from 10 colleges participating.",
+    "seats": 250,
+    "status": "completed"
+  },
+  {
+    "id": 15,
+    "title": "Open Source Day",
+    "category": "Technical",
+    "date": "2026-12-06",
+    "venue": "IT Block",
+    "description": "Contribute to real open-source projects, guided by maintainers from the community.",
+    "seats": 70,
+    "status": "upcoming"
+  },
+  {
+    "id": 16,
+    "title": "Yoga & Wellness Camp",
+    "category": "Sports",
+    "date": "2026-08-05",
+    "venue": "Indoor Sports Hall",
+    "description": "Morning yoga and meditation session to promote mental and physical wellness among students.",
+    "seats": 100,
+    "status": "completed"
+  }
+]

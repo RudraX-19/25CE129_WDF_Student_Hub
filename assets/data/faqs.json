@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "question": "How do I register on the StudentHub portal?",
+    "answer": "Click the 'Register' link on the login page, fill in your full name, student email, mobile number, course, year, and password, then click 'Create Account'. You will be redirected to login after successful registration.",
+    "category": "Account"
+  },
+  {
+    "id": 2,
+    "question": "What should I do if I forget my password?",
+    "answer": "On the login page, click 'Forgot Password'. Enter your registered email address and you will receive a password reset link within a few minutes. Check your spam folder if you don't see it.",
+    "category": "Account"
+  },
+  {
+    "id": 3,
+    "question": "How do I view my class timetable?",
+    "answer": "After logging in, navigate to 'Timetable' from the main navigation menu. Your weekly schedule will be displayed with class timings, subjects, and room numbers.",
+    "category": "Academic"
+  },
+  {
+    "id": 4,
+    "question": "How do I check my grades?",
+    "answer": "Go to 'Grades & Transcripts' from the main navigation. You can see your semester-wise grades, GPA, and overall academic performance.",
+    "category": "Academic"
+  },
+  {
+    "id": 5,
+    "question": "How do I register for a campus event?",
+    "answer": "Visit the 'Events & Clubs' page from the navigation. Click 'Register Now' on any event you wish to join, fill in your details in the popup form, and confirm your registration.",
+    "category": "Events"
+  },
+  {
+    "id": 6,
+    "question": "Can I update my profile information?",
+    "answer": "Yes! Go to 'Profile & Settings' from the navigation or click your name in the header. You can update your personal details, contact information, and profile picture.",
+    "category": "Account"
+  },
+  {
+    "id": 7,
+    "question": "How do I access course materials?",
+    "answer": "Navigate to 'My Courses' and click on any enrolled course. On the Course Details page, you will find syllabus, lecture notes, assignments, and other resources uploaded by your faculty.",
+    "category": "Academic"
+  },
+  {
+    "id": 8,
+    "question": "Is the StudentHub portal available on mobile?",
+    "answer": "Yes! The StudentHub portal is fully responsive and works on smartphones, tablets, and desktops. You can access it from any modern web browser.",
+    "category": "Technical"
+  },
+  {
+    "id": 9,
+    "question": "How do I join a student club?",
+    "answer": "Visit the 'Events & Clubs' page. Under the 'Student Clubs' section, you will see all active clubs with meeting details. Attend a meeting to get started — no formal registration is needed for most clubs.",
+    "category": "Events"
+  },
+  {
+    "id": 10,
+    "question": "How do I report a technical issue with the portal?",
+    "answer": "Use the 'Contact' page to submit a technical support request. Include a clear description of the issue, the page where it occurred, and your browser details. The IT team will respond within 48 hours.",
+    "category": "Technical"
+  },
+  {
+    "id": 11,
+    "question": "What is the deadline for submitting assignments?",
+    "answer": "Assignment deadlines are set by individual faculty members and are visible on the Course Details page under the 'Assignments' section. You can also check the Dashboard for upcoming deadlines.",
+    "category": "Academic"
+  },
+  {
+    "id": 12,
+    "question": "How do I access the library resources?",
+    "answer": "Click on 'Library' in the navigation menu. You can browse e-books, journals, and academic links. Some resources may require your student ID for access.",
+    "category": "Academic"
+  },
+  {
+    "id": 13,
+    "question": "How do I receive campus announcements?",
+    "answer": "Important announcements appear on your Dashboard and the Announcements page. Faculty can also post course-specific announcements visible from the Course Details page.",
+    "category": "Campus"
+  },
+  {
+    "id": 14,
+    "question": "Can I switch between light and dark mode?",
+    "answer": "Yes! Click the moon/sun icon (🌙/☀) in the top-right corner of the header to toggle between light and dark mode. Your preference is saved automatically.",
+    "category": "Technical"
+  },
+  {
+    "id": 15,
+    "question": "How do I contact my faculty?",
+    "answer": "Faculty contact details are available on the individual Course Details page. You can also use the Contact page to find the contact information for specific departments.",
+    "category": "Campus"
+  },
+  {
+    "id": 16,
+    "question": "What are the Terms and Conditions I agree to during registration?",
+    "answer": "By registering, you agree to use the portal responsibly, maintain confidentiality of your login credentials, and abide by the college's academic integrity policy. Full terms are available on the FAQ page.",
+    "category": "Account"
+  }
+]

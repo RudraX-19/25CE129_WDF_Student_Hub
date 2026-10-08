@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudentHub - Events &amp; Clubs</title>
+    <meta name="description" content="Browse and register for campus events and club activities on StudentHub portal.">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
@@ -46,42 +47,58 @@
 
         <h2>Events &amp; Clubs</h2>
 
-        <section aria-labelledby="upcoming-events-heading">
-            <h3 id="upcoming-events-heading">Upcoming Events</h3>
-
-            <article aria-labelledby="hackathon-heading">
-                <h4 id="hackathon-heading">Annual Hackathon 2026</h4>
-                <p><strong>Date:</strong> <time datetime="2026-08-10">10 August 2026</time></p>
-                <p><strong>Venue:</strong> College Auditorium</p>
-                <p>A 24-hour coding competition open to all students. Form teams of 2&ndash;4 and build innovative
-                    solutions!</p>
-                <!-- open-modal-btn triggers the registration modal via events.js -->
-                <button class="open-modal-btn" data-event="Annual Hackathon 2026"
-                    aria-label="Register for Annual Hackathon 2026">
-                    Register Now
-                </button>
-            </article>
-
-            <article aria-labelledby="workshop-heading">
-                <h4 id="workshop-heading">Web Dev Workshop</h4>
-                <p><strong>Date:</strong> <time datetime="2026-07-28">28 July 2026</time></p>
-                <p><strong>Venue:</strong> Computer Lab 3</p>
-                <p>Hands-on workshop covering CSS Flexbox, Grid, and responsive design basics.</p>
-                <button class="open-modal-btn" data-event="Web Dev Workshop" aria-label="Register for Web Dev Workshop">
-                    Register Now
-                </button>
-            </article>
+        <!-- ═══════════════════════════════════════
+             PRACTICAL 6: Fetch API Controls
+        ═══════════════════════════════════════ -->
+        <section class="fetch-controls" aria-label="Search and filter events">
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="events-search">Search Events</label>
+                    <input type="search" id="events-search" name="events-search"
+                        placeholder="Search by title, venue, description…"
+                        aria-label="Search events">
+                </div>
+                <div class="control-group">
+                    <label for="events-category">Category</label>
+                    <select id="events-category" aria-label="Filter by category">
+                        <option value="">All Categories</option>
+                        <option value="Technical">Technical</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="Cultural">Cultural</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Club">Club</option>
+                        <option value="Career">Career</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="events-status">Status</label>
+                    <select id="events-status" aria-label="Filter by status">
+                        <option value="">All Statuses</option>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="events-sort">Sort By</label>
+                    <select id="events-sort" aria-label="Sort events">
+                        <option value="date-asc">Date (Earliest First)</option>
+                        <option value="date-desc">Date (Latest First)</option>
+                        <option value="title-asc">Title (A–Z)</option>
+                        <option value="title-desc">Title (Z–A)</option>
+                    </select>
+                </div>
+            </div>
+            <p class="results-count" id="events-count" aria-live="polite"></p>
         </section>
 
-        <section aria-labelledby="clubs-heading">
-            <h3 id="clubs-heading">Student Clubs</h3>
-            <ul>
-                <li><strong>Coding Club</strong> &mdash; Meets every Tuesday, Room 102</li>
-                <li><strong>Robotics Club</strong> &mdash; Meets every Thursday, Lab 4</li>
-                <li><strong>Literary Club</strong> &mdash; Meets every Friday, Library Hall</li>
-                <li><strong>Sports Committee</strong> &mdash; Meets every Monday, Gymnasium</li>
-            </ul>
-        </section>
+        <!-- Cards are rendered here by events-fetch.js -->
+        <div id="events-container" class="cards-grid" aria-live="polite" aria-label="Events list">
+            <!-- JS renders cards here -->
+        </div>
+
+        <!-- Pagination rendered here -->
+        <div id="events-pagination"></div>
 
     </main>
 
@@ -106,7 +123,8 @@
                 </div>
                 <div>
                     <label for="reg-email">Email Address:</label>
-                    <input type="email" id="reg-email" name="email" required aria-required="true" autocomplete="email">
+                    <input type="email" id="reg-email" name="email" required aria-required="true"
+                        autocomplete="email">
                 </div>
                 <div>
                     <label for="reg-year">Academic Year:</label>
@@ -139,8 +157,10 @@
         <p>&copy; 2026 StudentHub</p>
     </footer>
 
+    <script src="../assets/js/fetch-data.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/events.js"></script>
+    <script src="../assets/js/events-fetch.js"></script>
 </body>
 
 </html>
