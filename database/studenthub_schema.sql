@@ -335,17 +335,18 @@ DELIMITER ;
 --    password stored as bcrypt hash via password_hash()
 -- ----------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `users` (
-    `user_id`       INT AUTO_INCREMENT PRIMARY KEY,
-    `username`      VARCHAR(50)  NOT NULL UNIQUE,
-    `email`         VARCHAR(150) NOT NULL UNIQUE,
-    `password_hash` VARCHAR(255) NOT NULL COMMENT 'bcrypt via password_hash()',
-    `role`          ENUM('student','admin') NOT NULL DEFAULT 'student',
-    `full_name`     VARCHAR(100) NOT NULL,
-    `is_active`     TINYINT(1)   NOT NULL DEFAULT 1,
-    `created_at`    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
-    `updated_at`    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    `user_id`        INT AUTO_INCREMENT PRIMARY KEY,
+    `username`       VARCHAR(50)  NOT NULL UNIQUE,
+    `email`          VARCHAR(150) NOT NULL UNIQUE,
+    `password_hash`  VARCHAR(255) NOT NULL COMMENT 'bcrypt via password_hash()',
+    `role`           ENUM('student','admin') NOT NULL DEFAULT 'student',
+    `full_name`      VARCHAR(100) NOT NULL,
+    `is_active`      TINYINT(1)   NOT NULL DEFAULT 1,
+    `last_login_at`  TIMESTAMP    NULL DEFAULT NULL COMMENT 'Practical 10 Intermediate: updated on every login',
+    `created_at`     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Practical 9: Secure user registration with duplicate check and bcrypt hashing';
+  COMMENT='Practical 9+10: Secure user registration, login, bcrypt hashing, RBAC';
 
 CREATE INDEX `idx_users_email`    ON `users` (`email`);
 CREATE INDEX `idx_users_username` ON `users` (`username`);
@@ -379,3 +380,26 @@ CREATE TABLE IF NOT EXISTS `audit_log` (
 
 CREATE INDEX `idx_audit_action` ON `audit_log` (`action`);
 CREATE INDEX `idx_audit_user`   ON `audit_log` (`user_id`);
+
+-- ----------------------------------------------------------------------------
+-- 8. Table: remember_tokens (Advanced Extension - Practical 10)
+--    Stores hashed remember-me tokens for persistent login.
+--    Token is stored as SHA-256 hash — plaintext never stored.
+--    Token rotated on each use to prevent replay attacks.
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `remember_tokens` (
+    `token_id`   INT AUTO_INCREMENT PRIMARY KEY,
+    `user_id`    INT          NOT NULL,
+    `token_hash` VARCHAR(64)  NOT NULL UNIQUE COMMENT 'SHA-256 hash of plaintext token',
+    `created_at` TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    `expires_at` TIMESTAMP    NOT NULL,
+    CONSTRAINT `fk_remember_user`
+        FOREIGN KEY (`user_id`)
+        REFERENCES `users` (`user_id`)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  COMMENT='Practical 10 Advanced: Persistent remember-me tokens (hashed, rotating)';
+
+CREATE INDEX `idx_remember_user`   ON `remember_tokens` (`user_id`);
+CREATE INDEX `idx_remember_expires` ON `remember_tokens` (`expires_at`);
