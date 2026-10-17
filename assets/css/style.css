@@ -1224,4 +1224,372 @@ body.dark-mode .card-badge {
 body.dark-mode .faq-category-badge {
     background-color: #1a2a4e;
     color: #7aafff;
-}
+}
+
+/* ============================================================
+   25. PRACTICAL 7 — PHP Form Processing & Stored Records Viewer
+   ============================================================ */
+
+/* --- 25a. Alert & Notification Boxes --- */
+.alert {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.alert-icon {
+    font-size: 1.3rem;
+    font-weight: bold;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    border-left: 5px solid #2e7d32;
+    color: #1b5e20;
+}
+
+.alert-success .alert-icon {
+    color: #2e7d32;
+}
+
+.alert-danger {
+    background-color: #ffebee;
+    border-left: 5px solid #c62828;
+    color: #b71c1c;
+}
+
+.alert-danger .alert-icon {
+    color: #c62828;
+}
+
+.alert-warning {
+    background-color: #fff8e1;
+    border-left: 5px solid #f57f17;
+    color: #e65100;
+}
+
+.alert-info {
+    background-color: #e3f2fd;
+    border-left: 5px solid #0288d1;
+    color: #01579b;
+}
+
+.required-star {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* --- 25b. Submission Receipt Card --- */
+.submission-receipt {
+    background: #ffffff;
+    border: 1px solid #dcdfe4;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.submission-receipt p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: #333333;
+}
+
+/* --- 25c. Badges and Chips --- */
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: none;
+}
+
+.badge-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+.badge-warning {
+    background-color: #fff8e1;
+    color: #b78103;
+    border: 1px solid #ffe082;
+}
+
+.badge-info {
+    background-color: #e1f5fe;
+    color: #0277bd;
+    border: 1px solid #81d4fa;
+}
+
+.badge-course {
+    background-color: #ede7f6;
+    color: #512da8;
+    border: 1px solid #d1c4e9;
+}
+
+.badge-subject {
+    background-color: #fce4ec;
+    color: #c2185b;
+    border: 1px solid #f8bbd0;
+}
+
+.btn-chip {
+    display: inline-block;
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    color: #0057b7;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-chip:hover {
+    background-color: #f1f5f9;
+    border-color: #0057b7;
+}
+
+/* --- 25d. Tab Buttons & Format Selectors --- */
+.tab-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    color: #334155;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.tab-btn:hover {
+    background-color: #e2e8f0;
+}
+
+.tab-btn.active {
+    background-color: #0057b7;
+    border-color: #0057b7;
+    color: #ffffff;
+}
+
+.format-btn {
+    background-color: #ffffff;
+    color: #0057b7;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.format-btn:hover {
+    background-color: #f0f7ff;
+}
+
+.format-btn.active {
+    background-color: #0057b7;
+    color: #ffffff;
+}
+
+.records-link {
+    display: inline-block;
+    margin-right: 12px;
+    padding: 4px 10px;
+    background: #eef4fc;
+    color: #0057b7;
+    border: 1px solid #c2d9f7;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.records-link:hover {
+    background: #0057b7;
+    color: #ffffff;
+}
+
+/* --- 25e. Records Data Table --- */
+.records-table th {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.records-table tr:hover {
+    background-color: #f8fafc;
+}
+
+/* --- 25f. Buttons Outline & Secondary --- */
+.btn-outline {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid #0057b7;
+    color: #0057b7;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+    background-color: #0057b7;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #475569;
+    border: 1px solid #334155;
+    color: #ffffff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #334155;
+}
+
+/* --- 25g. Dark Mode for Practical 7 --- */
+body.dark-mode .alert-success {
+    background-color: #1b3820;
+    border-left-color: #4caf50;
+    color: #a5d6a7;
+}
+
+body.dark-mode .alert-danger {
+    background-color: #3e1b1b;
+    border-left-color: #ef5350;
+    color: #ffcdd2;
+}
+
+body.dark-mode .submission-receipt {
+    background-color: #16213e;
+    border-color: #2a3060;
+}
+
+body.dark-mode .submission-receipt p {
+    color: #e0e0e0;
+}
+
+body.dark-mode .stat-card {
+    background-color: #16213e !important;
+    border-color: #2a3060 !important;
+}
+
+body.dark-mode .stat-card div {
+    color: #d1d5db !important;
+}
+
+body.dark-mode .view-controls {
+    background-color: #16213e;
+    border-color: #2a3060;
+}
+
+body.dark-mode .data-table-wrapper {
+    background-color: #16213e;
+    border-color: #2a3060;
+}
+
+body.dark-mode .data-table-wrapper > div:first-child {
+    background-color: #111a30;
+    border-bottom-color: #2a3060;
+}
+
+body.dark-mode .records-table thead tr {
+    background-color: #111a30;
+    border-bottom-color: #2a3060;
+}
+
+body.dark-mode .records-table th {
+    color: #93c5fd;
+}
+
+body.dark-mode .records-table tbody tr {
+    border-bottom-color: #1f2a48;
+}
+
+body.dark-mode .records-table tr:hover {
+    background-color: #1a2a4e;
+}
+
+body.dark-mode .records-table td {
+    color: #d1d5db;
+}
+
+body.dark-mode .tab-btn {
+    background-color: #111a30;
+    border-color: #2a3060;
+    color: #93c5fd;
+}
+
+body.dark-mode .tab-btn.active {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+}
+
+body.dark-mode .format-btn {
+    background-color: #111a30;
+    color: #93c5fd;
+}
+
+body.dark-mode .format-btn.active {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+body.dark-mode .btn-chip {
+    background-color: #111a30;
+    border-color: #2a3060;
+    color: #93c5fd;
+}
+
+body.dark-mode .btn-outline {
+    border-color: #60a5fa;
+    color: #60a5fa;
+}
+
+body.dark-mode .btn-outline:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+body.dark-mode .records-link {
+    background: #1e293b;
+    border-color: #334155;
+    color: #93c5fd;
+}
+
+body.dark-mode .badge-course {
+    background-color: #281a3d;
+    color: #c4b5fd;
+    border-color: #4c1d95;
+}
+
+body.dark-mode .badge-subject {
+    background-color: #3d1a29;
+    color: #f472b6;
+    border-color: #831843;
+}
+

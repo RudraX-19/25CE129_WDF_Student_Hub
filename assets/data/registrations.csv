@@ -1,0 +1,6 @@
+registration_id,fullname,email,mobile,course_code,course_name,year,gender,password_hash,registered_at,ip_address
+REG-2026-1001,"Rudra Vaghasiya",rudra.vaghasiya@college.edu,9876543210,ce,"Computer Engineering","3rd Year",Male,"$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC","2026-10-15 10:30:15",127.0.0.1
+REG-2026-1002,"Ananya Shah",ananya.shah@college.edu,9823456789,cs,"Computer Science","2nd Year",Female,"$2y$10$w8k2rE4uXq9vZbK5LpQdTeu8W2rY6.a7xI0mPnQ1oT3uV7bX9z2vB","2026-10-15 14:12:40",127.0.0.1
+REG-2026-1003,"Rohan Mehta",rohan.mehta@college.edu,9811223344,math,Mathematics,"4th Year",Male,"$2y$10$k1p9rT3vY0wAaB8CcDdEeFf1G2h3I4j5K6l7M8n9O0pQrStUvWxYz","2026-10-16 09:45:22",127.0.0.1
+REG-2026-1004,"Priya Sharma",priya.sharma@college.edu,9844556677,physics,Physics,"1st Year",Female,"$2y$10$z9y8x7w6v5u4t3s2r1q0pOnMlKjIhGfEdCbAaZ9y8x7w6v5u4t3s2","2026-10-16 16:20:05",127.0.0.1
+REG-2026-6903E,"Rudra Vaghasiya",rudravaghasiya19@gmail.com,7069460595,ce,"Computer Engineering","1st Year",Male,"$2y$10$GvoRH8fKe4YKaCW8jq31muDjxT9Nl3Y0hVl5kLz98xKaFWvrK4A0i","2026-10-17 19:56:25",127.0.0.1

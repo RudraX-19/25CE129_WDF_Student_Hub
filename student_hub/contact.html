@@ -48,7 +48,12 @@
             <h2 id="contact-heading">Contact Us</h2>
             <p>Have a question or issue? Fill in the form below and we'll get back to you.</p>
 
-            <form action="#" method="GET" aria-label="Contact Form">
+            <div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span>Practical 7: Submits via <strong>POST</strong> with server-side validation and CSV/JSON storage.</span>
+                <a href="view_records.php?type=contacts" class="records-link">&#128196; View Stored Enquiries</a>
+            </div>
+
+            <form action="process_contact.php" method="POST" aria-label="Contact Form">
                 <div>
                     <label for="contact-name">Your Name:</label>
                     <input type="text" id="contact-name" name="name" autocomplete="name" required aria-required="true">

@@ -1,0 +1,67 @@
+[
+    {
+        "registration_id": "REG-2026-1001",
+        "fullname": "Rudra Vaghasiya",
+        "email": "rudra.vaghasiya@college.edu",
+        "mobile": "9876543210",
+        "course_code": "ce",
+        "course_name": "Computer Engineering",
+        "year": "3rd Year",
+        "gender": "Male",
+        "password_hash": "$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC",
+        "registered_at": "2026-10-15 10:30:15",
+        "ip_address": "127.0.0.1"
+    },
+    {
+        "registration_id": "REG-2026-1002",
+        "fullname": "Ananya Shah",
+        "email": "ananya.shah@college.edu",
+        "mobile": "9823456789",
+        "course_code": "cs",
+        "course_name": "Computer Science",
+        "year": "2nd Year",
+        "gender": "Female",
+        "password_hash": "$2y$10$w8k2rE4uXq9vZbK5LpQdTeu8W2rY6.a7xI0mPnQ1oT3uV7bX9z2vB",
+        "registered_at": "2026-10-15 14:12:40",
+        "ip_address": "127.0.0.1"
+    },
+    {
+        "registration_id": "REG-2026-1003",
+        "fullname": "Rohan Mehta",
+        "email": "rohan.mehta@college.edu",
+        "mobile": "9811223344",
+        "course_code": "math",
+        "course_name": "Mathematics",
+        "year": "4th Year",
+        "gender": "Male",
+        "password_hash": "$2y$10$k1p9rT3vY0wAaB8CcDdEeFf1G2h3I4j5K6l7M8n9O0pQrStUvWxYz",
+        "registered_at": "2026-10-16 09:45:22",
+        "ip_address": "127.0.0.1"
+    },
+    {
+        "registration_id": "REG-2026-1004",
+        "fullname": "Priya Sharma",
+        "email": "priya.sharma@college.edu",
+        "mobile": "9844556677",
+        "course_code": "physics",
+        "course_name": "Physics",
+        "year": "1st Year",
+        "gender": "Female",
+        "password_hash": "$2y$10$z9y8x7w6v5u4t3s2r1q0pOnMlKjIhGfEdCbAaZ9y8x7w6v5u4t3s2",
+        "registered_at": "2026-10-16 16:20:05",
+        "ip_address": "127.0.0.1"
+    },
+    {
+        "registration_id": "REG-2026-6903E",
+        "fullname": "Rudra Vaghasiya",
+        "email": "rudravaghasiya19@gmail.com",
+        "mobile": "7069460595",
+        "course_code": "ce",
+        "course_name": "Computer Engineering",
+        "year": "1st Year",
+        "gender": "Male",
+        "password_hash": "$2y$10$GvoRH8fKe4YKaCW8jq31muDjxT9Nl3Y0hVl5kLz98xKaFWvrK4A0i",
+        "registered_at": "2026-10-17 19:56:25",
+        "ip_address": "127.0.0.1"
+    }
+]

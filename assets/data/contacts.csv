@@ -1,0 +1,4 @@
+ticket_id,name,email,subject_code,subject_name,message,status,submitted_at,ip_address
+TKT-2026-1001,"Dev Patel",dev.patel@college.edu,academic,"Academic Enquiry","When will the midterm examination schedule for Computer Engineering Semester 3 be released?",Resolved,"2026-10-14 11:20:00",127.0.0.1
+TKT-2026-1002,"Isha Joshi",isha.joshi@college.edu,technical,"Technical Support","Unable to download syllabus PDF from the Course Details module. Please assist.","In Progress","2026-10-15 15:45:12",127.0.0.1
+TKT-2026-1003,"Karan Dave",karan.dave@college.edu,admission,"Admission Related","Inquiry regarding document verification dates for lateral entry candidates.","Pending Review","2026-10-16 12:10:30",127.0.0.1

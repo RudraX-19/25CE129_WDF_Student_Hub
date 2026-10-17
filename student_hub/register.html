@@ -22,7 +22,12 @@
         <section aria-labelledby="register-heading">
             <h2 id="register-heading">Student Registration</h2>
 
-            <form action="login.html" method="GET" aria-label="Student Registration Form" novalidate id="registrationForm">
+            <div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span>Practical 7: Submits via <strong>POST</strong> with server-side validation and CSV/JSON storage.</span>
+                <a href="view_records.php" class="records-link">&#128196; View Stored Records</a>
+            </div>
+
+            <form action="process_register.php" method="POST" aria-label="Student Registration Form" novalidate id="registrationForm">
                 <table cellpadding="8" cellspacing="0" border="0" role="presentation">
                     <tr>
                         <td><label for="fullname">Full Name</label></td>

@@ -1,0 +1,35 @@
+[
+    {
+        "ticket_id": "TKT-2026-1001",
+        "name": "Dev Patel",
+        "email": "dev.patel@college.edu",
+        "subject_code": "academic",
+        "subject_name": "Academic Enquiry",
+        "message": "When will the midterm examination schedule for Computer Engineering Semester 3 be released?",
+        "status": "Resolved",
+        "submitted_at": "2026-10-14 11:20:00",
+        "ip_address": "127.0.0.1"
+    },
+    {
+        "ticket_id": "TKT-2026-1002",
+        "name": "Isha Joshi",
+        "email": "isha.joshi@college.edu",
+        "subject_code": "technical",
+        "subject_name": "Technical Support",
+        "message": "Unable to download syllabus PDF from the Course Details module. Please assist.",
+        "status": "In Progress",
+        "submitted_at": "2026-10-15 15:45:12",
+        "ip_address": "127.0.0.1"
+    },
+    {
+        "ticket_id": "TKT-2026-1003",
+        "name": "Karan Dave",
+        "email": "karan.dave@college.edu",
+        "subject_code": "admission",
+        "subject_name": "Admission Related",
+        "message": "Inquiry regarding document verification dates for lateral entry candidates.",
+        "status": "Pending Review",
+        "submitted_at": "2026-10-16 12:10:30",
+        "ip_address": "127.0.0.1"
+    }
+]

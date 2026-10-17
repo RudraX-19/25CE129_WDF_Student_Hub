@@ -1,0 +1,4 @@
+# Ignore test files and practical documentation markdown
+tests/
+docs/*.md
+!docs/wireframes/wireframe_notes.md
