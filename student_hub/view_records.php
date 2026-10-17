@@ -98,6 +98,7 @@ $syncStatus = (count($registrationsCsv) === count($registrationsJson)) && (count
             <li><a href="library.html">Library</a></li>
             <li><a href="students.html">Students</a></li>
             <li><a href="view_records.php" aria-current="page">Stored Records (P7)</a></li>
+            <li><a href="db_test.php">Database (P8)</a></li>
             <li><a href="register.php">Register Form</a></li>
             <li><a href="contact.php">Contact Form</a></li>
         </ul>

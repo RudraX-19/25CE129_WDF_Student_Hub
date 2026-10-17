@@ -1592,4 +1592,86 @@ body.dark-mode .badge-subject {
     color: #f472b6;
     border-color: #831843;
 }
+
+/* ============================================================
+   26. PRACTICAL 8 — MySQL Schema, PDO & Stored Procedures UI
+   ============================================================ */
+
+.db-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.db-connected {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.db-disconnected {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.schema-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.code-box {
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.88rem;
+    overflow-x: auto;
+}
+
+/* Dark mode for Practical 8 */
+body.dark-mode .schema-card {
+    background-color: #16213e;
+    border-color: #2a3060;
+}
+
+body.dark-mode .schema-card > h3 {
+    color: #7aafff !important;
+    border-bottom-color: #2a3060 !important;
+}
+
+body.dark-mode .schema-card p,
+body.dark-mode .schema-card div {
+    color: #d1d5db;
+}
+
+body.dark-mode .schema-card div[style*="background: #f8fafc"] {
+    background-color: #111a30 !important;
+    border-color: #2a3060 !important;
+}
+
+body.dark-mode .schema-card div[style*="background: #f0f7ff"] {
+    background-color: #1a2a4e !important;
+    border-color: #2a3060 !important;
+}
+
+body.dark-mode .db-connected {
+    background-color: #064e3b;
+    color: #6ee7b7;
+    border-color: #047857;
+}
+
+body.dark-mode .db-disconnected {
+    background-color: #7f1d1d;
+    color: #fca5a5;
+    border-color: #b91c1c;
+}
+
 

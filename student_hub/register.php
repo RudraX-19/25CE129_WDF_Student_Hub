@@ -93,8 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <li><a href="grades.html">Grades &amp; Transcripts</a></li>
             <li><a href="events.html">Events &amp; Clubs</a></li>
             <li><a href="library.html">Library</a></li>
-            <li><a href="announcements.html">Announcements</a></li>
             <li><a href="view_records.php">Stored Records (P7)</a></li>
+            <li><a href="db_test.php">Database (P8)</a></li>
             <li><a href="contact.php">Contact Us</a></li>
         </ul>
     </nav>
