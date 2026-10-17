@@ -1,9 +1,11 @@
 -- ============================================================================
--- StudentHub Portal - Practical 8 Database Schema & Seed Data
+-- StudentHub Portal - Practical 8 & 9 Database Schema & Seed Data
 -- Course: Web Development Fundamentals (ITUE203)
 -- Schema: studenthub_db
--- Features: 3NF Normalization, PK/FK Constraints, Indices, Seed Data,
---           and Stored Procedures (Advanced Extension)
+-- Practical 8 Features: 3NF Normalization, PK/FK Constraints, Indices,
+--                       Seed Data, Stored Procedures (Advanced Extension)
+-- Practical 9 Features: users table, password_hash(), duplicate checks,
+--                       role-based access (admin/student), audit_log table
 -- ============================================================================
 
 CREATE DATABASE IF NOT EXISTS `studenthub_db`
@@ -15,11 +17,13 @@ USE `studenthub_db`;
 -- ----------------------------------------------------------------------------
 -- 1. Table: courses (Lookup / Parent Table for Academic Programs)
 -- ----------------------------------------------------------------------------
+DROP TABLE IF EXISTS `audit_log`;
 DROP TABLE IF EXISTS `registrations`;
 DROP TABLE IF EXISTS `contact_inquiries`;
 DROP TABLE IF EXISTS `students`;
 DROP TABLE IF EXISTS `events`;
 DROP TABLE IF EXISTS `courses`;
+DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `courses` (
     `course_id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -320,3 +324,58 @@ BEGIN
 END //
 
 DELIMITER ;
+
+-- ============================================================================
+-- PRACTICAL 9: users table (standalone auth table), audit_log
+-- ============================================================================
+
+-- ----------------------------------------------------------------------------
+-- 6. Table: users (Standalone auth table for Practical 9 secure registration)
+--    Supports role-based access: 'student' | 'admin'
+--    password stored as bcrypt hash via password_hash()
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `users` (
+    `user_id`       INT AUTO_INCREMENT PRIMARY KEY,
+    `username`      VARCHAR(50)  NOT NULL UNIQUE,
+    `email`         VARCHAR(150) NOT NULL UNIQUE,
+    `password_hash` VARCHAR(255) NOT NULL COMMENT 'bcrypt via password_hash()',
+    `role`          ENUM('student','admin') NOT NULL DEFAULT 'student',
+    `full_name`     VARCHAR(100) NOT NULL,
+    `is_active`     TINYINT(1)   NOT NULL DEFAULT 1,
+    `created_at`    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    `updated_at`    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  COMMENT='Practical 9: Secure user registration with duplicate check and bcrypt hashing';
+
+CREATE INDEX `idx_users_email`    ON `users` (`email`);
+CREATE INDEX `idx_users_username` ON `users` (`username`);
+CREATE INDEX `idx_users_role`     ON `users` (`role`);
+
+-- Seed: Admin user (password: Admin@123 → hashed below)
+-- NOTE: Replace the hash below with: password_hash('Admin@123', PASSWORD_DEFAULT)
+INSERT INTO `users` (`username`, `email`, `password_hash`, `role`, `full_name`) VALUES
+('admin', 'admin@studenthub.edu',
+ '$2y$10$YdD3XCmAJG5YR0bPwYKqCe9hqJPFW6dLbQ4M0Z8XcVkNwA0E1m2sO',
+ 'admin', 'Portal Administrator'),
+('25ce129', 'rudra.vaghasiya@college.edu',
+ '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC',
+ 'student', 'Rudra Vaghasiya');
+
+-- ----------------------------------------------------------------------------
+-- 7. Table: audit_log (Advanced Extension - Practical 9)
+--    Records all registration and login events for traceability
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `audit_log` (
+    `log_id`     INT AUTO_INCREMENT PRIMARY KEY,
+    `event_time` TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
+    `action`     VARCHAR(50) NOT NULL COMMENT 'e.g. REGISTER, LOGIN, LOGOUT',
+    `user_id`    INT         DEFAULT NULL,
+    `username`   VARCHAR(50) DEFAULT NULL,
+    `email`      VARCHAR(150) DEFAULT NULL,
+    `ip_address` VARCHAR(45) DEFAULT NULL,
+    `details`    VARCHAR(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+  COMMENT='Practical 9 Advanced Extension: Audit trail for security events';
+
+CREATE INDEX `idx_audit_action` ON `audit_log` (`action`);
+CREATE INDEX `idx_audit_user`   ON `audit_log` (`user_id`);
