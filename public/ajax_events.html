@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - AJAX Event Hub (Practical 13)</title>
+    <meta name="description" content="Practical 13: Asynchronous CRUD without page reload using PHP JSON API, JavaScript Fetch API, Debounced Search, and Live Network Inspector.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        :root {
+            --ajax-accent: #059669;
+            --ajax-dark: #047857;
+            --primary-accent: #6366f1;
+            --bg-light: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+        }
+
+        .spa-container {
+            max-width: 1280px;
+            margin: 24px auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Header */
+        .page-header {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 16px rgba(6, 78, 59, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 6px 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-p13 {
+            background: #10b981;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Metric Cards */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .metric-card {
+            background: #ffffff;
+            padding: 18px 22px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .metric-card h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            margin: 0 0 4px 0;
+        }
+
+        .metric-card .value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .metric-icon {
+            font-size: 2rem;
+            opacity: 0.85;
+        }
+
+        /* Controls / Search Bar with Debounce */
+        .controls-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .controls-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 14px;
+            align-items: flex-end;
+        }
+
+        @media (max-width: 900px) {
+            .controls-row { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .controls-row { grid-template-columns: 1fr; }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            position: relative;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            padding: 9px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            background-color: #fff;
+            transition: all 0.15s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--ajax-accent);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+        }
+
+        /* Debounce indicator icon */
+        .search-spinner {
+            position: absolute;
+            right: 12px;
+            bottom: 10px;
+            display: none;
+            font-size: 0.85rem;
+            color: var(--ajax-accent);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 9px 16px;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: all 0.15s ease;
+        }
+
+        .btn-success { background-color: var(--ajax-accent); color: #ffffff; }
+        .btn-success:hover { background-color: var(--ajax-dark); }
+        .btn-secondary { background-color: #f1f5f9; color: #334155; border-color: #cbd5e1; }
+        .btn-secondary:hover { background-color: #e2e8f0; }
+        .btn-danger { background-color: #ef4444; color: #ffffff; }
+        .btn-danger:hover { background-color: #dc2626; }
+        .btn-sm { padding: 5px 10px; font-size: 0.78rem; border-radius: 4px; }
+
+        /* Asynchronous Grid of Events */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 480px) {
+            .events-grid { grid-template-columns: 1fr; }
+        }
+
+        .event-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        }
+
+        .card-top {
+            padding: 18px 20px 10px;
+        }
+
+        .card-meta-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .chip {
+            padding: 3px 8px;
+            border-radius: 9999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .chip-open { background: #dcfce7; color: #166534; }
+        .chip-closed { background: #fee2e2; color: #991b1b; }
+        .chip-cat { background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; }
+
+        .event-title {
+            margin: 6px 0 8px 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .event-desc {
+            font-size: 0.85rem;
+            color: #475569;
+            line-height: 1.45;
+            margin-bottom: 12px;
+        }
+
+        .card-bottom {
+            padding: 10px 20px 16px;
+            border-top: 1px solid var(--border-color);
+            background: #fdfdfd;
+        }
+
+        .info-pill {
+            font-size: 0.8rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        /* Loading Skeleton Animation (Key Question 3) */
+        .skeleton {
+            background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.4s infinite ease-in-out;
+            border-radius: 6px;
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .skeleton-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Toast Notifications (Key Question 3) */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            min-width: 280px;
+            max-width: 380px;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 14px 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            border-left: 4px solid var(--ajax-accent);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 0.88rem;
+            animation: slide-in 0.25s ease-out;
+        }
+
+        .toast.error { border-left-color: #ef4444; }
+
+        @keyframes slide-in {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Live Network Inspector Drawer */
+        .network-bar {
+            background: #0f172a;
+            color: #94a3b8;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-top: 24px;
+            font-family: Consolas, monospace;
+            font-size: 0.82rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .network-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #38bdf8;
+            font-weight: 700;
+        }
+
+        /* Modal Dialog */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show { display: flex; }
+
+        .modal-dialog {
+            background: #ffffff;
+            border-radius: 12px;
+            width: 92%;
+            max-width: 600px;
+            padding: 24px 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+        }
+
+        .modal-header h3 { margin: 0; font-size: 1.25rem; color: #0f172a; }
+        .close-btn { background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: #64748b; }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .modal-grid { grid-template-columns: 1fr; }
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 14px;
+            margin-top: 18px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="spa-container">
+
+        <!-- Top Navigation Line -->
+        <div style="margin-bottom: 14px; display:flex; justify-content:space-between; align-items:center;">
+            <a href="dashboard.html" style="color: #64748b; text-decoration: none; font-size: 0.85rem; font-weight:600;">
+                &larr; Back to StudentHub Portal
+            </a>
+            <div style="font-size: 0.85rem; color:#64748b;">
+                Module: <strong>Asynchronous Fetch API &bull; Zero Page Reloads</strong> | Practical 13
+            </div>
+        </div>
+
+        <!-- Hero Header -->
+        <div class="page-header">
+            <div>
+                <h1>
+                    <span>&#9889; Asynchronous Event Hub</span>
+                    <span class="badge-p13">Practical 13</span>
+                </h1>
+                <p style="margin:0; opacity:0.85; font-size:0.9rem;">
+                    Full CRUD without page reloads using PHP RESTful JSON API, Fetch API, 300ms Debounced Search, and Live Network Inspector.
+                </p>
+            </div>
+            <div class="header-actions">
+                <button type="button" class="btn btn-success" onclick="openCreateModal()">
+                    <span>&#10010;</span> Create Event (AJAX)
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="fetchEvents()">
+                    <span>&#10227;</span> Refresh Feed
+                </button>
+                <a href="api/events_crud.php" class="btn btn-secondary" style="color:#0f172a;" title="View classic server-side CRUD">
+                    <span>&#128196;</span> Classic CRUD
+                </a>
+            </div>
+        </div>
+
+        <!-- Real-time KPI Stats (Loaded via Fetch API) -->
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div>
+                    <h3>Total Events</h3>
+                    <div class="value" id="stat-total">&mdash;</div>
+                </div>
+                <div class="metric-icon">&#127895;</div>
+            </div>
+            <div class="metric-card">
+                <div>
+                    <h3>Open for Registration</h3>
+                    <div class="value" id="stat-open" style="color:#059669;">&mdash;</div>
+                </div>
+                <div class="metric-icon">&#9989;</div>
+            </div>
+            <div class="metric-card">
+                <div>
+                    <h3>Booked Registrations</h3>
+                    <div class="value" id="stat-reg" style="color:#6366f1;">&mdash;</div>
+                </div>
+                <div class="metric-icon">&#128101;</div>
+            </div>
+            <div class="metric-card">
+                <div>
+                    <h3>Overall Capacity</h3>
+                    <div class="value" id="stat-cap" style="color:#f59e0b;">&mdash;</div>
+                </div>
+                <div class="metric-icon">&#127979;</div>
+            </div>
+        </div>
+
+        <!-- Controls Card with Debounced Search -->
+        <div class="controls-card">
+            <div class="controls-row">
+                <div class="form-group">
+                    <label for="ajax-search">&#128269; Live Search (300ms Debounce)</label>
+                    <input type="search" id="ajax-search" class="form-input"
+                           placeholder="Type event title, code, venue, organizer…">
+                    <span id="search-spinner" class="search-spinner">&#9203; searching…</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="ajax-category">Category</label>
+                    <select id="ajax-category" class="form-select" onchange="fetchEvents()">
+                        <option value="">All Categories</option>
+                        <option value="Technical">Technical</option>
+                        <option value="Cultural">Cultural</option>
+                        <option value="Academic">Academic</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Workshop">Workshop</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ajax-status">Registration Status</label>
+                    <select id="ajax-status" class="form-select" onchange="fetchEvents()">
+                        <option value="">All Events</option>
+                        <option value="open">&#9989; Open for Registration</option>
+                        <option value="closed">&#128274; Closed / Fully Booked</option>
+                        <option value="Upcoming">Upcoming</option>
+                        <option value="Ongoing">Ongoing</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+
+                <div style="display:flex; gap:8px;">
+                    <button type="button" class="btn btn-secondary" onclick="resetFilters()" style="height:38px;">
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Events Grid Container -->
+        <div id="events-container">
+            <!-- Skeleton Shimmer Loader (Key Question 3: Loading State) -->
+            <div class="events-grid" id="skeleton-loader">
+                <div class="skeleton-card"><div class="skeleton" style="height:24px; width:40%;"></div><div class="skeleton" style="height:32px; width:80%;"></div><div class="skeleton" style="height:60px;"></div><div class="skeleton" style="height:20px; width:60%;"></div></div>
+                <div class="skeleton-card"><div class="skeleton" style="height:24px; width:40%;"></div><div class="skeleton" style="height:32px; width:80%;"></div><div class="skeleton" style="height:60px;"></div><div class="skeleton" style="height:20px; width:60%;"></div></div>
+                <div class="skeleton-card"><div class="skeleton" style="height:24px; width:40%;"></div><div class="skeleton" style="height:32px; width:80%;"></div><div class="skeleton" style="height:60px;"></div><div class="skeleton" style="height:20px; width:60%;"></div></div>
+            </div>
+            <!-- Dynamic Event Cards will be injected here via Fetch API -->
+            <div class="events-grid" id="events-grid" style="display:none;"></div>
+        </div>
+
+        <!-- Live Network Inspector Console (Practical 13 Showcase) -->
+        <div class="network-bar">
+            <div>
+                <span class="network-indicator">&#9679; Fetch API Inspector:</span>
+                <span id="net-last-call" style="color:#f8fafc; margin-left:6px;">Ready</span>
+            </div>
+            <div style="display:flex; gap:16px;">
+                <span>Status: <strong id="net-status" style="color:#10b981;">200 OK</strong></span>
+                <span>Latency: <strong id="net-latency" style="color:#38bdf8;">0ms</strong></span>
+            </div>
+        </div>
+
+    </div><!-- /.spa-container -->
+
+    <!-- ===================================================================== -->
+    <!-- CREATE EVENT MODAL (AJAX POST) -->
+    <!-- ===================================================================== -->
+    <div id="createModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="createModalTitle">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="createModalTitle">&#10010; Create Event (via Fetch API)</h3>
+                <button type="button" class="close-btn" onclick="closeModal('createModal')">&times;</button>
+            </div>
+            <form id="createForm" onsubmit="handleCreateEvent(event)">
+                <div id="create-error" style="display:none; background:#fef2f2; border:1px solid #fecaca; border-radius:6px; padding:10px 14px; font-size:0.85rem; color:#991b1b; margin-bottom:14px;"></div>
+
+                <div class="modal-grid">
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="c_title">Event Title *</label>
+                        <input type="text" id="c_title" class="form-input" required placeholder="e.g. AI Robotics Workshop">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="c_code">Event Code *</label>
+                        <input type="text" id="c_code" class="form-input" required placeholder="e.g. EVT-AI-09" pattern="[A-Za-z0-9_-]{3,30}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="c_category">Category *</label>
+                        <select id="c_category" class="form-select" required>
+                            <option value="Technical">Technical</option>
+                            <option value="Cultural">Cultural</option>
+                            <option value="Academic">Academic</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Workshop">Workshop</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="c_date">Date *</label>
+                        <input type="date" id="c_date" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="c_time">Time *</label>
+                        <input type="time" id="c_time" class="form-input" required value="11:00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="c_venue">Venue *</label>
+                        <input type="text" id="c_venue" class="form-input" required placeholder="e.g. Lab 201">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="c_organizer">Organizer *</label>
+                        <input type="text" id="c_organizer" class="form-input" required placeholder="e.g. Robotics Club">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="c_cap">Max Capacity *</label>
+                        <input type="number" id="c_cap" class="form-input" required min="5" max="5000" value="75">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="c_status">Status</label>
+                        <select id="c_status" class="form-select">
+                            <option value="Upcoming" selected>Upcoming</option>
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="c_desc">Description</label>
+                        <textarea id="c_desc" class="form-textarea" rows="3" placeholder="Event schedule & syllabus details…"></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('createModal')">Cancel</button>
+                    <button type="submit" id="create-submit-btn" class="btn btn-success">
+                        &#10003; Create Event
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- EDIT EVENT MODAL (AJAX POST) -->
+    <!-- ===================================================================== -->
+    <div id="editModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="editModalTitle">&#9998; Update Event (Asynchronous)</h3>
+                <button type="button" class="close-btn" onclick="closeModal('editModal')">&times;</button>
+            </div>
+            <form id="editForm" onsubmit="handleUpdateEvent(event)">
+                <input type="hidden" id="e_id">
+                <div id="edit-error" style="display:none; background:#fef2f2; border:1px solid #fecaca; border-radius:6px; padding:10px 14px; font-size:0.85rem; color:#991b1b; margin-bottom:14px;"></div>
+
+                <div class="modal-grid">
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="e_title">Event Title *</label>
+                        <input type="text" id="e_title" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="e_code">Event Code *</label>
+                        <input type="text" id="e_code" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="e_category">Category *</label>
+                        <select id="e_category" class="form-select" required>
+                            <option value="Technical">Technical</option>
+                            <option value="Cultural">Cultural</option>
+                            <option value="Academic">Academic</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Workshop">Workshop</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="e_date">Date *</label>
+                        <input type="date" id="e_date" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="e_time">Time *</label>
+                        <input type="time" id="e_time" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="e_venue">Venue *</label>
+                        <input type="text" id="e_venue" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="e_organizer">Organizer *</label>
+                        <input type="text" id="e_organizer" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="e_cap">Max Capacity *</label>
+                        <input type="number" id="e_cap" class="form-input" required min="5" max="5000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="e_status">Status</label>
+                        <select id="e_status" class="form-select">
+                            <option value="Upcoming">Upcoming</option>
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="e_desc">Description</label>
+                        <textarea id="e_desc" class="form-textarea" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('editModal')">Cancel</button>
+                    <button type="submit" id="edit-submit-btn" class="btn btn-success">
+                        &#10003; Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- DELETE CONFIRMATION MODAL -->
+    <!-- ===================================================================== -->
+    <div id="deleteModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="delTitle">
+        <div class="modal-dialog" style="max-width:440px;">
+            <div class="modal-header">
+                <h3 id="delTitle" style="color:#ef4444;">&#9888; Confirm Delete</h3>
+                <button type="button" class="close-btn" onclick="closeModal('deleteModal')">&times;</button>
+            </div>
+            <p style="font-size:0.95rem; color:#334155; line-height:1.5;">
+                Are you sure you want to delete <strong id="del_name">Event</strong>?
+                This action will be executed asynchronously via <code>Fetch API</code>.
+            </p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('deleteModal')">Cancel</button>
+                <button type="button" id="confirm-del-btn" class="btn btn-danger" onclick="executeDelete()">
+                    &#128465; Delete Event
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script>
+        const API_URL = 'api/api_events.php';
+        let deleteTargetId = null;
+
+        // ---------------------------------------------------------------------
+        // 1. Debounce Function (Practical 13 Intermediate Extension)
+        // ---------------------------------------------------------------------
+        function debounce(func, delay = 300) {
+            let timer;
+            return function(...args) {
+                clearTimeout(timer);
+                document.getElementById('search-spinner').style.display = 'inline';
+                timer = setTimeout(() => {
+                    document.getElementById('search-spinner').style.display = 'none';
+                    func.apply(this, args);
+                }, delay);
+            };
+        }
+
+        // Attach debounced search listener
+        document.getElementById('ajax-search').addEventListener('input', debounce(function() {
+            fetchEvents();
+        }, 300));
+
+        // ---------------------------------------------------------------------
+        // 2. Fetch Events Feed (Asynchronous GET)
+        // ---------------------------------------------------------------------
+        async function fetchEvents() {
+            const search   = document.getElementById('ajax-search').value.trim();
+            const category = document.getElementById('ajax-category').value;
+            const status   = document.getElementById('ajax-status').value;
+
+            const params = new URLSearchParams({ action: 'list' });
+            if (search)   params.append('q', search);
+            if (category) params.append('category', category);
+            if (status)   params.append('status', status);
+
+            // Show skeleton loader (Key Question 3: Loading State)
+            document.getElementById('skeleton-loader').style.display = 'grid';
+            document.getElementById('events-grid').style.display = 'none';
+
+            const startTime = performance.now();
+            try {
+                const response = await fetch(`${API_URL}?${params.toString()}`);
+                const duration = Math.round(performance.now() - startTime);
+                updateNetworkInspector(`GET ${API_URL}?${params.toString()}`, response.status, response.statusText, duration);
+
+                const result = await response.json();
+
+                if (result.success) {
+                    renderEvents(result.data);
+                } else {
+                    showToast(result.message || 'Failed to fetch events', true);
+                }
+            } catch (err) {
+                const duration = Math.round(performance.now() - startTime);
+                updateNetworkInspector(`GET ${API_URL}`, 500, 'Network Error', duration);
+                showToast('Network error while contacting JSON API.', true);
+            } finally {
+                document.getElementById('skeleton-loader').style.display = 'none';
+                document.getElementById('events-grid').style.display = 'grid';
+            }
+        }
+
+        // ---------------------------------------------------------------------
+        // 3. Render Events into DOM (Zero Page Reload)
+        // ---------------------------------------------------------------------
+        function renderEvents(events) {
+            const grid = document.getElementById('events-grid');
+            grid.innerHTML = '';
+
+            if (!events || events.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; background:#fff; border:1px solid var(--border-color); border-radius:12px; text-align:center; padding:48px 20px; color:#64748b;">
+                        <div style="font-size:2.4rem; margin-bottom:8px;">&#127895;</div>
+                        <strong style="font-size:1.05rem; color:#1e293b;">No events match your criteria</strong>
+                        <p style="margin:4px 0 0 0; font-size:0.85rem;">Try adjusting your live search keywords or click Create Event.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            events.forEach(ev => {
+                const card = document.createElement('div');
+                card.className = 'event-card';
+                card.id = `event-card-${ev.event_id}`;
+
+                const openChip = ev.is_open
+                    ? `<span class="chip chip-open">&#9989; Open</span>`
+                    : `<span class="chip chip-closed">&#128274; ${ev.status}</span>`;
+
+                card.innerHTML = `
+                    <div class="card-top">
+                        <div class="card-meta-line">
+                            <span class="chip chip-cat">${escapeHtml(ev.category)}</span>
+                            ${openChip}
+                        </div>
+                        <div style="font-family:monospace; font-size:0.75rem; color:#6366f1; font-weight:700;">
+                            ${escapeHtml(ev.event_code)}
+                        </div>
+                        <h3 class="event-title">${escapeHtml(ev.title)}</h3>
+                        <p class="event-desc">${escapeHtml(ev.description || 'No description provided.')}</p>
+
+                        <div class="info-pill">&#128197; <strong>${escapeHtml(ev.event_date)}</strong> &bull; ${escapeHtml(ev.event_time)}</div>
+                        <div class="info-pill">&#128205; ${escapeHtml(ev.venue)}</div>
+                        <div class="info-pill">&#128100; By: ${escapeHtml(ev.organizer)}</div>
+                    </div>
+
+                    <div class="card-bottom">
+                        <div style="font-size:0.78rem; color:#64748b; margin-bottom:8px; display:flex; justify-content:space-between;">
+                            <span>Seats: <strong>${ev.registered_count} / ${ev.max_participants}</strong></span>
+                            <span><strong>${ev.seats_left} available</strong></span>
+                        </div>
+                        <div style="display:flex; justify-content:flex-end; gap:6px;">
+                            <button type="button" class="btn btn-sm btn-secondary" onclick='openEditModal(${JSON.stringify(ev)})'>
+                                &#9998; Edit
+                            </button>
+                            <button type="button" class="btn btn-sm btn-danger" onclick="openDeleteModal(${ev.event_id}, '${escapeHtml(ev.title)}')">
+                                &#128465; Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ---------------------------------------------------------------------
+        // 4. Create Event (Asynchronous POST - Key Question 2)
+        // ---------------------------------------------------------------------
+        async function handleCreateEvent(e) {
+            e.preventDefault();
+            const btn = document.getElementById('create-submit-btn');
+            btn.disabled = true;
+            btn.innerHTML = '&#9203; Creating…';
+
+            const payload = {
+                action: 'create',
+                title: document.getElementById('c_title').value.trim(),
+                event_code: document.getElementById('c_code').value.trim(),
+                category: document.getElementById('c_category').value,
+                event_date: document.getElementById('c_date').value,
+                event_time: document.getElementById('c_time').value,
+                venue: document.getElementById('c_venue').value.trim(),
+                organizer: document.getElementById('c_organizer').value.trim(),
+                max_participants: parseInt(document.getElementById('c_cap').value, 10),
+                status: document.getElementById('c_status').value,
+                description: document.getElementById('c_desc').value.trim(),
+            };
+
+            const startTime = performance.now();
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const duration = Math.round(performance.now() - startTime);
+                updateNetworkInspector('POST ' + API_URL + ' [create]', response.status, response.statusText, duration);
+
+                const result = await response.json();
+
+                if (result.success) {
+                    closeModal('createModal');
+                    document.getElementById('createForm').reset();
+                    showToast(result.message);
+                    fetchEvents();
+                    fetchStats();
+                } else {
+                    const errBox = document.getElementById('create-error');
+                    errBox.innerText = result.message || 'Validation error.';
+                    errBox.style.display = 'block';
+                }
+            } catch (err) {
+                showToast('Failed to connect to JSON API.', true);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '&#10003; Create Event';
+            }
+        }
+
+        // ---------------------------------------------------------------------
+        // 5. Update Event (Asynchronous POST - Key Question 2)
+        // ---------------------------------------------------------------------
+        async function handleUpdateEvent(e) {
+            e.preventDefault();
+            const btn = document.getElementById('edit-submit-btn');
+            btn.disabled = true;
+            btn.innerHTML = '&#9203; Saving…';
+
+            const payload = {
+                action: 'update',
+                event_id: document.getElementById('e_id').value,
+                title: document.getElementById('e_title').value.trim(),
+                event_code: document.getElementById('e_code').value.trim(),
+                category: document.getElementById('e_category').value,
+                event_date: document.getElementById('e_date').value,
+                event_time: document.getElementById('e_time').value,
+                venue: document.getElementById('e_venue').value.trim(),
+                organizer: document.getElementById('e_organizer').value.trim(),
+                max_participants: parseInt(document.getElementById('e_cap').value, 10),
+                status: document.getElementById('e_status').value,
+                description: document.getElementById('e_desc').value.trim(),
+            };
+
+            const startTime = performance.now();
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const duration = Math.round(performance.now() - startTime);
+                updateNetworkInspector('POST ' + API_URL + ' [update]', response.status, response.statusText, duration);
+
+                const result = await response.json();
+
+                if (result.success) {
+                    closeModal('editModal');
+                    showToast(result.message);
+                    fetchEvents();
+                    fetchStats();
+                } else {
+                    const errBox = document.getElementById('edit-error');
+                    errBox.innerText = result.message || 'Update failed.';
+                    errBox.style.display = 'block';
+                }
+            } catch (err) {
+                showToast('Network error during update.', true);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '&#10003; Save Changes';
+            }
+        }
+
+        // ---------------------------------------------------------------------
+        // 6. Delete Event (Asynchronous POST with Confirmation)
+        // ---------------------------------------------------------------------
+        function openDeleteModal(id, title) {
+            deleteTargetId = id;
+            document.getElementById('del_name').innerText = title;
+            document.getElementById('deleteModal').classList.add('show');
+        }
+
+        async function executeDelete() {
+            if (!deleteTargetId) return;
+            const btn = document.getElementById('confirm-del-btn');
+            btn.disabled = true;
+            btn.innerHTML = '&#9203; Deleting…';
+
+            const startTime = performance.now();
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'delete', event_id: deleteTargetId })
+                });
+
+                const duration = Math.round(performance.now() - startTime);
+                updateNetworkInspector('POST ' + API_URL + ' [delete]', response.status, response.statusText, duration);
+
+                const result = await response.json();
+
+                if (result.success) {
+                    closeModal('deleteModal');
+                    showToast(result.message);
+                    // Instant DOM removal
+                    const card = document.getElementById(`event-card-${deleteTargetId}`);
+                    if (card) {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.9)';
+                        setTimeout(() => card.remove(), 250);
+                    }
+                    fetchStats();
+                } else {
+                    showToast(result.message, true);
+                }
+            } catch (err) {
+                showToast('Failed to delete event via API.', true);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '&#128465; Delete Event';
+                deleteTargetId = null;
+            }
+        }
+
+        // ---------------------------------------------------------------------
+        // 7. Real-Time Stats Fetching
+        // ---------------------------------------------------------------------
+        async function fetchStats() {
+            try {
+                const res = await fetch(`${API_URL}?action=stats`);
+                const json = await res.json();
+                if (json.success && json.data) {
+                    document.getElementById('stat-total').innerText = json.data.total_events;
+                    document.getElementById('stat-open').innerText  = json.data.open_events;
+                    document.getElementById('stat-reg').innerText   = json.data.total_registrations;
+                    document.getElementById('stat-cap').innerText   = json.data.total_capacity;
+                }
+            } catch (e) {}
+        }
+
+        // ---------------------------------------------------------------------
+        // 8. Live Network Inspector Updater (Practical 13 Showcase)
+        // ---------------------------------------------------------------------
+        function updateNetworkInspector(endpoint, status, statusText, latency) {
+            document.getElementById('net-last-call').innerText = endpoint;
+            const statusEl = document.getElementById('net-status');
+            statusEl.innerText = `${status} ${statusText}`;
+            statusEl.style.color = (status >= 200 && status < 300) ? '#10b981' : '#ef4444';
+            document.getElementById('net-latency').innerText = `${latency}ms`;
+        }
+
+        // ---------------------------------------------------------------------
+        // 9. Toast Notifications (Key Question 3: Success & Error States)
+        // ---------------------------------------------------------------------
+        function showToast(message, isError = false) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${isError ? 'error' : ''}`;
+            toast.innerHTML = `
+                <span>${isError ? '&#9888;' : '&#10003;'} ${escapeHtml(message)}</span>
+                <button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;font-weight:bold;color:#64748b;">&times;</button>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+                toast.style.transition = 'all 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        // ---------------------------------------------------------------------
+        // Modal & Helper Functions
+        // ---------------------------------------------------------------------
+        function openCreateModal() {
+            document.getElementById('create-error').style.display = 'none';
+            document.getElementById('c_date').value = new Date(Date.now() + 7*24*60*60*1000).toISOString().split('T')[0];
+            document.getElementById('createModal').classList.add('show');
+        }
+
+        function openEditModal(ev) {
+            document.getElementById('edit-error').style.display = 'none';
+            document.getElementById('e_id').value        = ev.event_id;
+            document.getElementById('e_title').value     = ev.title;
+            document.getElementById('e_code').value      = ev.event_code;
+            document.getElementById('e_category').value  = ev.category;
+            document.getElementById('e_date').value      = ev.event_date;
+            document.getElementById('e_time').value      = ev.event_time;
+            document.getElementById('e_venue').value     = ev.venue;
+            document.getElementById('e_organizer').value = ev.organizer;
+            document.getElementById('e_cap').value       = ev.max_participants;
+            document.getElementById('e_status').value    = ev.status;
+            document.getElementById('e_desc').value      = ev.description || '';
+            document.getElementById('editModal').classList.add('show');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('show');
+        }
+
+        function resetFilters() {
+            document.getElementById('ajax-search').value = '';
+            document.getElementById('ajax-category').value = '';
+            document.getElementById('ajax-status').value = '';
+            fetchEvents();
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/[&<>"']/g, function(m) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+            });
+        }
+
+        // Window escape & backdrop handlers
+        window.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal.show').forEach(m => m.classList.remove('show')); });
+        window.addEventListener('click', e => { if (e.target.classList.contains('modal')) e.target.classList.remove('show'); });
+
+        // Initial bootstrap on load
+        fetchEvents();
+        fetchStats();
+    </script>
+
+</body>
+
+</html>

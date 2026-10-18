@@ -275,13 +275,14 @@ try {
                 <div class="section-card">
                     <h3>&#9889; Admin Actions</h3>
                     <div class="quick-links" style="flex-direction:column;">
-                        <a href="students_crud.php"  class="ql-btn ql-primary" style="background:#0284c7;color:#fff;font-weight:700;">&#128101; Manage Students (Practical 11)</a>
-                        <a href="events_crud.php"    class="ql-btn ql-primary" style="background:#6366f1;color:#fff;font-weight:700;">&#127895; Manage Events (Practical 12)</a>
-                        <a href="view_records.php"  class="ql-btn ql-primary">&#128196; View CSV/JSON Records</a>
-                        <a href="db_test.php"        class="ql-btn ql-secondary">&#128268; DB Connection Test</a>
-                        <a href="register_secure.php" class="ql-btn ql-secondary">&#128274; Add Student (Practical 9)</a>
-                        <a href="../index.html"          class="ql-btn ql-secondary">&#127968; Portal Home</a>
-                        <a href="logout.php"          class="ql-btn ql-danger">&#128274; Logout</a>
+                        <a href="students_crud.php"   class="ql-btn ql-primary" style="background:#0284c7;color:#fff;font-weight:700;">&#128101; Manage Students (Practical 11)</a>
+                        <a href="events_crud.php"     class="ql-btn ql-primary" style="background:#6366f1;color:#fff;font-weight:700;">&#127895; Manage Events (Practical 12)</a>
+                        <a href="../ajax_events.html" class="ql-btn ql-primary" style="background:#059669;color:#fff;font-weight:700;">&#9889; AJAX Event Hub (Practical 13)</a>
+                        <a href="view_records.php"   class="ql-btn ql-primary">&#128196; View CSV/JSON Records</a>
+                        <a href="db_test.php"         class="ql-btn ql-secondary">&#128268; DB Connection Test</a>
+                        <a href="register_secure.php"  class="ql-btn ql-secondary">&#128274; Add Student (Practical 9)</a>
+                        <a href="../index.html"           class="ql-btn ql-secondary">&#127968; Portal Home</a>
+                        <a href="logout.php"           class="ql-btn ql-danger">&#128274; Logout</a>
                     </div>
                 </div>
             </div>
