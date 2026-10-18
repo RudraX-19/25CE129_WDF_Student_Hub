@@ -1,0 +1,9 @@
+# Security Protection for Uploads Directory (Practical 12 Advanced Extension)
+# Prevent direct execution of any uploaded script files
+
+<FilesMatch "(?i)\.(php|phtml|php3|php4|php5|php7|phar|exe|pl|py|cgi|sh|bat)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+Options -Indexes -ExecCGI

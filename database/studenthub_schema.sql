@@ -80,6 +80,7 @@ CREATE TABLE `events` (
     `registered_count` INT NOT NULL DEFAULT 0,
     `status` ENUM('Upcoming', 'Ongoing', 'Completed', 'Cancelled') DEFAULT 'Upcoming',
     `description` TEXT,
+    `poster_image` VARCHAR(255) DEFAULT NULL,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -129,6 +130,23 @@ CREATE TABLE `contact_inquiries` (
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- ----------------------------------------------------------------------------
+-- 6. Table: audit_log (Advanced Extension: Security audit trail for events & admin actions)
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `audit_log` (
+    `log_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `action` VARCHAR(50) NOT NULL,
+    `table_name` VARCHAR(50) NOT NULL,
+    `record_id` INT NOT NULL,
+    `performed_by` VARCHAR(100) DEFAULT 'admin',
+    `details` TEXT,
+    `ip_address` VARCHAR(45) DEFAULT '127.0.0.1',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE INDEX `idx_audit_action` ON `audit_log` (`action`);
+CREATE INDEX `idx_audit_table_record` ON `audit_log` (`table_name`, `record_id`);
+
 -- ============================================================================
 -- SEED DATA
 -- ============================================================================
@@ -171,11 +189,13 @@ INSERT INTO `students` (`student_id`, `roll_no`, `fullname`, `email`, `mobile`, 
 (25, '25CE140', 'Bhavik Barot',     'bhavik.barot@college.edu',     '9876500020', 1, 1, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.00, 'Active',    0);
 
 -- Seed: Events
-INSERT INTO `events` (`event_id`, `event_code`, `title`, `category`, `event_date`, `event_time`, `venue`, `organizer`, `max_participants`, `registered_count`, `status`, `description`) VALUES
-(1, 'EVT-TECH-01', 'Annual Hackathon 2026', 'Technical', '2026-11-15', '09:00:00', 'Central Computing Lab', 'Coding Club', 120, 2, 'Upcoming', '24-hour full-stack and AI hackathon for university students.'),
-(2, 'EVT-ROBO-02', 'RoboWars & Drone Racing', 'Technical', '2026-11-20', '10:30:00', 'University Sports Arena', 'Robotics Society', 80, 1, 'Upcoming', 'Autonomous line follower and wireless bot combat championships.'),
-(3, 'EVT-CULT-03', 'Rhythm & Beats Cultural Fest', 'Cultural', '2026-12-05', '17:00:00', 'Open Air Amphitheatre', 'Student Council', 350, 1, 'Upcoming', 'Annual intra-college music, drama, and choreo fest.'),
-(4, 'EVT-ACAD-04', 'Cloud & DevOps Workshop', 'Academic', '2026-11-10', '14:00:00', 'Seminar Hall A', 'CE Department', 60, 1, 'Upcoming', 'Hands-on masterclass on containerization, CI/CD, and cloud infra.');
+INSERT INTO `events` (`event_id`, `event_code`, `title`, `category`, `event_date`, `event_time`, `venue`, `organizer`, `max_participants`, `registered_count`, `status`, `description`, `poster_image`) VALUES
+(1, 'EVT-TECH-01', 'Annual Hackathon 2026', 'Technical', '2026-11-15', '09:00:00', 'Central Computing Lab', 'Coding Club', 120, 2, 'Upcoming', '24-hour full-stack and AI hackathon for university students.', 'poster_hackathon_demo.jpg'),
+(2, 'EVT-ROBO-02', 'RoboWars & Drone Racing', 'Technical', '2026-11-20', '10:30:00', 'University Sports Arena', 'Robotics Society', 80, 1, 'Upcoming', 'Autonomous line follower and wireless bot combat championships.', 'poster_robowars_demo.jpg'),
+(3, 'EVT-CULT-03', 'Rhythm & Beats Cultural Fest', 'Cultural', '2026-12-05', '17:00:00', 'Open Air Amphitheatre', 'Student Council', 350, 1, 'Upcoming', 'Annual intra-college music, drama, and choreo fest.', 'poster_cultural_demo.jpg'),
+(4, 'EVT-ACAD-04', 'Cloud & DevOps Workshop', 'Academic', '2026-11-10', '14:00:00', 'Seminar Hall A', 'CE Department', 60, 1, 'Upcoming', 'Hands-on masterclass on containerization, CI/CD, and cloud infra.', 'poster_cloud_demo.jpg'),
+(5, 'EVT-SPRT-05', 'Inter-College Football Tournament', 'Sports', '2026-11-25', '08:00:00', 'University Main Stadium', 'Sports Committee', 200, 0, 'Upcoming', 'State-level football tournament with 16 participating university teams.', NULL),
+(6, 'EVT-WORK-06', 'AI & Deep Learning Symposium', 'Workshop', '2026-12-12', '10:00:00', 'Auditorium Complex', 'IEEE Student Branch', 150, 0, 'Upcoming', 'Guest lectures and hands-on lab on LLMs, transformers, and neural architectures.', NULL);
 
 -- Seed: Registrations
 INSERT INTO `registrations` (`registration_id`, `reg_code`, `student_id`, `event_id`, `attendance_status`, `notes`) VALUES
