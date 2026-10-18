@@ -156,27 +156,34 @@ Below is the structure summary:
 
 ```
 StudentHub/
-├── README.md                  ← This file — Project documentation
-├── student_hub/               ← All HTML pages
-│   ├── register.html          ← Student registration form
-│   ├── login.html             ← Login page
-│   ├── index.html             ← Home (post-login landing page)
-│   ├── dashboard.html         ← Dashboard overview
-│   ├── courses.html           ← My Courses
-│   ├── course-details.html    ← Individual course page
-│   ├── timetable.html         ← Weekly timetable
-│   ├── grades.html            ← Grades & Transcripts
-│   ├── events.html            ← Events & Clubs
-│   ├── library.html           ← Library & Resources
-│   ├── announcements.html     ← Announcements
-│   └── profile.html           ← Profile & Settings
-├── assets/
-│   ├── css/                   ← Stylesheets
-│   ├── js/                    ← JavaScript files
-│   └── images/                ← Image assets
-└── docs/
-    └── wireframes/            ← Wireframe screenshots & diagrams
+├── public/                    ← Web root directory (publicly accessible)
+│   ├── *.html                 ← 17 User-facing static pages (index, login, dashboard, etc.)
+│   ├── assets/                ← Static assets
+│   │   ├── css/               ← Stylesheets (style.css, components.css)
+│   │   ├── js/                ← Frontend scripts (main.js, auth.js, etc.)
+│   │   ├── images/            ← Image assets
+│   │   └── data/              ← Static JSON & CSV data files
+│   └── api/                   ← PHP endpoint handlers (login.php, register.php, etc.)
+│
+├── src/                       ← Backend PHP source & business logic (secure / private)
+│   ├── config/                ← Configuration (db.php)
+│   └── core/                  ← Core libraries (session_guard.php, form_functions.php, etc.)
+│
+├── database/                  ← Database schema & SQL migrations
+│   └── studenthub_schema.sql
+│
+├── docs/                      ← Lab documentation & reports
+│   ├── wireframes/            ← Low-fidelity wireframe diagrams & screenshots
+│   └── *.md                   ← Practical reports & submissions
+│
+├── tests/                     ← Automated test suites
+│   ├── php/                   ← PHPUnit / custom PHP test runners
+│   └── python/                ← HTTP verification & integration scripts
+│
+├── README.md                  ← Comprehensive project documentation
+└── Practical_List_ITUE203_WDF_2026_27.pdf
 ```
+
 
 ---
 

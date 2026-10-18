@@ -49,6 +49,7 @@ CREATE TABLE `students` (
     `password_hash` VARCHAR(255) NOT NULL,
     `gpa` DECIMAL(3,2) DEFAULT 0.00,
     `status` ENUM('Active', 'Graduated', 'Suspended') DEFAULT 'Active',
+    `is_deleted` TINYINT(1) NOT NULL DEFAULT 0,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT `fk_students_course`
@@ -142,12 +143,32 @@ INSERT INTO `courses` (`course_id`, `course_code`, `course_name`, `department`, 
 (6, 'ARTS', 'Digital Arts & Humanities', 'Department of Humanities', 2);
 
 -- Seed: Students
-INSERT INTO `students` (`student_id`, `roll_no`, `fullname`, `email`, `mobile`, `course_id`, `year_of_study`, `gender`, `password_hash`, `gpa`, `status`) VALUES
-(1, '25CE129', 'Rudra Vaghasiya', 'rudra.vaghasiya@college.edu', '9876543210', 1, 3, 'Male', '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.90, 'Active'),
-(2, '25CS045', 'Ananya Shah', 'ananya.shah@college.edu', '9823456789', 2, 2, 'Female', '$2y$10$w8k2rE4uXq9vZbK5LpQdTeu8W2rY6.a7xI0mPnQ1oT3uV7bX9z2vB', 9.20, 'Active'),
-(3, '25CE078', 'Rohan Mehta', 'rohan.mehta@college.edu', '9811223344', 1, 4, 'Male', '$2y$10$k1p9rT3vY0wAaB8CcDdEeFf1G2h3I4j5K6l7M8n9O0pQrStUvWxYz', 8.50, 'Active'),
-(4, '25PH012', 'Priya Sharma', 'priya.sharma@college.edu', '9844556677', 4, 1, 'Female', '$2y$10$z9y8x7w6v5u4t3s2r1q0pOnMlKjIhGfEdCbAaZ9y8x7w6v5u4t3s2', 8.75, 'Active'),
-(5, '25MA033', 'Karan Dave', 'karan.dave@college.edu', '9898012345', 3, 2, 'Male', '$2y$10$GvoRH8fKe4YKaCW8jq31muDjxT9Nl3Y0hVl5kLz98xKaFWvrK4A0i', 7.95, 'Active');
+INSERT INTO `students` (`student_id`, `roll_no`, `fullname`, `email`, `mobile`, `course_id`, `year_of_study`, `gender`, `password_hash`, `gpa`, `status`, `is_deleted`) VALUES
+(1,  '25CE129', 'Rudra Vaghasiya',  'rudra.vaghasiya@college.edu',  '9876543210', 1, 3, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.90, 'Active',    0),
+(2,  '25CS045', 'Ananya Shah',      'ananya.shah@college.edu',      '9823456789', 2, 2, 'Female', '$2y$10$w8k2rE4uXq9vZbK5LpQdTeu8W2rY6.a7xI0mPnQ1oT3uV7bX9z2vB', 9.20, 'Active',    0),
+(3,  '25CE078', 'Rohan Mehta',      'rohan.mehta@college.edu',      '9811223344', 1, 4, 'Male',   '$2y$10$k1p9rT3vY0wAaB8CcDdEeFf1G2h3I4j5K6l7M8n9O0pQrStUvWxYz', 8.50, 'Active',    0),
+(4,  '25PH012', 'Priya Sharma',     'priya.sharma@college.edu',     '9844556677', 4, 1, 'Female', '$2y$10$z9y8x7w6v5u4t3s2r1q0pOnMlKjIhGfEdCbAaZ9y8x7w6v5u4t3s2', 8.75, 'Active',    0),
+(5,  '25MA033', 'Karan Dave',       'karan.dave@college.edu',       '9898012345', 3, 2, 'Male',   '$2y$10$GvoRH8fKe4YKaCW8jq31muDjxT9Nl3Y0hVl5kLz98xKaFWvrK4A0i', 7.95, 'Active',    0),
+(6,  '25CE001', 'Aarav Patel',      'aarav.patel@college.edu',      '9876500001', 1, 1, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.40, 'Active',    0),
+(7,  '25CS014', 'Diya Trivedi',     'diya.trivedi@college.edu',     '9876500002', 2, 3, 'Female', '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 9.10, 'Active',    0),
+(8,  '25CE042', 'Harsh Solanki',    'harsh.solanki@college.edu',    '9876500003', 1, 2, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 7.65, 'Active',    0),
+(9,  '25BI009', 'Sneha Desai',      'sneha.desai@college.edu',      '9876500004', 5, 2, 'Female', '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.85, 'Active',    0),
+(10, '25AR003', 'Vikram Rathod',    'vikram.rathod@college.edu',    '9876500005', 6, 1, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.20, 'Active',    0),
+(11, '25CS089', 'Tanvi Parekh',     'tanvi.parekh@college.edu',     '9876500006', 2, 4, 'Female', '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 9.45, 'Graduated', 0),
+(12, '25CE110', 'Manish Gadhvi',    'manish.gadhvi@college.edu',    '9876500007', 1, 3, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 6.90, 'Suspended', 0),
+(13, '25MA018', 'Kavita Iyer',      'kavita.iyer@college.edu',      '9876500008', 3, 3, 'Female', '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.60, 'Active',    0),
+(14, '25PH025', 'Nikhil Verma',     'nikhil.verma@college.edu',     '9876500009', 4, 2, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 7.80, 'Active',    0),
+(15, '25CS061', 'Riddhi Bhatt',     'riddhi.bhatt@college.edu',     '9876500010', 2, 1, 'Female', '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.95, 'Active',    0),
+(16, '25CE095', 'Yash Parmar',      'yash.parmar@college.edu',      '9876500011', 1, 4, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.35, 'Graduated', 0),
+(17, '25BI019', 'Pooja Chawla',     'pooja.chawla@college.edu',     '9876500012', 5, 3, 'Female', '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.15, 'Active',    0),
+(18, '25AR011', 'Devansh Rawal',    'devansh.rawal@college.edu',    '9876500013', 6, 2, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 7.50, 'Active',    0),
+(19, '25CS102', 'Simran Kaur',      'simran.kaur@college.edu',      '9876500014', 2, 3, 'Female', '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 9.05, 'Active',    0),
+(20, '25CE135', 'Deepak Chauhan',   'deepak.chauhan@college.edu',   '9876500015', 1, 2, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.10, 'Active',    0),
+(21, '25MA044', 'Meera Nambiar',    'meera.nambiar@college.edu',    '9876500016', 3, 4, 'Female', '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 9.30, 'Graduated', 0),
+(22, '25PH034', 'Aditya Sen',       'aditya.sen@college.edu',       '9876500017', 4, 3, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 7.90, 'Active',    0),
+(23, '25BI028', 'Ishita Goswami',   'ishita.goswami@college.edu',   '9876500018', 5, 1, 'Female', '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.70, 'Active',    0),
+(24, '25CS120', 'Chirag Vora',      'chirag.vora@college.edu',      '9876500019', 2, 4, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.45, 'Graduated', 0),
+(25, '25CE140', 'Bhavik Barot',     'bhavik.barot@college.edu',     '9876500020', 1, 1, 'Male',   '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC', 8.00, 'Active',    0);
 
 -- Seed: Events
 INSERT INTO `events` (`event_id`, `event_code`, `title`, `category`, `event_date`, `event_time`, `venue`, `organizer`, `max_participants`, `registered_count`, `status`, `description`) VALUES

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Login</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Skip to main content (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+        <h1>StudentHub Portal</h1>
+        <p>Welcome back! Please log in to access your account.</p>
+    </header>
+
+    <main id="main-content" role="main">
+        <section aria-labelledby="login-heading">
+            <h2 id="login-heading">Student Login</h2>
+
+            <div style="margin-bottom:14px;padding:10px 14px;background:#e8f4fd;border:1px solid #b8d9f5;border-radius:8px;font-size:.85rem;">
+                &#128274; <strong>Practical 10</strong>: Secure login with PHP sessions, <code>password_verify()</code>, role-based access, and session timeout.
+                <a href="api/login.php" style="font-weight:700;color:#0d6efd;">&#8594; Open Secure Login (Practical 10)</a>
+            </div>
+
+            <form action="index.html" method="GET" aria-label="Login Form (Static Demo)">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username"
+                           autocomplete="username" required
+                           aria-required="true" aria-describedby="username-hint">
+                    <span id="username-hint">Enter your student ID or registered email.</span>
+                </div>
+
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password"
+                           autocomplete="current-password" required
+                           aria-required="true">
+                </div>
+
+                <div>
+                    <button type="submit">Log In (Static)</button>
+                </div>
+            </form>
+
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+            <p><a href="api/login.php">&#128274; Go to Practical 10 Secure Login</a></p>
+            <p><a href="faq.html">Need help logging in?</a></p>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+        <p>&copy; 2026 StudentHub</p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

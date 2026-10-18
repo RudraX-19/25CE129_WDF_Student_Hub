@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Register</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- Skip to main content (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+        <h1>StudentHub Portal</h1>
+        <p>Join the centralized platform for all your academic and campus needs.</p>
+    </header>
+
+    <main id="main-content" role="main">
+        <section aria-labelledby="register-heading">
+            <h2 id="register-heading">Student Registration</h2>
+
+            <div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <span>Practical 7: Submits via <strong>POST</strong> with server-side validation and CSV/JSON storage.</span>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <a href="api/view_records.php" class="records-link">&#128196; View Stored Records</a>
+                    <a href="api/register_secure.php" class="records-link" style="background:#198754;">&#128274; Practical 9: DB Registration</a>
+                </div>
+            </div>
+
+            <form action="api/process_register.php" method="POST" aria-label="Student Registration Form" novalidate id="registrationForm">
+                <table cellpadding="8" cellspacing="0" border="0" role="presentation">
+                    <tr>
+                        <td><label for="fullname">Full Name</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td>
+                            <input type="text" id="fullname" name="fullname" autocomplete="name" required aria-required="true" placeholder="e.g. Rudra Patel">
+                            <span class="error-msg" id="fullname-error" aria-live="polite"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Student Email</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td>
+                            <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" placeholder="e.g. student@college.edu">
+                            <span class="error-msg" id="email-error" aria-live="polite"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="mobile">Mobile Number</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td>
+                            <input type="tel" id="mobile" name="mobile" autocomplete="tel" placeholder="e.g. 9876543210" required aria-required="true">
+                            <span class="error-msg" id="mobile-error" aria-live="polite"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="course">Course</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td>
+                            <select id="course" name="course" required aria-required="true">
+                                <option value="">-- Select Course --</option>
+                                <option value="ce">Computer Engineering</option>
+                                <option value="cs">Computer Science</option>
+                                <option value="math">Mathematics</option>
+                                <option value="physics">Physics</option>
+                                <option value="biology">Biology</option>
+                                <option value="arts">Arts &amp; Humanities</option>
+                            </select>
+                            <span class="error-msg" id="course-error" aria-live="polite"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="year">Year</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td>
+                            <select id="year" name="year" required aria-required="true">
+                                <option value="">-- Select Year --</option>
+                                <option value="1">1st Year</option>
+                                <option value="2">2nd Year</option>
+                                <option value="3">3rd Year</option>
+                                <option value="4">4th Year</option>
+                            </select>
+                            <span class="error-msg" id="year-error" aria-live="polite"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Gender</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td role="group" aria-label="Gender">
+                            <input type="radio" id="gender-male" name="gender" value="male" required>
+                            <label for="gender-male">Male</label>
+                            &nbsp;&nbsp;
+                            <input type="radio" id="gender-female" name="gender" value="female">
+                            <label for="gender-female">Female</label>
+                            &nbsp;&nbsp;
+                            <input type="radio" id="gender-other" name="gender" value="other">
+                            <label for="gender-other">Other</label>
+                            <br><span class="error-msg" id="gender-error" aria-live="polite"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Create Password</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td>
+                            <input type="password" id="password" name="password" autocomplete="new-password" required aria-required="true">
+                            <span class="error-msg" id="password-error" aria-live="polite"></span>
+                            <div class="password-strength" id="password-strength" aria-live="polite"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="confirm-password">Confirm Password</label></td>
+                        <td aria-hidden="true">:</td>
+                        <td>
+                            <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password" required aria-required="true">
+                            <span class="error-msg" id="confirm-password-error" aria-live="polite"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <input type="checkbox" id="terms" name="terms" required aria-required="true">
+                            <label for="terms">I agree to the <a href="faq.html">Student Terms and Conditions</a></label>
+                            <br><span class="error-msg" id="terms-error" aria-live="polite"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: center; padding-top: 15px;">
+                            <button type="submit">Create Account</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+            <p>Already have an account? <a href="login.html">Log in here</a></p>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <nav aria-label="Footer Navigation">
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
+        <p>&copy; 2026 StudentHub</p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/register.js"></script>
+</body>
+
+</html>
