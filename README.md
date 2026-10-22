@@ -1,8 +1,8 @@
 # StudentHub Portal
 
-> **Course:** Web Development Fundamentals (ITUE203)
-> **Practical:** 1 — Project Initiation, Requirement Analysis, Sitemap, Wireframe & GitHub Setup
-> **Student:** *(Your Name / Roll No.)*
+> **Course:** Web Development Fundamentals (ITUE203)  
+> **Student:** Rudra Vaghasiya (Roll No: 25CE129)  
+> **Repository:** [RudraX-19/25CE129_WDF_Student_Hub](https://github.com/RudraX-19/25CE129_WDF_Student_Hub)
 
 ---
 
@@ -275,10 +275,9 @@ git push origin main
 ## 10. GitHub Repository
 
 - **Repository Name:** `StudentHub`
+- **Repository URL:** [https://github.com/RudraX-19/25CE129_WDF_Student_Hub](https://github.com/RudraX-19/25CE129_WDF_Student_Hub)
 - **Visibility:** Public
 - **Branch:** `main`
-
-> Link: *(Add your GitHub repository URL here)*
 
 ---
 

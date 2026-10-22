@@ -22,7 +22,8 @@ require_once dirname(__DIR__, 2) . '/src/core/mysqli_db.php';
 require_once dirname(__DIR__, 2) . '/src/core/session_guard.php';
 require_once dirname(__DIR__, 2) . '/src/core/form_functions.php';
 
-session_secure_start();
+// RBAC: Enforce admin access for student record management
+require_login('admin');
 
 $csrf_token = get_csrf_token();
 $errors = [];

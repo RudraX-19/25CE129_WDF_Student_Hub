@@ -1,4 +1,19 @@
-# Ignore test files and practical documentation markdown
+# Ignore test suites and documentation markdown files
 tests/
 docs/*.md
 !docs/wireframes/wireframe_notes.md
+INSTALL.md
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs and environment files
+*.log
+error_log
+.env
+.env.local
