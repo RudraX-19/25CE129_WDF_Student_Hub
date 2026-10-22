@@ -444,3 +444,25 @@ CREATE TABLE IF NOT EXISTS `remember_tokens` (
 
 CREATE INDEX `idx_remember_user`   ON `remember_tokens` (`user_id`);
 CREATE INDEX `idx_remember_expires` ON `remember_tokens` (`expires_at`);
+
+-- ============================================================================
+-- PRACTICAL 14: Admin Dashboard — RBAC, Dynamic Menu, Audit Log
+-- ============================================================================
+
+-- Ensure audit_log table exists with all required columns
+-- (already created above; this block adds the index if missed)
+CREATE INDEX IF NOT EXISTS `idx_audit_performed_by` ON `audit_log` (`performed_by`);
+CREATE INDEX IF NOT EXISTS `idx_audit_created_at`   ON `audit_log` (`created_at`);
+
+-- Seed: Initial audit_log entries for demonstration
+INSERT IGNORE INTO `audit_log` (`log_id`, `action`, `table_name`, `record_id`, `performed_by`, `details`, `ip_address`) VALUES
+(1,  'LOGIN',           'users',       1,  'admin',   'Admin user logged in',                           '127.0.0.1'),
+(2,  'CREATE',          'students',    1,  'admin',   'Student Rudra Vaghasiya created (25CE129)',       '127.0.0.1'),
+(3,  'CREATE',          'events',      1,  'admin',   'Event Annual Hackathon 2026 created',             '127.0.0.1'),
+(4,  'UPDATE',          'events',      2,  'admin',   'Event RoboWars max_participants updated to 80',   '127.0.0.1'),
+(5,  'CREATE',          'students',    2,  'admin',   'Student Ananya Shah created (25CS045)',           '127.0.0.1'),
+(6,  'DELETE',          'registrations',4, 'admin',   'Registration REG-2026-EVT04 removed',            '127.0.0.1'),
+(7,  'TOGGLE_STATUS',   'users',       2,  'admin',   'User student01 set to Inactive',                 '127.0.0.1'),
+(8,  'TOGGLE_STATUS',   'users',       2,  'admin',   'User student01 set to Active',                   '127.0.0.1'),
+(9,  'VIEW_DASHBOARD',  'admin_dashboard',0,'admin',  'Admin viewed dashboard',                         '127.0.0.1'),
+(10, 'LOGIN',           'users',       1,  'admin',   'Admin session renewed via remember-me token',    '127.0.0.1');
