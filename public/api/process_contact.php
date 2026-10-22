@@ -133,7 +133,7 @@ if ($isJsonRequest) {
     </main>
 
     <footer role="contentinfo">
-        <p>&copy; 2026 StudentHub &mdash; WDF Practical 7 Submission</p>
+        <p>&copy; 2026 StudentHub &mdash; Institutional Web Portal</p>
     </footer>
     <script src="../assets/js/main.js"></script>
 </body>

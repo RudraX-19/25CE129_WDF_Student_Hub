@@ -58,7 +58,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Student Dashboard (Practical 10)</title>
+    <title>StudentHub - Student Portal Dashboard</title>
     <meta name="description" content="Secure student dashboard with session-based access control, timeout display, and role-based redirection.">
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
@@ -371,9 +371,9 @@ try {
                 </table>
             </div>
 
-            <!-- Session Security Info (Practical 10 key feature display) -->
+            <!-- Session Security Info -->
             <div class="section-card">
-                <h3>&#128274; Session Security <span class="p10-badge">Practical 10</span></h3>
+                <h3>&#128274; Account Security &amp; Session Status</h3>
                 <div class="session-box">
                     <div class="srow">
                         <span class="sk">Session ID (truncated)</span>
@@ -415,7 +415,7 @@ try {
                     </div>
                     <?php if ($student_record && $student_record['last_login_at']): ?>
                     <div class="srow">
-                        <span class="sk">Last Login (Intermediate)</span>
+                        <span class="sk">Last Login</span>
                         <span class="sv"><?= htmlspecialchars($student_record['last_login_at'], ENT_QUOTES, 'UTF-8') ?></span>
                     </div>
                     <?php endif; ?>
@@ -440,7 +440,7 @@ try {
     </main>
 
     <footer style="text-align:center;padding:20px;color:#6c757d;font-size:.78rem;">
-        &copy; 2026 StudentHub &mdash; Practical 10: Secure Session Authentication
+        &copy; 2026 StudentHub &mdash; Student Information System
     </footer>
 
     <script>

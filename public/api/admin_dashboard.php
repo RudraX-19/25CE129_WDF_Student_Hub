@@ -146,7 +146,7 @@ $chart_data_json   = json_encode($chart_data);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub — Admin Dashboard (Practical 14)</title>
+    <title>StudentHub — Administrator Dashboard</title>
     <meta name="description" content="Admin dashboard with role-based access control, dynamic menu, live statistics, audit log, and analytics chart.">
     <link rel="stylesheet" href="../assets/css/style.css">
     <!-- Chart.js CDN (Advanced Extension) -->
@@ -374,7 +374,7 @@ $chart_data_json   = json_encode($chart_data);
     <div class="welcome-card">
         <div>
             <h2>🛡 Admin Control Panel
-                <span class="p14-badge" style="margin-left:8px;">Practical 14</span>
+                <span class="p14-badge" style="margin-left:8px;">System Admin</span>
             </h2>
             <p>Welcome, <strong><?= $admin_name ?></strong>. You have full administrative access.</p>
             <div style="margin-top:8px;font-size:.75rem;opacity:.7;">
@@ -535,9 +535,9 @@ $chart_data_json   = json_encode($chart_data);
             </div>
         </div>
 
-        <!-- Audit Log (Requirement 4) -->
+        <!-- Audit Log -->
         <div class="section-card">
-            <h3>📝 Audit Log <span class="p14-badge">Practical 14</span></h3>
+            <h3>📝 Security Audit Log <span class="p14-badge">Real-Time</span></h3>
             <?php if ($audit_log_rows): ?>
             <div style="overflow-x:auto;max-height:280px;overflow-y:auto;">
                 <table class="audit-table" aria-label="Audit log">
@@ -583,7 +583,7 @@ $chart_data_json   = json_encode($chart_data);
 </main>
 
 <footer style="text-align:center;padding:18px;color:#6c757d;font-size:.78rem;">
-    &copy; 2026 StudentHub &mdash; Practical 14: Admin Dashboard with RBAC, Dynamic Menu &amp; Audit Log
+    &copy; 2026 StudentHub &mdash; Institutional Administration &amp; Governance
 </footer>
 
 <!-- Toast container -->

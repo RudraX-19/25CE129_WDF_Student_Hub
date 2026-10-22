@@ -43,8 +43,16 @@ function get_mysqli_connection(): mysqli {
         $mysqli->set_charset(DB_CHARSET);
         return $mysqli;
     } catch (mysqli_sql_exception $e) {
+        // Fallback: If 127.0.0.1 failed, try localhost socket connection
+        if (DB_HOST === '127.0.0.1') {
+            try {
+                $mysqli = new mysqli('localhost', DB_USER, DB_PASS, DB_NAME, (int)DB_PORT);
+                $mysqli->set_charset(DB_CHARSET);
+                return $mysqli;
+            } catch (\Throwable $ignored) {}
+        }
         error_log('MySQLi Connection Error: ' . $e->getMessage());
-        throw new RuntimeException('Database connection failed. Please try again later.');
+        throw new RuntimeException('Database connection failed (' . $e->getMessage() . '). Please verify MySQL is running in XAMPP and studenthub_db exists.');
     }
 }
 

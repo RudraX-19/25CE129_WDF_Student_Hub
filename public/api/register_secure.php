@@ -254,11 +254,11 @@ function e(string $val): string {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Secure Registration (Practical 9)</title>
+    <title>StudentHub - Student Registration</title>
     <meta name="description" content="Secure student registration with server-side validation, duplicate email check, and bcrypt password hashing using PHP MySQLi and Prepared Statements.">
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
-        /* ── Practical 9 Enhancement Styles ─────────────────────────── */
+        /* ── Registration Enhancement Styles ─────────────────────────── */
         .p9-badge {
             display: inline-flex;
             align-items: center;
@@ -479,14 +479,14 @@ function e(string $val): string {
 
     <main id="main-content" role="main">
         <section aria-labelledby="reg9-heading">
-            <h2 id="reg9-heading">Create Your Account <span class="p9-badge">&#128274; Practical 9</span></h2>
+            <h2 id="reg9-heading">Create Your Account <span class="p9-badge">&#128274; Portal Enrollment</span></h2>
 
             <!-- Info bar -->
             <div class="p9-info-bar">
                 <span>
-                    <strong>Practical 9</strong>: MySQLi INSERT + Duplicate Check + <code>password_hash()</code> &mdash; bcrypt secured registration.
+                    <strong>Student Registration</strong>: Centralized database enrollment with verified credential security.
                 </span>
-                <a href="register.php">&#8592; Back to Practical 7 (File Storage)</a>
+                <a href="login.php">&#8592; Back to Login</a>
             </div>
 
             <!-- Security feature pills -->
@@ -783,8 +783,6 @@ function e(string $val): string {
 
             <p style="text-align:center;margin-top:18px;font-size:.88rem;">
                 Already have an account? <a href="../login.html"><strong>Log in here</strong></a>
-                &nbsp;|&nbsp;
-                <a href="register.php">Practical 7 File-Based Version</a>
             </p>
         </section>
     </main>

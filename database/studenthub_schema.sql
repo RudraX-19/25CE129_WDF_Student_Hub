@@ -141,11 +141,12 @@ CREATE TABLE IF NOT EXISTS `audit_log` (
     `performed_by` VARCHAR(100) DEFAULT 'admin',
     `details` TEXT,
     `ip_address` VARCHAR(45) DEFAULT '127.0.0.1',
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX `idx_audit_action` (`action`),
+    INDEX `idx_audit_table_record` (`table_name`, `record_id`),
+    INDEX `idx_audit_performed_by` (`performed_by`),
+    INDEX `idx_audit_created_at` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE INDEX `idx_audit_action` ON `audit_log` (`action`);
-CREATE INDEX `idx_audit_table_record` ON `audit_log` (`table_name`, `record_id`);
 
 -- ============================================================================
 -- SEED DATA
@@ -393,37 +394,18 @@ CREATE INDEX `idx_users_email`    ON `users` (`email`);
 CREATE INDEX `idx_users_username` ON `users` (`username`);
 CREATE INDEX `idx_users_role`     ON `users` (`role`);
 
--- Seed: Admin user (password: Admin@123 → hashed below)
--- NOTE: Replace the hash below with: password_hash('Admin@123', PASSWORD_DEFAULT)
+-- Seed: Admin user and Student user (password: Admin@123)
 INSERT INTO `users` (`username`, `email`, `password_hash`, `role`, `full_name`) VALUES
 ('admin', 'admin@studenthub.edu',
- '$2y$10$YdD3XCmAJG5YR0bPwYKqCe9hqJPFW6dLbQ4M0Z8XcVkNwA0E1m2sO',
+ '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',
  'admin', 'Portal Administrator'),
 ('25ce129', 'rudra.vaghasiya@college.edu',
- '$2y$10$e7m0tG1oMv0fFjH3UqJbOex5P4wH0rT9.n1rGzS5WqP9l0tM5u3yC',
+ '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',
  'student', 'Rudra Vaghasiya');
 
 -- ----------------------------------------------------------------------------
--- 7. Table: audit_log (Advanced Extension - Practical 9)
---    Records all registration and login events for traceability
+-- 7. Table: remember_tokens (Persistent Login)
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `audit_log` (
-    `log_id`     INT AUTO_INCREMENT PRIMARY KEY,
-    `event_time` TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
-    `action`     VARCHAR(50) NOT NULL COMMENT 'e.g. REGISTER, LOGIN, LOGOUT',
-    `user_id`    INT         DEFAULT NULL,
-    `username`   VARCHAR(50) DEFAULT NULL,
-    `email`      VARCHAR(150) DEFAULT NULL,
-    `ip_address` VARCHAR(45) DEFAULT NULL,
-    `details`    VARCHAR(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Practical 9 Advanced Extension: Audit trail for security events';
-
-CREATE INDEX `idx_audit_action` ON `audit_log` (`action`);
-CREATE INDEX `idx_audit_user`   ON `audit_log` (`user_id`);
-
--- ----------------------------------------------------------------------------
--- 8. Table: remember_tokens (Advanced Extension - Practical 10)
 --    Stores hashed remember-me tokens for persistent login.
 --    Token is stored as SHA-256 hash — plaintext never stored.
 --    Token rotated on each use to prevent replay attacks.
@@ -446,13 +428,8 @@ CREATE INDEX `idx_remember_user`   ON `remember_tokens` (`user_id`);
 CREATE INDEX `idx_remember_expires` ON `remember_tokens` (`expires_at`);
 
 -- ============================================================================
--- PRACTICAL 14: Admin Dashboard — RBAC, Dynamic Menu, Audit Log
+-- Seed Data: audit_log entries
 -- ============================================================================
-
--- Ensure audit_log table exists with all required columns
--- (already created above; this block adds the index if missed)
-CREATE INDEX IF NOT EXISTS `idx_audit_performed_by` ON `audit_log` (`performed_by`);
-CREATE INDEX IF NOT EXISTS `idx_audit_created_at`   ON `audit_log` (`created_at`);
 
 -- Seed: Initial audit_log entries for demonstration
 INSERT IGNORE INTO `audit_log` (`log_id`, `action`, `table_name`, `record_id`, `performed_by`, `details`, `ip_address`) VALUES

@@ -71,7 +71,7 @@ $syncStatus = (count($registrationsCsv) === count($registrationsJson)) && (count
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Stored Records Viewer (Practical 7)</title>
+    <title>StudentHub - System Records Archive</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
@@ -80,7 +80,7 @@ $syncStatus = (count($registrationsCsv) === count($registrationsJson)) && (count
 
     <header role="banner">
         <h1>StudentHub Portal</h1>
-        <p>Practical 7: File-Based Form Processing &amp; Storage Viewer</p>
+        <p>System Record Archive &amp; Audit Storage</p>
         <div class="user-info">
             <span>Server Storage: <strong>Active</strong></span>
             <a href="../login.html">Logout</a>
@@ -97,8 +97,8 @@ $syncStatus = (count($registrationsCsv) === count($registrationsJson)) && (count
             <li><a href="../events.html">Events</a></li>
             <li><a href="../library.html">Library</a></li>
             <li><a href="../students.html">Students</a></li>
-            <li><a href="view_records.php" aria-current="page">Stored Records (P7)</a></li>
-            <li><a href="db_test.php">Database (P8)</a></li>
+            <li><a href="view_records.php" aria-current="page">Record Archive</a></li>
+            <li><a href="db_test.php">Database Status</a></li>
             <li><a href="register.php">Register Form</a></li>
             <li><a href="contact.php">Contact Form</a></li>
         </ul>
@@ -109,7 +109,7 @@ $syncStatus = (count($registrationsCsv) === count($registrationsJson)) && (count
         <nav aria-label="Breadcrumb">
             <ol>
                 <li><a href="../index.html">Home</a></li>
-                <li aria-current="page">Stored File Records (Practical 7)</li>
+                <li aria-current="page">System Records Archive</li>
             </ol>
         </nav>
 
@@ -324,15 +324,15 @@ $syncStatus = (count($registrationsCsv) === count($registrationsJson)) && (count
                 <?php endif; ?>
             </div>
 
-            <!-- Footer Details & Implementation Notes -->
+            <!-- Details & Architecture Notes -->
             <div style="margin-top: 25px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
-                <h4 style="margin: 0 0 8px 0; color: #0057b7;">Practical 7 Technical Architecture Highlights:</h4>
+                <h4 style="margin: 0 0 8px 0; color: #0057b7;">System Architecture Highlights:</h4>
                 <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: #4b5563; line-height: 1.6;">
                     <li><strong>POST Submission:</strong> Sensitive student and message data is submitted through HTTP POST only, avoiding exposure in browser URL history.</li>
                     <li><strong>Server-Side Validation:</strong> Enforces length, regex patterns, email validity, whitelist checks, and password rules on the PHP server regardless of client-side state.</li>
                     <li><strong>Safe File Writing:</strong> Concurrency issues are handled using PHP's <code>flock($fp, LOCK_EX)</code> to guarantee safe atomic writes.</li>
                     <li><strong>Dual CSV/JSON Storage:</strong> All submissions are automatically recorded in both CSV and structured JSON files simultaneously.</li>
-                    <li><strong>CSRF Protection (Advanced Extension):</strong> Cryptographically random 64-hex tokens protect forms from cross-site request forgery attacks.</li>
+                    <li><strong>CSRF Protection:</strong> Cryptographically random 64-hex tokens protect forms from cross-site request forgery attacks.</li>
                 </ul>
             </div>
         </section>
@@ -345,10 +345,10 @@ $syncStatus = (count($registrationsCsv) === count($registrationsJson)) && (count
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="../faq.html">FAQ</a></li>
                 <li><a href="../feedback.html">Feedback</a></li>
-                <li><a href="view_records.php">Stored Records (P7)</a></li>
+                <li><a href="view_records.php">Stored Records</a></li>
             </ul>
         </nav>
-        <p>&copy; 2026 StudentHub &mdash; WDF Practical 7 Submission</p>
+        <p>&copy; 2026 StudentHub &mdash; Institutional Web Portal</p>
     </footer>
 
     <script src="../assets/js/main.js"></script>

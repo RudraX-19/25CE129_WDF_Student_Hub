@@ -104,13 +104,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <nav aria-label="Breadcrumb">
             <ol>
                 <li><a href="../index.html">Home</a></li>
-                <li aria-current="page">Student Registration (Practical 7)</li>
+                <li aria-current="page">Student Registration</li>
             </ol>
         </nav>
 
         <section aria-labelledby="register-heading">
-            <h2 id="register-heading">Student Registration &mdash; Server-Side Processing</h2>
-            <p>Practical 7: PHP POST processing, server-side sanitization, dual CSV/JSON storage, and CSRF protection.</p>
+            <h2 id="register-heading">Student Registration &mdash; Enrollment Portal</h2>
+            <p>Online student registration form with server-side validation and secure storage.</p>
 
             <!-- Server-Side Success Message -->
             <?php if ($successRecord): ?>
@@ -301,10 +301,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="../faq.html">FAQ</a></li>
                 <li><a href="../feedback.html">Feedback</a></li>
-                <li><a href="view_records.php">Data Storage (P7)</a></li>
+                <li><a href="view_records.php">Stored Records</a></li>
             </ul>
         </nav>
-        <p>&copy; 2026 StudentHub &mdash; WDF Practical 7 Submission</p>
+        <p>&copy; 2026 StudentHub &mdash; Student Enrollment System</p>
     </footer>
 
     <script src="../assets/js/main.js"></script>

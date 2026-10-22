@@ -93,7 +93,7 @@ if ($health['success']) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - MySQL Database Connectivity (Practical 8)</title>
+    <title>StudentHub - Database Architecture &amp; Status</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         .db-badge {
@@ -138,7 +138,7 @@ if ($health['success']) {
 
     <header role="banner">
         <h1>StudentHub Portal</h1>
-        <p>Practical 8: MySQL Schema Design, ER Model, PDO Connectivity, and Prepared Statements</p>
+        <p>Relational Database Architecture &amp; System Health Monitor</p>
         <div class="user-info">
             <?php if ($health['success']): ?>
                 <span class="db-badge db-connected">&#9679; Database: Connected (<?php echo $health['latency_ms']; ?> ms)</span>
@@ -157,8 +157,8 @@ if ($health['success']) {
             <li><a href="../timetable.html">Timetable</a></li>
             <li><a href="../events.html">Events</a></li>
             <li><a href="../students.html">Students</a></li>
-            <li><a href="view_records.php">P7 File Storage</a></li>
-            <li><a href="db_test.php" aria-current="page">P8 MySQL &amp; PDO</a></li>
+            <li><a href="view_records.php">Stored Records</a></li>
+            <li><a href="db_test.php" aria-current="page">Database Status</a></li>
             <li><a href="register.php">Register</a></li>
             <li><a href="contact.php">Contact</a></li>
         </ul>
@@ -169,14 +169,14 @@ if ($health['success']) {
         <nav aria-label="Breadcrumb">
             <ol>
                 <li><a href="../index.html">Home</a></li>
-                <li aria-current="page">Practical 8: Database Connection &amp; Prepared Statements</li>
+                <li aria-current="page">Database Connection &amp; Health</li>
             </ol>
         </nav>
 
         <section aria-labelledby="p8-heading">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
                 <div>
-                    <h2 id="p8-heading" style="margin: 0;">Practical 8: MySQL Database Architecture</h2>
+                    <h2 id="p8-heading" style="margin: 0;">Relational Database Architecture</h2>
                     <p style="margin: 4px 0 0 0; color: #555;">Normalized 3NF relational schema, PDO connection with disabled emulated prepares, and stored procedures.</p>
                 </div>
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
@@ -495,9 +495,9 @@ $stmt->execute([':q' => '%<?php echo htmlspecialchars($searchQuery); ?>%']);
                 </div>
             </div>
 
-            <!-- 5. Technical Questions & Summary -->
+            <!-- Architecture Overview -->
             <div style="margin-top: 25px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
-                <h4 style="margin: 0 0 8px 0; color: #0057b7;">Practical 8 Key Analysis &amp; Answers:</h4>
+                <h4 style="margin: 0 0 8px 0; color: #0057b7;">Database Architecture Highlights:</h4>
                 <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: #4b5563; line-height: 1.6;">
                     <li><strong>Schema Normalization (3NF):</strong> Decomposed entities into `courses`, `students`, `events`, and M:N bridge table `registrations` to eliminate update and deletion anomalies.</li>
                     <li><strong>Primary &amp; Foreign Key Integrity:</strong> Every table has an auto-incrementing primary key. Foreign keys define `ON DELETE CASCADE` or `RESTRICT` rules to enforce referential integrity.</li>
@@ -515,10 +515,10 @@ $stmt->execute([':q' => '%<?php echo htmlspecialchars($searchQuery); ?>%']);
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="../faq.html">FAQ</a></li>
                 <li><a href="../feedback.html">Feedback</a></li>
-                <li><a href="db_test.php">Database (P8)</a></li>
+                <li><a href="db_test.php">Database Status</a></li>
             </ul>
         </nav>
-        <p>&copy; 2026 StudentHub &mdash; WDF Practical 8 Submission</p>
+        <p>&copy; 2026 StudentHub &mdash; Institutional Web Portal</p>
     </footer>
 
     <script src="../assets/js/main.js"></script>

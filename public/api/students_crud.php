@@ -453,8 +453,8 @@ function build_url(array $overrides = []): string {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Student Management CRUD (Practical 11)</title>
-    <meta name="description" content="Practical 11: Comprehensive Student Management CRUD with Search, Multi-Filter, Soft Delete, and CSV Export.">
+    <title>StudentHub - Student Directory &amp; Records</title>
+    <meta name="description" content="Comprehensive Student Management with Search, Multi-Filter, Soft Delete, and CSV Export.">
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         :root {
@@ -949,8 +949,8 @@ function build_url(array $overrides = []): string {
         <div class="page-header">
             <div>
                 <h1>
-                    <span>&#128101; Student Directory CRUD</span>
-                    <span class="badge-p11">Practical 11</span>
+                    <span>&#128101; Student Directory &amp; Records</span>
+                    <span class="badge-p11">Directory</span>
                 </h1>
                 <p style="margin:0; opacity:0.85; font-size:0.9rem;">
                     Full Create, Read, Update, Delete with Multi-Field Search, Dynamic Filtering, Soft Delete &amp; CSV Export.

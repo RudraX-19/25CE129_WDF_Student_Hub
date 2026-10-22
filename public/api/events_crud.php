@@ -481,8 +481,8 @@ function build_events_url(array $overrides = []): string {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentHub - Event Management CRUD (Practical 12)</title>
-    <meta name="description" content="Practical 12: Event Management CRUD with File Upload, Poster Validation, Image Renaming, and Audit Trail.">
+    <title>StudentHub - Campus Event Management</title>
+    <meta name="description" content="Campus Event Management with File Upload, Poster Validation, Image Renaming, and Audit Trail.">
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         :root {
@@ -935,7 +935,7 @@ function build_events_url(array $overrides = []): string {
                 &larr; Back to StudentHub Portal
             </a>
             <div style="font-size: 0.85rem; color:#64748b;">
-                Module: <strong>Events CRUD &amp; Poster Validation</strong> | Practical 12
+                Module: <strong>Campus Events &amp; Media Coordination</strong>
             </div>
         </div>
 
@@ -944,7 +944,7 @@ function build_events_url(array $overrides = []): string {
             <div>
                 <h1>
                     <span>&#127895; Campus Event Management</span>
-                    <span class="badge-p12">Practical 12</span>
+                    <span class="badge-p12">Admin</span>
                 </h1>
                 <p style="margin:0; opacity:0.85; font-size:0.9rem;">
                     Create, View, Update, and Delete events with Secure Poster Uploads (MIME &amp; Size Validated), Image Renaming, and Audit Trail.

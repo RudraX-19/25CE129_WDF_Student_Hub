@@ -95,13 +95,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <nav aria-label="Breadcrumb">
             <ol>
                 <li><a href="../index.html">Home</a></li>
-                <li aria-current="page">Contact Us (Practical 7)</li>
+                <li aria-current="page">Contact Us</li>
             </ol>
         </nav>
 
         <section aria-labelledby="contact-heading">
-            <h2 id="contact-heading">Contact Us &mdash; Server-Side Processing</h2>
-            <p>Practical 7: PHP POST submission with server-side validation, sanitization, CSRF protection, and CSV/JSON storage.</p>
+            <h2 id="contact-heading">Contact Us &mdash; Support &amp; Enquiries</h2>
+            <p>Submit your message or support request with secure server-side processing.</p>
 
             <!-- Server-Side Success Message -->
             <?php if ($successRecord): ?>
@@ -223,10 +223,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <li><a href="contact.php" aria-current="page">Contact</a></li>
                 <li><a href="../faq.html">FAQ</a></li>
                 <li><a href="../feedback.html">Feedback</a></li>
-                <li><a href="view_records.php">Stored Records (P7)</a></li>
+                <li><a href="view_records.php">Stored Records</a></li>
             </ul>
         </nav>
-        <p>&copy; 2026 StudentHub &mdash; WDF Practical 7 Submission</p>
+        <p>&copy; 2026 StudentHub &mdash; Institutional Web Portal</p>
     </footer>
 
     <script src="../assets/js/main.js"></script>

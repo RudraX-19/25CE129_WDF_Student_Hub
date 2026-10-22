@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudentHub - Login</title>
+    <meta http-equiv="refresh" content="0;url=api/login.php">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script>window.location.replace("api/login.php");</script>
 </head>
 
 <body>
@@ -23,17 +25,17 @@
             <h2 id="login-heading">Student Login</h2>
 
             <div style="margin-bottom:14px;padding:10px 14px;background:#e8f4fd;border:1px solid #b8d9f5;border-radius:8px;font-size:.85rem;">
-                &#128274; <strong>Practical 10</strong>: Secure login with PHP sessions, <code>password_verify()</code>, role-based access, and session timeout.
-                <a href="api/login.php" style="font-weight:700;color:#0d6efd;">&#8594; Open Secure Login (Practical 10)</a>
+                &#128274; <strong>Portal Access</strong>: Role-based session authentication with secure password verification.
+                <a href="api/login.php" style="font-weight:700;color:#0d6efd;">&#8594; Open Portal Login</a>
             </div>
 
-            <form action="index.html" method="GET" aria-label="Login Form (Static Demo)">
+            <form action="api/login.php" method="POST" aria-label="Login Form">
                 <div>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username"
                            autocomplete="username" required
                            aria-required="true" aria-describedby="username-hint">
-                    <span id="username-hint">Enter your student ID or registered email.</span>
+                    <span id="username-hint">Enter your student ID, admin username, or registered email.</span>
                 </div>
 
                 <div>
@@ -44,12 +46,12 @@
                 </div>
 
                 <div>
-                    <button type="submit">Log In (Static)</button>
+                    <button type="submit">Log In</button>
                 </div>
             </form>
 
             <p>Don't have an account? <a href="register.html">Register here</a></p>
-            <p><a href="api/login.php">&#128274; Go to Practical 10 Secure Login</a></p>
+            <p><a href="api/login.php">&#128274; Direct Backend Authentication</a></p>
             <p><a href="faq.html">Need help logging in?</a></p>
         </section>
     </main>
